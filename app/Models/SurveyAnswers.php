@@ -5,10 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class RegistrationTypes extends Model
+class SurveyAnswers extends Model
 {
     use HasFactory;
 
-    protected $table = 'registration_types';
-    protected $fillable = ['name'];
+    
+    protected $table = 'survey_answers';
+    protected $fillable = ['answer','correctAnswer','id_surveys'];
 }
+
