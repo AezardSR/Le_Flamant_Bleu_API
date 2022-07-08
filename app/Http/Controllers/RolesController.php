@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Roles;
+use App\Models\Types;
 use Illuminate\Http\Request;
 
 class RolesController extends Controller
@@ -16,9 +17,22 @@ class RolesController extends Controller
     public function addRole($id, $name)
     {
         $role = new Roles();
-        $role->id = $id;
         $role->name = $name;
         $role->save();
         return response()->json($role);
     }
+
+    public function getTypesList(){
+        $types = Types::all();
+        return response()->json($types);
+    }
+
+    public function addTypes($id, $name)
+    {
+        $type = new Types();
+        $type->name = $name;
+        $type->save();
+        return response()->json($type);
+    }
+
 }

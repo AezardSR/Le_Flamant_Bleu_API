@@ -32,6 +32,8 @@ Route::put('/user/update/{id}/{column}/{newValue}', [UserController::class, 'edi
 
 
 Route::get('/roles', [RolesController::class, 'getRolesList']);
-Route::post('/roles/{id}/{name}', [RolesController::class, 'addRole']);
+Route::post('/roles/create/{name}', [RolesController::class, 'addRole']);
+Route::get('/types', [RolesController::class, 'getTypesList']);
+Route::post('/type/create/{name}', [RolesController::class, 'addTypes']);
 
 Route::get('/registrationTypes', [RegistrationController::class, 'getRegistrationList']);
