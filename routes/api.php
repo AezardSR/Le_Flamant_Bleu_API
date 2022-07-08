@@ -21,10 +21,14 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-
+//route pour users
+//sert à afficher la liste des utilisateur
 Route::get('/users', [UserController::class, 'getUsersList']);
-
+//affiche un seul utilisateur
+Route::get('/user/{id}', [UserController::class, 'getOneUser']);
+//ajouter un utilisateur
 Route::post('/user/{name}/{firstname}/{birthdate}/{mail}/{tel}/{password}/{adress}/{city}/{zipCode}/{id_roles}/{id_types}', [UserController::class, 'addUser']);
+Route::put('/user/update/{id}/{column}/{newValue}', [UserController::class, 'editUser']);
 
 
 Route::get('/roles', [RolesController::class, 'getRolesList']);

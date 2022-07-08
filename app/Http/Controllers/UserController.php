@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Users;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\DB;
+
 
 class UserController extends Controller
 {
@@ -30,6 +32,15 @@ class UserController extends Controller
     {
         $users = Users::all();
         return response()->json($users);
+    }
+
+    public function getOneUser($id){
+        $user = DB::table('users')->select('name','firstname','mail','tel','adress','city','zipCode')->where('id','=', $id)->get();
+        return response()->json($user);
+    }
+
+    public function editUser($id,$column,$newValue){
+        $user = DB::table('users')->where('id','=',$id)->update([$column => $newValue]);
     }
 
     
