@@ -20,7 +20,7 @@ class CreateUsersTable extends Migration
             $table->date('birthdate');
             $table->string('mail', 100);
             $table->string('tel', 10);
-            $table->string('password', 20);
+            $table->string('password', 255);
             $table->string('adress', 255);
             $table->string('city', 50);
             $table->string('zipCode', 5);
