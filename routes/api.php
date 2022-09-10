@@ -36,4 +36,11 @@ Route::post('/roles/create/{name}', [RolesController::class, 'addRole']);
 Route::get('/types', [RolesController::class, 'getTypesList']);
 Route::post('/type/create/{name}', [RolesController::class, 'addTypes']);
 
-Route::get('/registrationTypes', [RegistrationController::class, 'getRegistrationList']);
+Route::get('/registrationTypes', [RegistrationController::class, 'getRegistrationTypeList']);
+Route::get('/registrations', [RegistrationController::class, 'getRegistrationsList']);
+Route::get('/registration/{id}', [RegistrationController::class, 'getOneRegistration']);
+Route::post('/registration/create/{dateRegistration}/{detailRegistration}/{id_promos}/{id_registrationTypes}', [RegistrationController::class, 'createRegistration']);
+Route::put('/registration/update/{id}/{column}/{newValue}', [RegistrationController::class, 'editRegistration']);
+Route::put('/registrationType/update/{id}/{column}/{newValue}', [RegistrationController::class, 'editRegistrationType']);
+
+
