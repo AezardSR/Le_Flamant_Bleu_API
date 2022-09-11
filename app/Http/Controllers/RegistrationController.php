@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\RegistrationTypes;
 use App\Models\Registrations;
-use App\Models\Promos;
+use App\Models\Signatures;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -19,7 +20,7 @@ class RegistrationController extends Controller
     }
 
     public function createRegistration($dateRegistration,$detailRegistration,$id_promos,$id_registrationTypes){
-        $registration = new Registration();
+        $registration = new Registrations();
         $registration->dateRegistration = $dateRegistration;
         $registration->detailRegistration = $detailRegistration;
         $registration->id_promos = $id_promos;
@@ -29,7 +30,7 @@ class RegistrationController extends Controller
     }
 
     public function getRegistrationsList(){
-        $registration = Registration::all();
+        $registration = Registrations::all();
         return response()->json($registration);
     }
 
@@ -42,5 +43,17 @@ class RegistrationController extends Controller
         $registration = DB::table('registrations')->where('id','=',$id)->update([$column => $newValue]);
     }
 
-
+    public function getSignatureList($id_registrations){
+        $signature = DB::table('signatures')->select('id_users','id_registrations','date')->where('id_registrations','=',$id_registrations)->get();
+        return response()->json($signature);
+    }
+    
+    public function addSignature($id_users,$id_registrations,$date){
+        $signature = new Signatures();
+        $signature->id_users = $id_users;
+        $signature->id_registrations = $id_registrations;
+        $signature->date = $date;
+        $signature->save();
+        return responce()->json($signature);
+    }
 }
