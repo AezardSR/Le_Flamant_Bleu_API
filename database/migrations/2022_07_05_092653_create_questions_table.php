@@ -16,6 +16,7 @@ class CreateQuestionsTable extends Migration
         Schema::create('questions', function (Blueprint $table) {
             $table->increments('id',true);
             $table->longText('question');
+            $table->integer('id_classes')->unsigned();
             $table->integer('id_users')->unsigned();
             $table->timestamps();
         });
@@ -25,6 +26,13 @@ class CreateQuestionsTable extends Migration
             ->foreign('id_users')
             ->references('id')
             ->on('users');
+        });
+
+        Schema::table('questions', function ($table) {
+            $table
+            ->foreign('id_classes')
+            ->references('id')
+            ->on('classes');
         });
     }
 

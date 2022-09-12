@@ -12,6 +12,10 @@ use App\Http\Controllers\DocumentsController;
 use App\Http\Controllers\RegistrationController;
 use App\Http\Controllers\PromoController;
 use App\Http\Controllers\TestsController;
+use App\Http\Controllers\QuestionsController;
+use App\Http\Controllers\AnswersController;
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -46,6 +50,8 @@ Route::put('/EmergencyContact/update/{id}/{column}/{newValue}', [UserController:
 Route::delete('/EmergencyContact/delete/{id}', [UserController::class, 'deleteEmergencyContact']);
 
 //rolesController
+
+//Routes pour Roles
 Route::get('/roles', [RolesController::class, 'getRolesList']);
 Route::post('/roles/{id}/{name}', [RolesController::class, 'addRole']);
 
@@ -70,6 +76,11 @@ Route::put('/registration/update/{id}/{column}/{newValue}', [RegistrationControl
 Route::put('/registrationType/update/{id}/{column}/{newValue}', [RegistrationController::class, 'editRegistrationType']);
 Route::get('/signatures/{id_registration}', [RegistrationController::class, 'getSignatureList']);
 Route::post('/signatures/{id_users}/{id_registrations}/{date}', [RegistrationController::class, 'addSignature']);
+//Routes pour Leçons
+Route::get('/leçons', [LessonController::class, 'getLessonList']);
+Route::post('/leçons/{id}/{content}/{id_parts}', [LessonController::class, 'addLesson']);
+Route::delete('/leçons/{id}/{content}/{id_parts}', [LessonController::class, 'deleteLesson']);
+Route::put('/leçons/{id}/{content}/{id_parts}', [LessonController::class, 'changeLesson']);
 
 //Routes pour Exercices
 Route::get('/exercice', [LessonController::class, 'getExerciceList']);
@@ -176,3 +187,26 @@ Route::post('/Message/create/{content}/{id_receiver}/{id_sender}', [MessagingCon
 Route::get('/Message/{id_receiver}/{id_sender}', [MessagingController::class, 'getChat']);
 Route::put('/Message/{id}/{column}/{newValue}', [MessagingController::class, 'editMessage']);
 Route::delete('/message/delete/{id}', [MessagingController::class, 'deleteMessage']);
+// routes pour les questions
+Route::get('/questions/{id}', [QuestionsController::class, 'viewQuestion']);
+Route::get('/questions', [QuestionsController::class, 'viewListQuestion']);
+Route::post('/questions/{id}/{question}/{id_classes}/{id_users}',[QuestionsController::class, 'addQuestion']);
+Route::delete('/questions/{id}/{question}/{id_classes}/{id_users}',[QuestionsController::class, 'deleteQuestion']);
+Route::put('/questions/{id}/{question}/{id_classes}/{id_users}',[QuestionsController::class, 'changeQuestion']);
+
+// routes pour les reponses
+Route::get('/answers/{id}', [AnswersController::class, 'viewAnswer']);
+Route::get('/answers', [AnswersController::class, 'viewListAnswer']);
+Route::post('/answers/{id}/{answer}/{id_questions}/{id_users}',[AnswersController::class, 'addAnswer']);
+Route::delete('/answers/{id}/{answer}/{id_questions}/{id_users}',[AnswersController::class, 'deleteAnswer']);
+Route::put('/answers/{id}/{answer}/{id_questions}/{id_users}',[AnswersController::class, 'changeAnswer']);
+
+/*
+Route::get('/partnerscontacts', [PartnerContactController::class, '//NameFunction']);
+Route::get('/offres-emplois', [JobsOffersController::class, '//NameFunction']);
+Route::get('/modules', [LessonController::class, '//NameFunction']);
+Route::get('/cours', [LessonController::class, '//NameFunction']);
+Route::get('/exercices', [LessonController::class, '//NameFunction']);
+Route::get('/planning', [CalendarController::class, '//NameFunction']);
+Route::get('/messagerie', [MessagesController::class, '//NameFunction']);
+ */

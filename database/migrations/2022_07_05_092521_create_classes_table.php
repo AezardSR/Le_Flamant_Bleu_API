@@ -17,6 +17,8 @@ class CreateClassesTable extends Migration
             $table->increments('id',true);
             $table->string('name', 50);
             $table->longText('content');
+            $table->longText('contenu');
+            $table->integer('duration');
             $table->integer('id_parts')->unsigned();
             $table->timestamps();
         });
