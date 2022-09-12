@@ -9,6 +9,6 @@ class ModulesClass extends Model
 {
     use HasFactory;
 
-    protected $table = 'modulesClass';
+    protected $table = 'modules_class';
     protected $fillable = ['id_classes', 'id_modules'];
 }

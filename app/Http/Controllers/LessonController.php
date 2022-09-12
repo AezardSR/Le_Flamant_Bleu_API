@@ -6,11 +6,14 @@ use App\Models\Classes;
 use App\Models\Modules;
 use App\Models\Exercices;
 use App\Models\Parts;
+use App\Models\Categories;
+use App\Models\ModulesCategories;
+use App\Models\ModulesClass;
 use Illuminate\Http\Request;
 
 class LessonController extends Controller
 {
-    //Ajouter un module / un cours / un exercice
+    //Ajouter
     public function addModule($id, $moduleName) {
         $module = new Modules();
         $module->id = $id;
@@ -46,7 +49,32 @@ class LessonController extends Controller
         return response()->json($exercice);
     }
 
-    //Supprimer un module / un cours / un exercice
+    public function addCategories($id, $categorie) {
+        $categories = new Categories();
+        $categories->id = $id;
+        $categories->categorie = $categorie;
+        $categories->save();
+        return response()->json($categories);
+    }
+
+    public function addModulesCategories($id_categories, $id_modules) {
+        $moduleCategorie = new ModulesCategories();
+        $moduleCategorie->id_categories = $id_categories;
+        $moduleCategorie->id_modules = $id_modules;
+        $moduleCategorie->save();
+        return response()->json($moduleCategorie);
+    }
+
+    public function addModulesClass($id, $id_classes, $id_modules) {
+        $moduleClasse = new ModulesClass();
+        $moduleClasse->id = $id;
+        $moduleClasse->id_classes = $id_classes;
+        $moduleClasse->id_modules = $id_modules;
+        $moduleClasse->save();
+        return response()->json($moduleClasse);
+    }
+
+    //Supprimer
     public function deleteModule($id) {
         $module = Modules::find($id);
         $module->delete();
@@ -71,7 +99,25 @@ class LessonController extends Controller
         echo('Exercice bien supprimé');
     }
 
-    //Modifier un module / un cours / un exercice
+    public function deleteCategories($id) {
+        $categories = Categories::find($id);
+        $categories->delete();
+        echo('Catégorie est bien supprimée');
+    }
+
+    public function deleteModulesCategories($id) {
+        $moduleCategorie = ModulesCategories::find($id);
+        $moduleCategorie->delete();
+        echo('Module de la catégorie est bien supprimé');
+    }
+
+    public function deleteModulesClasses($id) {
+        $moduleClasses = ModulesClass::find($id);
+        $moduleClasses->delete();
+        echo('Module de la classe est bien supprimé');
+    }
+
+    //Modifier
     public function changeModule($id, $moduleName) {
         $module = Modules::find($id);
         $module->id = $id;
@@ -107,7 +153,34 @@ class LessonController extends Controller
         return response()->json($exercice);
     }
 
-    //Voir un module / un cours / un exercice
+    public function changeCategories($id, $categorie) {
+        $categories = Categories::find($id);
+        $categories->id = $id;
+        $categories->categorie = $categorie;
+        $categories->save();
+        return response()->json($categories);
+    }
+
+    public function changeModulesCategories($id, $id_categories, $id_modules) {
+        $moduleCategorie = ModulesCategories::find($id);
+        $moduleCategorie->id = $id;
+        $moduleCategorie->id_categories = $id_categories;
+        $moduleCategorie->id_modules = $id_modules;
+        $moduleCategorie->save();
+        return response()->json($moduleCategorie);
+    }
+
+    public function changeModulesClass($id, $id_classes, $id_modules) {
+        $moduleClasse = ModulesClass::find($id);
+        $moduleClasse->id = $id;
+        $moduleClasse->id_classes = $id_classes;
+        $moduleClasse->id_modules = $id_modules;
+        $moduleClasse->save();
+        return response()->json($moduleClasse);
+    }
+
+
+    //Get
     public function getModuleList()
     {
         $module = Module::all();
@@ -130,6 +203,24 @@ class LessonController extends Controller
     {
         $exercice = Exercice::all();
         return response()->json($exercice);
+    }
+
+    public function getCategoriesList()
+    {
+        $categories = Categories::all();
+        return response()->json($categories);
+    }
+
+    public function getModulesCategoriesList()
+    {
+        $moduleCategorie = ModulesCategories::all();
+        return response()->json($moduleCategorie);
+    }
+
+    public function getModulesClassesList()
+    {
+        $moduleClasses = ModulesClass::all();
+        return response()->json($moduleClasses);
     }
 
 }
