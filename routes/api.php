@@ -34,8 +34,8 @@ Route::put('/user/update/{id}/{column}/{newValue}', [UserController::class, 'edi
 Route::delete('/user/delete/{id}', [UserController::class, 'deleteUser']);
 
 //EmergencyContacts
-Route::get('/', [UserController::class, 'getEmergencyContactsList']);
-Route::post('/EmergeEmergencyContactsncyContact/{name}/{firstname}/{tel}/{id_users}', [UserController::class, 'addEmergencyContacts']);
+Route::get('/EmergencyContacts', [UserController::class, 'getEmergencyContactsList']);
+Route::post('/EmergencyContact/{name}/{firstname}/{tel}/{id_users}', [UserController::class, 'addEmergencyContacts']);
 Route::get('/EmergencyContact/{id}', [UserController::class, 'getOneEmergencyContact']);
 Route::put('/EmergencyContact/update/{id}/{column}/{newValue}', [UserController::class, 'editEmergencyContact']);
 Route::delete('/EmergencyContact/delete/{id}', [UserController::class, 'deleteEmergencyContact']);
@@ -101,3 +101,9 @@ Route::get('/EntranceTestsSurvey', [TestsController::class, 'getEntranceTestsSur
 Route::post('/EntranceTestsSurvey/create/{id_entranceTests}/{id_surveys}', [TestsController::class, 'createEntranceTestsSurvey']);
 Route::get('/EntranceTestsSurvey/{id}', [TestsController::class, 'getOneEntranceTestsSurvey']);
 Route::put('/EntranceTestsSurvey/{id}/{column}/{newValue}', [TestsController::class, 'editEntranceTestsSurvey']);
+
+//messagingController
+Route::post('/Message/create/{content}/{id_receiver}/{id_sender}', [MessagingController::class, 'addMessage']);
+Route::get('/Message/{id_receiver}/{id_sender}', [MessagingController::class, 'getChat']);
+Route::put('/Message/{id}/{column}/{newValue}', [MessagingController::class, 'editMessage']);
+Route::delete('/message/delete/{id}', [MessagingController::class, 'deleteMessage']);
