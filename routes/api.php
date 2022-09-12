@@ -5,12 +5,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\RolesController;
 use App\Http\Controllers\RegistrationController;
-<<<<<<< HEAD
 use App\Http\Controllers\PromoController;
 use App\Http\Controllers\TestsController;
-=======
-use App\Http\Controllers\LessonController;
->>>>>>> main
 
 /*
 |--------------------------------------------------------------------------
