@@ -5,8 +5,12 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\RolesController;
 use App\Http\Controllers\RegistrationController;
+<<<<<<< HEAD
 use App\Http\Controllers\PromoController;
 use App\Http\Controllers\TestsController;
+=======
+use App\Http\Controllers\LessonController;
+>>>>>>> main
 
 /*
 |--------------------------------------------------------------------------
@@ -42,9 +46,19 @@ Route::delete('/EmergencyContact/delete/{id}', [UserController::class, 'deleteEm
 
 //rolesController
 Route::get('/roles', [RolesController::class, 'getRolesList']);
-Route::post('/roles/create/{name}', [RolesController::class, 'addRole']);
-Route::get('/types', [RolesController::class, 'getTypesList']);
-Route::post('/type/create/{name}', [RolesController::class, 'addTypes']);
+Route::post('/roles/{id}/{name}', [RolesController::class, 'addRole']);
+
+//Routes pour Modules
+Route::get('/modules', [LessonController::class, 'getModuleList']);
+Route::post('/modules/{id}/{moduleName}', [LessonController::class, 'addModule']);
+Route::delete('/modules/{id}/{moduleName}', [LessonController::class, 'deleteModule']);
+Route::put('/modules/{id}/{moduleName}', [LessonController::class, 'changeModule']);
+
+//Routes pour Parties
+Route::get('/part', [LessonController::class, 'getPartsList']);
+Route::post('/part/{id}/{partName}', [LessonController::class, 'addParts']);
+Route::delete('/part/{id}/{partName}', [LessonController::class, 'deleteParts']);
+Route::put('/part/{id}/{partName}', [LessonController::class, 'changeParts']);
 
 //RegistrationController
 Route::get('/registrationTypes', [RegistrationController::class, 'getRegistrationTypeList']);
