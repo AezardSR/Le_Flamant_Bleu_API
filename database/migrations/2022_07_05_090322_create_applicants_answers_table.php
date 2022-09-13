@@ -15,7 +15,7 @@ class CreateApplicantsanswersTable extends Migration
     {
         Schema::create('applicants_answers', function (Blueprint $table) {
             $table->increments('id',true);
-            $table->longText('answer');
+            $table->longText('answer')->nullable();
             $table->integer('id_surveyAnswers')->unsigned();
             $table->integer('id_applicantsTestSurvey')->unsigned();
             $table->timestamps();

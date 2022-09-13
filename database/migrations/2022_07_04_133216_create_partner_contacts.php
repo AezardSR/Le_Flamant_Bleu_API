@@ -17,8 +17,8 @@ class CreatePartnerContacts extends Migration
             $table->increments('id',true);
             $table->string('name', 50);
             $table->string('firstname', 50);
-            $table->string('mail', 100);
-            $table->string('tel', 10);
+            $table->string('mail', 100)->nullable();
+            $table->string('tel', 10)->nullable();
             $table->string('nameCompany', 50);
             $table->integer('id_users')->unsigned();
             $table->timestamps();

@@ -16,11 +16,11 @@ class CreateJobsOffers extends Migration
         Schema::create('jobs_offers', function (Blueprint $table) {
             $table->increments('id',true);
             $table->string('name', 50);
-            $table->date('dateOffers');
+            $table->date('dateOffers')->nullable();
             $table->longText('description');
-            $table->string('link', 255);
-            $table->integer('id_users')->unsigned();
-            $table->integer('id_partnerContacts')->unsigned();
+            $table->string('link', 255)->nullable();
+            $table->integer('id_users')->unsigned()->nullable();
+            $table->integer('id_partnerContacts')->unsigned()->nullable();
             $table->timestamps();
         });
 

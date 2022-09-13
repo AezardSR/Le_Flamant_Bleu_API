@@ -17,13 +17,13 @@ class CreateUsersTable extends Migration
             $table->increments('id',true);
             $table->string('name', 50);
             $table->string('firstname', 50);
-            $table->date('birthdate');
+            $table->date('birthdate')->nullable();
             $table->string('mail', 100);
-            $table->string('tel', 10);
+            $table->string('tel', 10)->nullable();
             $table->string('password', 255);
-            $table->string('adress', 255);
-            $table->string('city', 50);
-            $table->string('zipCode', 5);
+            $table->string('adress', 255)->nullable();
+            $table->string('city', 50)->nullable();
+            $table->string('zipCode', 5)->nullable();
             $table->integer('id_roles')->unsigned();
             $table->integer('id_types')->unsigned();
             $table->timestamps();
