@@ -27,7 +27,7 @@ class RolesController extends Controller
         return response()->json($types);
     }
 
-    public function addTypes($id, $name)
+    public function addTypes($name)
     {
         $type = new Types();
         $type->name = $name;

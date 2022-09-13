@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth; 
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\RolesController;
 use App\Http\Controllers\LessonController;
@@ -14,6 +15,7 @@ use App\Http\Controllers\PromoController;
 use App\Http\Controllers\TestsController;
 use App\Http\Controllers\QuestionsController;
 use App\Http\Controllers\AnswersController;
+use App\Http\Controllers\AuthController;
 
 
 
@@ -31,6 +33,9 @@ use App\Http\Controllers\AnswersController;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+//inscription
+Route::post('/inscription', [AuthController::class, 'registerUser']);
 
 //route pour users
 //sert à afficher la liste des utilisateur
@@ -54,6 +59,9 @@ Route::delete('/EmergencyContact/delete/{id}', [UserController::class, 'deleteEm
 //Routes pour Roles
 Route::get('/roles', [RolesController::class, 'getRolesList']);
 Route::post('/roles/{id}/{name}', [RolesController::class, 'addRole']);
+//types
+Route::get('/types',[RolesController::class, 'getTypesList']);
+Route::post('/type/{name}', [RolesController::class, 'addTypes']);
 
 //Routes pour Modules
 Route::get('/modules', [LessonController::class, 'getModuleList']);
