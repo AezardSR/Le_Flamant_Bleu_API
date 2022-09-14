@@ -37,7 +37,7 @@ class AuthController extends Controller
         ]);  
 }
 
-    public function login(Request $request)
+    public function loginTest(Request $request)
     {
         $utilisateur->name = $request->input('mail');
         $utilisateur->firstname = Hash::make($request->input('password'));

@@ -28,7 +28,7 @@ class RolesController extends Controller
     }
 
     public function addTypes($name)
-    {
+   {
         $type = new Types();
         $type->name = $name;
         $type->save();
