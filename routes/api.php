@@ -33,15 +33,16 @@ use App\Http\Controllers\AuthController;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+//connexion et inscription
+Route::group(['middleware' => 'api','prefix' => 'auth'], function ($router) {
+    Route::post('/login', [AuthController::class, 'login']);
+    Route::post('/inscription', [AuthController::class, 'register']);
+    Route::post('/logout', [AuthController::class, 'logout']);
+    Route::post('/refresh', [AuthController::class, 'refresh']);
+    Route::get('/user-profile', [AuthController::class,'userProfile']);    
+});
 
 //route pour users
-    Route::group(['middleware' => 'api','prefix' => 'auth'], function ($router) {
-        Route::post('/login', [AuthController::class, 'login']);
-        Route::post('/inscription', [AuthController::class, 'registerUser']);
-        Route::post('/logout', [AuthController::class, 'logout']);
-        Route::post('/refresh', [AuthController::class, 'refresh']);
-        Route::get('/user-profile', [AuthController::class,'userProfile']);    
-    });
 //sert à afficher la liste des utilisateur
 Route::get('/users', [UserController::class, 'getUsersList']);
 //affiche un seul utilisateur
