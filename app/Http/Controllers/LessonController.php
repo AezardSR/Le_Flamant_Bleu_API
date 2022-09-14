@@ -10,14 +10,29 @@ use App\Models\Categories;
 use App\Models\ModulesCategories;
 use App\Models\ModulesClass;
 use Illuminate\Http\Request;
+use Illuminate\Validation\ValidationException;
+use Validator;
+
 
 class LessonController extends Controller
 {
     //Ajouter
-    public function addModule($id, $moduleName) {
+
+    /**
+     * Store a new blog post.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function addModule(Request $request, $id, $moduleName) {
         $module = new Modules();
         $module->id = $id;
         $module->moduleName = $moduleName;
+
+        $request->validate([
+            'moduleName' => 'required|string',
+        ]);
+
         $module->save();
         return response()->json($module);
     }
