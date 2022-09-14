@@ -48,7 +48,7 @@ class AuthController extends Controller
     public function login (Request $request){
     	$validator = Validator::make($request->all(), [
             'mail' => 'required|email|unique:mail',
-            'password' => 'required|string|min:6',
+            'password' => 'required|string|min:6|regex:/^(?=.*[a-z|A-Z])(?=.*[A-Z])(?=.*\d)(?=.*(_|[^\w])).+$/',
         ]);
         if ($validator->fails()) {
             return response()->json($validator->errors(), 422);
@@ -69,7 +69,7 @@ class AuthController extends Controller
             'name' => 'required|string|between:2,100',
             'firstname' => 'required|string|between:2,100',
             'mail' => 'required|string|max:100|unique:users',
-            'password' => 'required|string|confirmed|min:6',
+            'password' => 'required|string|confirmed|min:6|regex:/^(?=.*[a-z|A-Z])(?=.*[A-Z])(?=.*\d)(?=.*(_|[^\w])).+$/',
         ]);
         if($validator->fails()){
             return response()->json($validator->errors()->toJson(), 400);
