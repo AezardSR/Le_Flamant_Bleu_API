@@ -16,9 +16,9 @@ class AuthController extends Controller
      *
      * @return void
      */
-    public function __construct() {
-        $this->middleware('auth:api', ['except' => ['login', 'register']]);
-    }
+    // public function __construct() {
+    //     $this->middleware('auth:api', ['except' => ['login', 'register']]);
+    // }
 
     /**
      * Get a JWT via given credentials.
@@ -33,10 +33,9 @@ class AuthController extends Controller
         if ($validator->fails()) {
             return response()->json($validator->errors(), 422);
         }
-        if (! $token = auth()->attempt($validator->validated())) {
-            return response()->json(['error' => 'test'], 401);
-        }
-        return $this->createNewToken($token);
+        $accessToken = Auth::user()->createToken('authToken')->accessToken;
+
+        return response(['user' => Authe::user(), 'access_token' => $accessToken]);
     }
 
     /**

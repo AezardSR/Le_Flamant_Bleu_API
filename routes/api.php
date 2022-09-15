@@ -30,14 +30,16 @@ use App\Http\Controllers\AuthController;
 |
 */
 //connexion et inscription
-Route::group(['middleware' => 'api','prefix' => 'authenticate'], function ($router) {
-    Route::post('/login', [AuthController::class, 'login']);
+
+Route::middleware([Autehnticate::class])->group(function (){
+    Route::post('/login', 'AuthController@login')->withoutMiddleware([Authenticate::class])->name('login');
+
+    
     Route::post('/inscription', [AuthController::class, 'register']);
     Route::post('/logout', [AuthController::class, 'logout']);
     Route::post('/refresh', [AuthController::class, 'refresh']);
-    Route::get('/user-profile', [AuthController::class,'userProfile']);    
+    Route::get('/user-profile', [AuthController::class,'userProfile']);  
 });
-
 //route pour users
 //sert à afficher la liste des utilisateur
 Route::get('/users', [UserController::class, 'getUsersList']);
