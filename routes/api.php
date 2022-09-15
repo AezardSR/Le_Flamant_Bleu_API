@@ -30,12 +30,10 @@ use App\Http\Controllers\AuthController;
 |
 */
 //connexion et inscription
+Route::post('/connexion', [AuthController::class], 'login')->middleware('auth')->name('login');
 
-Route::middleware([Autehnticate::class])->group(function (){
-    Route::post('/login', 'AuthController@login')->withoutMiddleware([Authenticate::class])->name('login');
-
-    
-    Route::post('/inscription', [AuthController::class, 'register']);
+Route::middleware('auth:api')->group(function (){
+    Route::post('/inscription', [AuthController::class, 'register'])->withoutMiddleware([Authenticate::class]) ;
     Route::post('/logout', [AuthController::class, 'logout']);
     Route::post('/refresh', [AuthController::class, 'refresh']);
     Route::get('/user-profile', [AuthController::class,'userProfile']);  
@@ -51,7 +49,7 @@ Route::put('/user/update/{id}/{column}/{newValue}', [UserController::class, 'edi
 Route::delete('/user/delete/{id}', [UserController::class, 'deleteUser']);
 
 //EmergencyContacts
-Route::get('/EmergencyContacts', [UserController::class, 'getEmergencyContactsList']);
+Route::get('/emergencyContacts', [UserController::class, 'getEmergencyContactsList']);
 Route::post('/EmergencyContact/{name}/{firstname}/{tel}/{id_users}', [UserController::class, 'addEmergencyContacts']);
 Route::get('/EmergencyContact/{id}', [UserController::class, 'getOneEmergencyContact']);
 Route::put('/EmergencyContact/update/{id}/{column}/{newValue}', [UserController::class, 'editEmergencyContact']);

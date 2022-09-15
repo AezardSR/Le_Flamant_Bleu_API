@@ -16,9 +16,9 @@ class AuthController extends Controller
      *
      * @return void
      */
-    // public function __construct() {
-    //     $this->middleware('auth:api', ['except' => ['login', 'register']]);
-    // }
+     public function __construct() {
+         $this->middleware('auth:api', ['except' => ['login', 'register']]);
+     }
 
     /**
      * Get a JWT via given credentials.
@@ -95,41 +95,6 @@ class AuthController extends Controller
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    protected function createNewToken($token){
-        return response()->json([
-            'access_token' => $token,
-            'token_type' => 'bearer',
-            'expires_in' => auth()->factory()->getTTL() * 60,
-            'user' => auth()->user()
-        ]);
-    }
-
-    public function loginTest(Request $request)
-    {
-        $utilisateur->name = $request->input('mail');
-        $utilisateur->firstname = Hash::make($request->input('password'));
-
-        $credentials = $request->only('email', 'password');
-
-        $token = Auth::attempt($credentials);
-        if (!$token) {
-            return response()->json([
-                'status' => 'error',
-                'message' => 'Unauthorized',
-            ], 401);
-        }
-
-        $user = Auth::user();
-        return response()->json([
-                'status' => 'success',
-                'user' => $user,
-                'authorisation' => [
-                    'token' => $token,
-                    'type' => 'bearer',
-                ]
-            ]);
-
-    }
 
 }
 
