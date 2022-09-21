@@ -33,34 +33,34 @@ class AuthController extends Controller
         if ($validator->fails()) {
             return response()->json($validator->errors(), 422);
         }
-        $accessToken = Auth::user()->createToken('authToken')->accessToken;
+        $accessToken = Auth::user()->createToken('authToken')->$accessToken;
 
-        return response(['user' => Authe::user(), 'access_token' => $accessToken]);
+        return response(json(['user' => Authe::user(), 'access_token' => $accessToken]));
     }
 
     /**
-     * Register a Users.
+     * Register a Users.                                                        c,                                                                                             
      *
      * @return \Illuminate\Http\JsonResponse
      */
     public function register(Request $request) {
+   
         $validator = Validator::make($request->all(), [
             'name' => 'required|string|between:2,100',
             'firstname' => 'required|string|between:2,100',
             'mail' => 'required|string|max:100|unique:users',
             'password' => 'required|string|confirmed|min:6',
+            'password_confirmation' => 'required_with:password|same:password|min:6', 
         ]);
+        
+
         if($validator->fails()){
             return response()->json($validator->errors()->toJson(), 400);
         }
-        $user = Users::create(array_merge(
-                    $validator->validated(),
-                    ['password' => bcrypt($request->password)]
-                ));
-        return response()->json([
-            'message' => 'Users successfully registered',
-            'user' => $user
-        ], 201);
+
+        $user = Users::create(array_merge($validator->validated(),['password' => bcrypt($request->password)]));
+
+        return response()->json(['message' => 'Users successfully registered','user' => $user ], 201);
     }
 
     /**
