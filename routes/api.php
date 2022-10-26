@@ -102,13 +102,13 @@ Route::put('/leçons/{id}/{content}/{id_parts}', [LessonController::class, 'chan
 
 //Routes pour Exercices
 Route::get('/exercice', [LessonController::class, 'getExerciceList']);
-Route::post('/exercice/{id}/{name}/{content}/{id_parts}', [LessonController::class, 'addExercice']);
+Route::post('/exercice/{name}/{content}/{id_parts}', [LessonController::class, 'addExercice']);
 Route::delete('/exercice/{id}/{name}/{content}/{id_parts}', [LessonController::class, 'deleteExercice']);
 Route::put('/exercice/{id}/{name}/{content}/{id_parts}', [LessonController::class, 'changeExercice']);
 
 //Routes pour Catégories
 Route::get('/categories', [LessonController::class, 'getCategoriesList']);
-Route::post('/categories/{id}/{categorie}', [LessonController::class, 'addCategories']);
+Route::post('/categories', [LessonController::class, 'addCategories']);
 Route::delete('/categories/{id}/{categorie}', [LessonController::class, 'deleteCategories']);
 Route::put('/categories/{id}/{categorie}', [LessonController::class, 'changeCategories']);
 

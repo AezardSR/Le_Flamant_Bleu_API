@@ -49,9 +49,8 @@ class LessonController extends Controller
         return response()->json($lesson);
     }
 
-    public function addExercice($id, $name, $contenu, $id_parts) {
+    public function addExercice($name, $contenu, $id_parts) {
         $exercice = new Exercices();
-        $exercice->id = $id;
         $exercice->name = $name;
         $exercice->contenu = $contenu;
         $exercice->id_parts = $id_parts;
@@ -59,10 +58,9 @@ class LessonController extends Controller
         return response()->json($exercice);
     }
 
-    public function addCategories($id, $categorie) {
+    public function addCategories(Request $request) {
         $categories = new Categories();
-        $categories->id = $id;
-        $categories->categorie = $categorie;
+        $categories->categorie = $request->input('categorie');
         $categories->save();
         return response()->json($categories);
     }
@@ -211,7 +209,7 @@ class LessonController extends Controller
 
     public function getExerciceList()
     {
-        $exercice = Exercice::all();
+        $exercice = Exercices::all();
         return response()->json($exercice);
     }
 
