@@ -12,15 +12,14 @@ class PartnerContactController extends Controller
         return response()->json($partnerContact);
     }
 
-    public function addPartnerContact($id, $name, $firstname, $mail, $tel, $nameCompany, $id_users) {
+    public function addPartnerContact(Request $request) {
         $partnerContact = new PartnerContacts();
-        $partnerContact->id = $id;
-        $partnerContact->name = $name;
-        $partnerContact->firstname = $firstname;
-        $partnerContact->mail = $mail;
-        $partnerContact->tel = $tel;
-        $partnerContact->nameCompany = $nameCompany;
-        $partnerContact->id_users = $id_users;
+        $partnerContact->name = $request->input('name');
+        $partnerContact->firstname = $request->input('firstname');
+        $partnerContact->mail = $request->input('mail');
+        $partnerContact->tel = $request->input('tel');
+        $partnerContact->nameCompany = $request->input('nameCompany');
+        $partnerContact->id_users = $request->input(PartnerContacts::find('id_users'));
         $partnerContact->save();
         return response()->json($partnerContact);
     }
@@ -32,15 +31,14 @@ class PartnerContactController extends Controller
     }
 
 
-    public function changePartnerContact($id, $name, $firstname, $mail, $tel, $nameCompany, $id_users) {
+    public function changePartnerContact(Request $request) {
         $partnerContact = PartnerContacts::find($id);
-        $partnerContact->id = $id;
-        $partnerContact->name = $name;
-        $partnerContact->firstname = $firstname;
-        $partnerContact->mail = $mail;
-        $partnerContact->tel = $tel;
-        $partnerContact->nameCompany = $nameCompany;
-        $partnerContact->id_users = $id_users;
+        $partnerContact->name = $request->input('name');
+        $partnerContact->firstname = $request->input('firstname');
+        $partnerContact->mail = $request->input('mail');
+        $partnerContact->tel = $request->input('tel');
+        $partnerContact->nameCompany = $request->input('nameCompany');
+        $partnerContact->id_users = $request->input(PartnerContacts::find('id_users'));
         $partnerContact->save();
         return response()->json($partnerContact);
     }
