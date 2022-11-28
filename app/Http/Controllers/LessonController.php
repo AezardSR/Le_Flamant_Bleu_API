@@ -28,11 +28,6 @@ class LessonController extends Controller
         $module = new Modules();
         $module->id = $id;
         $module->moduleName = $moduleName;
-
-        $request->validate([
-            'moduleName' => 'required|string',
-        ]);
-
         $module->save();
         return response()->json($module);
     }
