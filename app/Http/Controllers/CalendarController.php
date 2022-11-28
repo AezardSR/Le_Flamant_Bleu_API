@@ -21,23 +21,21 @@ class CalendarController extends Controller
 
     //Add
 
-    public function addAppointmentsTypes($id, $name) {
+    public function addAppointmentsTypes(Request $request) {
         $AppointmentsTypes = new AppointmentsTypes();
-        $AppointmentsTypes->id = $id;
-        $AppointmentsTypes->name = $name;
+        $AppointmentsTypes->name = $request->input('name');
         $AppointmentsTypes->save();
         return response()->json($AppointmentsTypes);
     }
 
-    public function addAppointments($id, $titleDetails, $descriptionDeatils, $dateDetails, $id_receiver, $id_create, $id_appointments_types) {
+    public function addAppointments(Request $request) {
         $Appointments = new Appointments();
-        $Appointments->id = $id;
-        $Appointments->titleDetails = $titleDetails;
-        $Appointments->descriptionDeatils = $descriptionDeatils;
-        $Appointments->dateDetails = $dateDetails;
-        $Appointments->id_receiver = $id_receiver;
-        $Appointments->id_create = $id_create;
-        $Appointments->id_appointments_types = $id_appointments_types;
+        $Appointments->titleDetails = $request->input('titleDetails');
+        $Appointments->descriptionDeatils = $request->input('descriptionDeatils');
+        $Appointments->dateDetails = $request->input('dateDetails');
+        $Appointments->id_receiver = $request->input(Appointments::find('id_receiver'));
+        $Appointments->id_create = $request->input(Appointments::find('id_create'));
+        $Appointments->id_appointments_types = $request->input(Appointments::find('id_appointments_types'));
         $Appointments->save();
         return response()->json($Appointments);
     }
@@ -56,23 +54,21 @@ class CalendarController extends Controller
     }
 
     //Change
-    public function changeAppointmentsTypes($id, $name) {
+    public function changeAppointmentsTypes(Request $request) {
         $AppointmentsTypes = AppointmentsTypes::find($id);
-        $AppointmentsTypes->id = $id;
-        $AppointmentsTypes->name = $name;
+        $AppointmentsTypes->name = $request->input('name');
         $AppointmentsTypes->save();
         return response()->json($AppointmentsTypes);
     }
 
-    public function changeAppointments($id, $titleDetails, $descriptionDeatils, $dateDetails, $id_receiver, $id_create, $id_appointments_types) {
+    public function changeAppointments(Request $request) {
         $Appointments = Appointments::find($id);
-        $Appointments->id = $id;
-        $Appointments->titleDetails = $titleDetails;
-        $Appointments->descriptionDeatils = $descriptionDeatils;
-        $Appointments->dateDetails = $dateDetails;
-        $Appointments->id_receiver = $id_receiver;
-        $Appointments->id_create = $id_create;
-        $Appointments->id_appointments_types = $id_appointments_types;
+        $Appointments->titleDetails = $request->input('titleDetails');
+        $Appointments->descriptionDeatils = $request->input('descriptionDeatils');
+        $Appointments->dateDetails = $request->input('dateDetails');
+        $Appointments->id_receiver = $request->input(Appointments::find('id_receiver'));
+        $Appointments->id_create = $request->input(Appointments::find('id_create'));
+        $Appointments->id_appointments_types = $request->input(Appointments::find('id_appointments_types'));
         $Appointments->save();
         return response()->json($Appointments);
     }
