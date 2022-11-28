@@ -26,16 +26,33 @@ class AuthController extends Controller
      * @return \Illuminate\Http\JsonResponse
      */
     public function login (Request $request){
-    	$validator = Validator::make($request->all(), [
-            'mail' => 'required|email|unique:mail',
+    	$validator = validator::make($request->all(), [
+            'mail' => 'required|email',
             'password' => 'required|string|min:6',
         ]);
         if ($validator->fails()) {
             return response()->json($validator->errors(), 422);
         }
-        $accessToken = Auth::user()->createToken('authToken')->$accessToken;
 
-        return response(json(['user' => Authe::user(), 'access_token' => $accessToken]));
+        $user = Users::where('mail', $request->mail)->first();
+        if ($user) {
+            if (Hash::check($request->password, $user->password)) {
+                $token = $user->createToken('Laravel Password Grant Client')->accessToken;
+                $response = ['token' => $token];
+                return response($response, 200);
+            } else {
+                $response = ["message" => "Password mismatch"];
+                return response($response, 422);
+            }
+        } else {
+            $response = ["message" =>'User does not exist'];
+            return response($response, 422);
+        }
+
+
+        $accessToken = Auth::User()->createToken('authToken')->$accessToken;
+
+        return response(json(['User' => Auth::User(), 'access_token' => $accessToken]));
     }
 
     /**

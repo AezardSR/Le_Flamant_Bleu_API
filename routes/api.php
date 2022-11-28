@@ -31,8 +31,9 @@ use App\Http\Controllers\AuthController;
 */
 //connexion et inscription
 
-Route::post('/connexion', [AuthController::class], 'login')->withoutMiddleware([Authenticate::class])->name('login');
-Route::post('/inscription', [AuthController::class, 'register'])->withoutMiddleware([Authenticate::class]) ;
+Route::post('/connexion', [AuthController::class, 'login']);
+Route::post('/inscription', [AuthController::class, 'register']);
+
 Route::middleware('auth:api')->group(function (){
     Route::post('/logout', [AuthController::class, 'logout']);
     Route::post('/refresh', [AuthController::class, 'refresh']);
