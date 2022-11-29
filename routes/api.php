@@ -75,15 +75,15 @@ Route::post('/type/{name}', [RolesController::class, 'addTypes']);
 
 //Routes pour Modules
 Route::get('/modules', [LessonController::class, 'getModuleList']);
-Route::post('/modules', [LessonController::class, 'addModule']);
-Route::delete('/modules/{id}/{moduleName}', [LessonController::class, 'deleteModule']);
-Route::put('/modules', [LessonController::class, 'changeModule']);
+Route::post('/modules/add', [LessonController::class, 'addModule']);
+Route::delete('/modules/delete/{id}', [LessonController::class, 'deleteModule']);
+Route::put('/modules/update/{id}', [LessonController::class, 'changeModule']);
 
 //Routes pour Parties
 Route::get('/part', [LessonController::class, 'getPartsList']);
-Route::post('/part', [LessonController::class, 'addParts']);
-Route::delete('/part/{id}/{partName}', [LessonController::class, 'deleteParts']);
-Route::put('/part', [LessonController::class, 'changeParts']);
+Route::post('/part/add', [LessonController::class, 'addParts']);
+Route::delete('/part/delete/{id}', [LessonController::class, 'deleteParts']);
+Route::put('/part/update/{id}', [LessonController::class, 'changeParts']);
 
 //RegistrationController
 Route::get('/registrationTypes', [RegistrationController::class, 'getRegistrationTypeList']);
@@ -94,35 +94,36 @@ Route::put('/registration/update/{id}/{column}/{newValue}', [RegistrationControl
 Route::put('/registrationType/update/{id}/{column}/{newValue}', [RegistrationController::class, 'editRegistrationType']);
 Route::get('/signatures/{id_registration}', [RegistrationController::class, 'getSignatureList']);
 Route::post('/signatures/{id_users}/{id_registrations}/{date}', [RegistrationController::class, 'addSignature']);
+
 //Routes pour Leçons
-Route::get('/leçons', [LessonController::class, 'getLessonList']);
-Route::post('/leçons', [LessonController::class, 'addLesson']);
-Route::delete('/leçons/{id}/{content}/{id_parts}', [LessonController::class, 'deleteLesson']);
-Route::put('/leçons', [LessonController::class, 'changeLesson']);
+Route::get('/lessons', [LessonController::class, 'getLessonList']);
+Route::post('/lessons/add', [LessonController::class, 'addLesson']);
+Route::delete('/lessons/delete/{id}', [LessonController::class, 'deleteLesson']);
+Route::put('/lessons/update/{id}', [LessonController::class, 'changeLesson']);
 
 //Routes pour Exercices
 Route::get('/exercice', [LessonController::class, 'getExerciceList']);
-Route::post('/exercice', [LessonController::class, 'addExercice']);
-Route::delete('/exercice/{id}/{name}/{content}/{id_parts}', [LessonController::class, 'deleteExercice']);
-Route::put('/exercice', [LessonController::class, 'changeExercice']);
+Route::post('/exercice/add', [LessonController::class, 'addExercice']);
+Route::delete('/exercice/delete/{id}', [LessonController::class, 'deleteExercice']);
+Route::put('/exercice/update/{id}', [LessonController::class, 'changeExercice']);
 
 //Routes pour Catégories
 Route::get('/categories', [LessonController::class, 'getCategoriesList']);
-Route::post('/categories', [LessonController::class, 'addCategories']);
-Route::delete('/categories/{id}', [LessonController::class, 'deleteCategories']);
-Route::put('/categories', [LessonController::class, 'changeCategories']);
+Route::post('/categories/add', [LessonController::class, 'addCategories']);
+Route::delete('/categories/delete/{id}', [LessonController::class, 'deleteCategories']);
+Route::put('/categories/update/{id}', [LessonController::class, 'changeCategories']);
 
 //Routes pour Modules Catégories
 Route::get('/modulescategories', [LessonController::class, 'getModulesCategoriesList']);
-Route::post('/modulescategories', [LessonController::class, 'addModulesCategories']);
-Route::delete('/modulescategories/{id}/{id_categories}/{id_modules}', [LessonController::class, 'deleteModulesCategories']);
-Route::put('/modulescategories', [LessonController::class, 'changeModulesCategories']);
+Route::post('/modulescategories/add', [LessonController::class, 'addModulesCategories']);
+Route::delete('/modulescategories/delete/{id}', [LessonController::class, 'deleteModulesCategories']);
+Route::put('/modulescategories/update/{id}', [LessonController::class, 'changeModulesCategories']);
 
 //Routes pour Modules Classes
 Route::get('/modulesclasses', [LessonController::class, 'getModulesClassesList']);
-Route::post('/modulesclasses', [LessonController::class, 'addModulesClass']);
-Route::delete('/modulesclasses/{id}/{id_classes}/{id_modules}', [LessonController::class, 'deleteModulesClasses']);
-Route::put('/modulesclasses', [LessonController::class, 'changeModulesClass']);
+Route::post('/modulesclasses/add', [LessonController::class, 'addModulesClass']);
+Route::delete('/modulesclasses/delete/{id}', [LessonController::class, 'deleteModulesClasses']);
+Route::put('/modulesclasses/update/{id}', [LessonController::class, 'changeModulesClass']);
 
 //Routes pour Documents
 Route::get('/documents', [DocumentsController::class, 'getDocuments']);
