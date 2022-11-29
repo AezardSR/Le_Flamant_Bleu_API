@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Users;
+use App\Models\Roles;
+use App\Models\Types;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth; 
 use Illuminate\Support\Facades\Hash;
@@ -56,16 +58,15 @@ class AuthController extends Controller
             'password_confirmed' => 'same:password'
         ]);
         
-
         if($validator->fails()){
             return response()->json($validator->errors()->toJson(), 400);
         }
 
-        $user = Users::create(array_merge($validator->validated(),
+       $user = Users::create(array_merge($validator->validated(),
         [
         'password' => bcrypt($request->password),
-        'id_roles'=> '1',
-        'id_types'=> '1'
+        'roles_id'=> Roles::find(1)->id,
+        'types_id'=> Types::find(1)->id
         ]));
 
         return response()->json(['message' => 'Users successfully registered','user' => $user ], 201);

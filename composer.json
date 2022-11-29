@@ -8,12 +8,13 @@
         "php": "^7.3|^8.0",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",
+        "illuminate/auth": "^8.83",
         "laravel/framework": "^8.75",
         "laravel/helpers": "^1.5",
         "laravel/passport": "^10.4",
         "laravel/tinker": "^2.5",
         "php-open-source-saver/jwt-auth": "^2.0",
-        "tymon/jwt-auth": "dev-develop"
+        "tymon/jwt-auth": "^1.0"
     },
     "require-dev": {
         "facade/ignition": "^2.5",

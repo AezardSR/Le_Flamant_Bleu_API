@@ -19,8 +19,14 @@ class Users extends Authenticatable
      *
      */
     protected $table = 'users';
-    protected $fillable = ['name','firstname','birthdate','mail','tel','password','adress','city','zipCode','id_roles','id_types'];
+    protected $fillable = ['name','firstname','birthdate','mail','tel','password','adress','city','zipCode','roles_id', 'types_id'];
 
+    public function roleUser(){
+        return $this->hasOne(Roles::class);
+    }    
+    public function typeUser(){
+        return $this->hasOne(Types::class);
+    }
 
     /** 
      * The attributes that should be hidden for arrays.
