@@ -1,0 +1,22 @@
+version: '2'
+
+services:
+  db:
+    image: mariadb:10.1
+    environment:
+      - MYSQL_ROOT_PASSWORD=laravel
+      - MYSQL_USER=laravel
+      - MYSQL_DATABASE=laravel
+      - MYSQL_PASSWORD=laravel
+    ports:
+      - "3306:3306"
+  api:
+    image: docker.io/bitnami/laravel:9
+    ports:
+      - '8000:8000'
+    env_file:
+      - .env
+    volumes:
+      - '.:/app'
+    depends_on:
+      - db
