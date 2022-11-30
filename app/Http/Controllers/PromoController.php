@@ -72,14 +72,25 @@ class PromoController extends Controller
 
     public function AddTeacherToPromo($id_teachers,$id_promos){
         $promoTeacher = new PromoTeachers();
-        $promoTeacher->id_teachers = $id_teachers;
-        $promoTeacher->id_promos = $id_promos;
+
+        // $promoTeacher->id_teachers = Parts::find(
+        //     intval(
+        //         $request->input('id_teachers')
+        //     )
+        // )->id;
+        
+        $promoTeacher->id_promos = Promos::find(
+            intval(
+                $request->input('id_promos')
+            )
+        )->id;
+
         $promoTeacher->save();
         return responce()->json($promoTeacher);
     }
 
-    public function editPromoTeacher($id,$column,$newValue){
-        $promo = DB::table('promo_teachers')->where('id','=',$id)->update([$column => $newValue]);
+    public function editPromoTeacher($id, Request $request){
+        $promo = DB::table('promo_teachers')->where('id','=',$id)->update([$request->input('column') => $request->input('newValue')]);
     }
 
 //promoCalendar

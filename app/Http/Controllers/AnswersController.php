@@ -1,19 +1,31 @@
 <?php
 namespace App\Http\Controllers;
 
+use App\Models\Users;
 use App\Models\Answers;
+use App\Models\Questions;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class AnswersController extends Controller
 {
-    public function addAnswer($id,$answer, $id_questions, $id_users)
+    public function addAnswer(Request $request)
     {
         $answers = new Answers();
-        $answers->id = $id;
-        $answers->answer = $answer;
-        $answers->id_questions = $id_questions;
-        $answers->id_users = $id_users;
+        $answers->anwser = $request->input('anwser');
+
+        $answers->id_questions = Questions::find(
+            intval(
+                $request->input('id_questions')
+            )
+        )->id;
+
+        $answers->id_users = Users::find(
+            intval(
+                $request->input('id_users')
+            )
+        )->id;
+
         $answers->save();
         return response()->json($answers);
     }
@@ -37,13 +49,22 @@ class AnswersController extends Controller
         echo('Response bien supprimée');
     }
 
-    public function changeAnswer($id,$answer, $id_questions, $id_users)
+    public function changeAnswer($id, Request $request)
     {
         $answers = Answers::find($id);
-        $answers->id = $id;
-        $answers->answer = $answer;
-        $answers->id_questions = $id_questions;
-        $answers->id_users = $id_users;
+        $answers->anwser = $request->input('anwser');
+
+        $answers->id_questions = Questions::find(
+            intval(
+                $request->input('id_questions')
+            )
+        )->id;
+
+        $answers->id_users = Users::find(
+            intval(
+                $request->input('id_users')
+            )
+        )->id;
         $answers->save();
         return response()->json($answers);
     }
