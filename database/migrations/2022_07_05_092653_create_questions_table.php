@@ -18,6 +18,7 @@ class CreateQuestionsTable extends Migration
             $table->longText('question');
             $table->integer('id_classes')->unsigned();
             $table->integer('id_users')->unsigned();
+            $table->integer('id_categories')->unsigned();
             $table->timestamps();
         });
 
@@ -33,6 +34,13 @@ class CreateQuestionsTable extends Migration
             ->foreign('id_classes')
             ->references('id')
             ->on('classes');
+        });
+
+        Schema::table('questions', function ($table) {
+            $table
+            ->foreign('id_categories')
+            ->references('id')
+            ->on('categories');
         });
     }
 

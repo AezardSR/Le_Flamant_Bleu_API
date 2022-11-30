@@ -52,7 +52,7 @@ public function addEmergencyContacts($name,$firstname,$tel,$id_users){
     $EmergencyContacts = new EmergencyContacts();
     $EmergencyContacts->name = $name;
     $EmergencyContacts->firstname = $firstname;
-    $EmergencyContacts->tel = $birthdate;
+    $EmergencyContacts->tel = $tel;
     $EmergencyContacts->id_users = $id_users;
     $EmergencyContacts->save();
     return response()->json($EmergencyContacts);

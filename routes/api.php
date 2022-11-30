@@ -213,9 +213,9 @@ Route::delete('/message/delete/{id}', [MessagingController::class, 'deleteMessag
 // routes pour les questions
 Route::get('/questions/{id}', [QuestionsController::class, 'viewQuestion']);
 Route::get('/questions', [QuestionsController::class, 'viewListQuestion']);
-Route::post('/questions/{id}/{question}/{id_classes}/{id_users}',[QuestionsController::class, 'addQuestion']);
-Route::delete('/questions/{id}/{question}/{id_classes}/{id_users}',[QuestionsController::class, 'deleteQuestion']);
-Route::put('/questions/{id}/{question}/{id_classes}/{id_users}',[QuestionsController::class, 'changeQuestion']);
+Route::post('/questions/{id}',[QuestionsController::class, 'addQuestion']);
+Route::delete('/questions/{id}',[QuestionsController::class, 'deleteQuestion']);
+Route::put('/questions/{id}',[QuestionsController::class, 'changeQuestion']);
 
 // routes pour les reponses
 Route::get('/answers/{id}', [AnswersController::class, 'viewAnswer']);
