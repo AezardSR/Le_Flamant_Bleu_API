@@ -34,7 +34,7 @@ use App\Http\Controllers\AuthController;
 Route::post('/connexion', [AuthController::class, 'login']);
 Route::post('/inscription', [AuthController::class, 'register']);
 
-Route::middleware('auth:api')->group(function (){
+Route::group(['middleware' => ['jwt.log']], function() {
     Route::post('/logout', [AuthController::class, 'logout']);
     Route::post('/refresh', [AuthController::class, 'refresh']);
     Route::get('/user-profile', [AuthController::class,'userProfile']);  

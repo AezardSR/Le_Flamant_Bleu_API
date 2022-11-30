@@ -5,23 +5,29 @@ namespace App\Http\Controllers;
 use App\Models\Users;
 use App\Models\Roles;
 use App\Models\Types;
+Use JWTAuth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth; 
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Validation\ValidationException;
+use App\Http\Controllers\Controller;
 
 use Validator;
 
 class AuthController extends Controller
-{
-     public function __construct() {
-         $this->middleware('auth:api', ['except' => ['login', 'register']]);
-     }
-     
+{     
+
+    public function __construct()
+    {
+        $this->middleware('auth:api', ['except' => ['login']]);
+    }
     /* fontion de connexion */
     public function login (Request $request){
-    	$validator = Validator::make($request->all(), [
+
+        $credentials = $request->only('mail', 'password');
+
+    	$validator = Validator::make($credentials, [
             'mail' => 'required|email',
             'password' => ['required','string','min:6','regex:/^(?=.*[a-z|A-Z])(?=.*[A-Z])(?=.*\d)(?=.*(_|[^\w])).+$/'],
         ]);
@@ -30,9 +36,30 @@ class AuthController extends Controller
             return response()->json($validator->errors(), 422);
         }
 
-        $user = Users::where('mail', $request->mail)->first();
+        //Request is validated
+        //Crean token
+        try {
+            if (! $token = JWTAuth::attempt($credentials)) {
+                return response()->json([
+                	'success' => false,
+                	'message' => 'Login credentials are invalid.',
+                ], 400);
+            }
+        } catch (JWTException $e) {
+    	return $credentials;
+            return response()->json([
+                	'success' => false,
+                	'message' => 'Could not create token.',
+                ], 500);
+        }
+ 	
+ 		//Token created, return with success response and jwt token
+        return response()->json([
+            'success' => true,
+            'token' => $token,
+        ]);
 
-        if ($user && Hash::check($request->password, $user->password)) {
+        /*if ($user && Hash::check($request->password, $user->password)) {
             $token = $user->createToken('Laravel Password Grant Client')->accessToken;
             $response = ['token' => $token];
             return response($response, 200);
@@ -43,9 +70,9 @@ class AuthController extends Controller
 
         $accessToken = Auth::User()->createToken('authToken')->$accessToken;
 
-        return response(json(['User' => Auth::User(), 'access_token' => $accessToken]));
+        return response(json(['User' => Auth::User(), 'access_token' => $accessToken]));*/
     }
-
+    
     /* fonction d'inscription  */
 
     public function register(Request $request) {
