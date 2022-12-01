@@ -33,9 +33,14 @@ use App\Http\Controllers\AuthController;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
-
-//inscription
-Route::post('/inscription', [AuthController::class, 'registerUser']);
+//connexion et inscription
+Route::group(['middleware' => 'api','prefix' => 'auth'], function ($router) {
+    Route::post('/login', [AuthController::class, 'login']);
+    Route::post('/inscription', [AuthController::class, 'register']);
+    Route::post('/logout', [AuthController::class, 'logout']);
+    Route::post('/refresh', [AuthController::class, 'refresh']);
+    Route::get('/user-profile', [AuthController::class,'userProfile']);    
+});
 
 //route pour users
 Route::group([
