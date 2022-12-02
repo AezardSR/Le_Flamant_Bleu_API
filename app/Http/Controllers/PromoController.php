@@ -6,6 +6,8 @@ use App\Models\Promos;
 use App\Models\PromoStudents;
 use App\Models\PromoTeachers;
 use App\Models\PromoCalendar;
+use App\Models\FormationsTypes;
+use App\Models\FormationsFormats;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -17,14 +19,26 @@ class PromoController extends Controller
         return response()->json($promos);
     }
 
-    public function createPromo($name,$startDate,$endDate,$duration,$id_formationsTypes,$id_formationsFormats){
+    public function createPromo(Request $request){
         $promo = new Promos();
-        $promo->name = $name;
-        $promo->startDate = $startDate;
-        $promo->endDate = $endDate;
-        $promo->duration = $duration;
-        $promo->id_formationsTypes = $id_formationsTypes;
-        $promo->id_formationsFormats = $id_formationsFormats;
+
+        $promo->name = $request->input('name');
+        $promo->startDate = $request->input('startDate');
+        $promo->endDate = $request->input('endDate');
+        $promo->duration = $request->input('duration');
+
+        $promo->id_formationsTypes = FormationsTypes::find(
+            intval(
+                $request->input('id_formationsTypes')
+            )
+        )->id;
+
+        $promo->id_formationsFormats = FormationsFormats::find(
+            intval(
+                $request->input('id_formationsFormats')
+            )
+        )->id;
+
         $promo->save();
         return responce()->json($promo);
     }
@@ -34,8 +48,8 @@ class PromoController extends Controller
         return response()->json($promo);
     }
 
-    public function editPromo($id,$column,$newValue){
-        $promo = DB::table('promos')->where('id','=',$id)->update([$column => $newValue]);
+    public function editPromo($id, Request $request){
+        $promo = DB::table('promos')->where('id','=',$id)->update([$request->input('column') => $request->input('newValue')]);
     }
 //promostudents
     public function getPromoStudentsList(){
@@ -48,16 +62,27 @@ class PromoController extends Controller
         return response()->json($promoStudent);
     }
 
-    public function AddStudentToPromo($id_students,$id_promos){
+    public function AddStudentToPromo(Request $request){
         $promoStudent = new PromoStudents();
-        $promoStudent->id_students = $id_students;
-        $promoStudent->id_promos = $id_promos;
+
+        $promoStudent->id_students = Users::find(
+            intval(
+                $request->input('id_students')
+            )
+        )->id;
+
+        $promoStudent->id_promos = Promos::find(
+            intval(
+                $request->input('id_promos')
+            )
+        )->id;
+
         $promoStudent->save();
         return responce()->json($promoStudent);
     }
 
-    public function editPromoStudent($id,$column,$newValue){
-        $promo = DB::table('promo_students')->where('id','=',$id)->update([$column => $newValue]);
+    public function editPromoStudent($id, Request $request){
+        $promo = DB::table('promo_students')->where('id','=',$id)->update([$request->input('column') => $request->input('newValue')]);
     }
 //promoTeachers
     public function getPromoTeachersList(){
@@ -70,14 +95,14 @@ class PromoController extends Controller
         return response()->json($promoTeacher);
     }
 
-    public function AddTeacherToPromo($id_teachers,$id_promos){
+    public function AddTeacherToPromo(Request $request){
         $promoTeacher = new PromoTeachers();
 
-        // $promoTeacher->id_teachers = Parts::find(
-        //     intval(
-        //         $request->input('id_teachers')
-        //     )
-        // )->id;
+        $promoTeacher->id_teachers = Users::find(
+            intval(
+                $request->input('id_teachers')
+            )
+        )->id;
         
         $promoTeacher->id_promos = Promos::find(
             intval(
@@ -104,17 +129,23 @@ class PromoController extends Controller
         return response()->json($promoCalendar);
     }
 
-    public function AddPromoCalendar($startDate,$endDate,$id_promos){
+    public function AddPromoCalendar(Request $request){
         $promoCalendar = new PromoCalendar();
-        $promoCalendar->startDate = $startDate;
-        $promoCalendar->endDate = $endDate;
-        $promoCalendar->id_promos = $id_promos;
+        $promoCalendar->startDate = $request->input('startDate');
+        $promoCalendar->endDate = $request->input('endDate');
+
+        $promoCalendar->id_promos = Promos::find(
+            intval(
+                $request->input('id_promos')
+            )
+        )->id;
+
         $promoCalendar->save();
         return responce()->json($promoCalendar);
     }
 
-    public function editPromoCalendar($id,$column,$newValue){
-        $promoCalendar = DB::table('promo_calendar')->where('id','=',$id)->update([$column => $newValue]);
+    public function editPromoCalendar($id, Request $request){
+        $promoCalendar = DB::table('promo_calendar')->where('id','=',$id)->update([$request->input('column') => $request->input('newValue')]);
     }
 
 }

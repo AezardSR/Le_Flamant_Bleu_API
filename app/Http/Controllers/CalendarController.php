@@ -34,9 +34,23 @@ class CalendarController extends Controller
         $Appointments->descriptionDeatils = $request->input('descriptionDeatils');
         $Appointments->dateDetails = $request->input('dateDetails');
 
-        $Appointments->id_receiver = $request->input(Appointments::find('id_receiver'));
-        $Appointments->id_create = $request->input(Appointments::find('id_create'));
-        $Appointments->id_appointments_types = $request->input(Appointments::find('id_appointments_types'));
+        $Appointments->id_receiver = Users::find(
+            intval(
+                $request->input('id_receiver')
+            )
+        )->id;
+
+        $Appointments->id_create = Users::find(
+            intval(
+                $request->input('id_create')
+            )
+        )->id;
+
+        $Appointments->id_appointments_types = AppointmentsTypes::find(
+            intval(
+                $request->input('id_appointments_types')
+            )
+        )->id;
 
         $Appointments->save();
         return response()->json($Appointments);
@@ -69,9 +83,23 @@ class CalendarController extends Controller
         $Appointments->descriptionDeatils = $request->input('descriptionDeatils');
         $Appointments->dateDetails = $request->input('dateDetails');
 
-        $Appointments->id_receiver = $request->input(Appointments::find('id_receiver'));
-        $Appointments->id_create = $request->input(Appointments::find('id_create'));
-        $Appointments->id_appointments_types = $request->input(Appointments::find('id_appointments_types'));
+        $Appointments->id_receiver = Users::find(
+            intval(
+                $request->input('id_receiver')
+            )
+        )->id;
+
+        $Appointments->id_create = Users::find(
+            intval(
+                $request->input('id_create')
+            )
+        )->id;
+
+        $Appointments->id_appointments_types = AppointmentsTypes::find(
+            intval(
+                $request->input('id_appointments_types')
+            )
+        )->id;
         
         $Appointments->save();
         return response()->json($Appointments);
