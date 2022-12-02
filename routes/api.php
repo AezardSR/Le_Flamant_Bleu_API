@@ -36,7 +36,6 @@ use App\Http\Controllers\AuthController;
 
 Route::group(['middleware' => ['jwt.log']], function($router) {
     Route::post('/logout', [AuthController::class, 'logout']);
-    Route::post('/refresh', [AuthController::class, 'refresh']);
     Route::get('/user-profile', [AuthController::class,'userProfile']);  
 });
 //route pour users
