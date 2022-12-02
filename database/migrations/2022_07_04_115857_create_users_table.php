@@ -24,19 +24,19 @@ class CreateUsersTable extends Migration
             $table->string('adress', 255)->nullable();
             $table->string('city', 50)->nullable();
             $table->string('zipCode', 5)->nullable();
-            $table->integer('id_roles')->unsigned();
-            $table->integer('id_types')->unsigned();
+            $table->integer('roles_id')->unsigned();
+            $table->integer('types_id')->unsigned();
             $table->timestamps();
         });
 
         Schema::table('users', function ($table) {
             $table
-                ->foreign('id_roles')
+                ->foreign('roles_id')
                 ->references('id')
                 ->on('roles');
 
             $table
-                ->foreign('id_types')
+                ->foreign('types_id')
                 ->references('id')
                 ->on('types');
         });
