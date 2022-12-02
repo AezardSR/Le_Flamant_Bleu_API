@@ -20,12 +20,13 @@ class AuthController extends Controller
 
     public function __construct()
     {
-        $this->middleware('auth:api', ['except' => ['login']]);
+        $this->middleware('auth:jwt.log', ['except' => ['login', 'register']]);
     }
     /* fontion de connexion */
     public function login (Request $request){
 
         $credentials = $request->only('mail', 'password');
+        $token = null;
 
     	$validator = Validator::make($credentials, [
             'mail' => 'required|email',
@@ -36,41 +37,25 @@ class AuthController extends Controller
             return response()->json($validator->errors(), 422);
         }
 
-        //Request is validated
-        //Crean token
-        try {
-            if (! $token = JWTAuth::attempt($credentials)) {
-                return response()->json([
-                	'success' => false,
-                	'message' => 'Login credentials are invalid.',
-                ], 400);
-            }
-        } catch (JWTException $e) {
-    	return $credentials;
-            return response()->json([
-                	'success' => false,
-                	'message' => 'Could not create token.',
-                ], 500);
-        }
- 	
- 		//Token created, return with success response and jwt token
-        return response()->json([
-            'success' => true,
-            'token' => $token,
-        ]);
+        $user = Users::where('mail', $request->mail)->first();
 
-        /*if ($user && Hash::check($request->password, $user->password)) {
-            $token = $user->createToken('Laravel Password Grant Client')->accessToken;
-            $response = ['token' => $token];
-            return response($response, 200);
-        } else {
+        if ($user && Hash::check($request->password, $user->password)) {
+                if (! $token = JWTAuth::attempt($credentials)) {
+                    return response()->json([
+                        'success' => false,
+                        'message' => 'Login credentials are invalid.',
+                    ], 400);
+                } else {
+                    return response()->json([
+                        'success' => true,
+                        'token' => $token,
+                        ]);
+                }
+
+            } else {
             $response = ["message" =>'information de connexion eronné'];
             return response($response, 422);
         }
-
-        $accessToken = Auth::User()->createToken('authToken')->$accessToken;
-
-        return response(json(['User' => Auth::User(), 'access_token' => $accessToken]));*/
     }
     
     /* fonction d'inscription  */

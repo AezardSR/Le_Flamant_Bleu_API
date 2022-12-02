@@ -1,4 +1,4 @@
-    <?php
+<?php
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -31,10 +31,10 @@ use App\Http\Controllers\AuthController;
 */
 //connexion et inscription
 
-Route::post('/connexion', [AuthController::class, 'login']);
-Route::post('/inscription', [AuthController::class, 'register']);
+    Route::post('/connexion', [AuthController::class, 'login']);
+    Route::post('/inscription', [AuthController::class, 'register']);
 
-Route::group(['middleware' => ['jwt.log']], function() {
+Route::group(['middleware' => ['jwt.log']], function($router) {
     Route::post('/logout', [AuthController::class, 'logout']);
     Route::post('/refresh', [AuthController::class, 'refresh']);
     Route::get('/user-profile', [AuthController::class,'userProfile']);  
