@@ -42,7 +42,13 @@ class LessonController extends Controller
         $lesson = new Classes();
         $lesson->name = $request->input('name');
         $lesson->contenu = $request->input('contenu');
-        $lesson->id_parts = $request->input(Classes::find('id_parts'));
+
+        $lesson->id_parts = Parts::find(
+            intval(
+                $request->input('id_parts')
+            )
+        )->id;
+
         $lesson->save();
         return response()->json($lesson);
     }
@@ -51,8 +57,13 @@ class LessonController extends Controller
         $exercice = new Exercices();
         $exercice->name = $request->input('name');
         $exercice->contenu = $request->input('contenu');
-        // $exercice->id_parts = $request->input(Exercices::find('id_parts'));
-        $exercice->id_parts = Exercices::find($request->input('id_parts'));
+
+        $exercice->id_parts = Parts::find(
+            intval(
+                $request->input('id_parts')
+            )
+        )->id;
+        
         $exercice->save();
         return response()->json($exercice);
     }
@@ -66,16 +77,38 @@ class LessonController extends Controller
 
     public function addModulesCategories(Request $request) {
         $moduleCategorie = new ModulesCategories();
-        $moduleCategorie->id_categories = $request->input(ModulesCategories::find('id_categories'));
-        $moduleCategorie->id_modules = $request->input(ModulesCategories::find('id_modules'));
+
+        $moduleCategorie->id_categories = Categories::find(
+            intval(
+                $request->input('id_categories')
+            )
+        )->id;
+
+        $moduleCategorie->id_modules = Modules::find(
+            intval(
+                $request->input('id_modules')
+            )
+        )->id;
+        
         $moduleCategorie->save();
         return response()->json($moduleCategorie);
     }
 
     public function addModulesClass(Request $request) {
         $moduleClasse = new ModulesClass();
-        $moduleClasse->id_classes = $request->input(ModulesClass::find('id_classes'));
-        $moduleClasse->id_modules = $request->input(ModulesClass::find('id_modules'));
+
+        $moduleCategorie->id_classes = Classes::find(
+            intval(
+                $request->input('id_classes')
+            )
+        )->id;
+
+        $moduleCategorie->id_modules = Modules::find(
+            intval(
+                $request->input('id_modules')
+            )
+        )->id;
+
         $moduleClasse->save();
         return response()->json($moduleClasse);
     }
@@ -124,57 +157,91 @@ class LessonController extends Controller
     }
 
     //Modifier
-    public function changeModule(Request $request) {
+    public function changeModule($id, Request $request) {
         $module = Modules::find($id);
         $module->moduleName = $request->input('module');
         $module->save();
         return response()->json($module);
     }
 
-    public function changeParts(Request $request) {
+    public function changeParts($id, Request $request) {
         $parts = Parts::find($id);
         $parts->partName = $request->input('partName');
         $parts->save();
         return response()->json($parts);
     }
 
-    public function changeLesson(Request $request) {
+    public function changeLesson($id, Request $request) {
         $lesson = Classes::find($id);
         $lesson->name = $request->input('name');
         $lesson->contenu = $request->input('contenu');
-        $lesson->id_parts = $request->input(Classes::find('id_parts'));
+
+        $lesson->id_parts = Parts::find(
+            intval(
+                $request->input('id_parts')
+            )
+        )->id;
+
         $lesson->save();
         return response()->json($lesson);
     }
 
-    public function changeExercice(Request $request) {
+    public function changeExercice($id, Request $request) {
         $exercice = Exercices::find($id);
         $exercice->name = $request->input('name');
         $exercice->contenu = $request->input('contenu');
-        $exercice->id_parts = $request->input(Exercices::find('id_parts'));
+
+        $exercice->id_parts = Parts::find(
+            intval(
+                $request->input('id_parts')
+            )
+        )->id;
+
         $exercice->save();
         return response()->json($exercice);
     }
 
-    public function changeCategories(Request $request) {
+    public function changeCategories($id, Request $request) {
         $categories = Categories::find($id);
         $categories->categorie = $request->input('categorie');
         $categories->save();
         return response()->json($categories);
     }
 
-    public function changeModulesCategories(Request $request) {
+    public function changeModulesCategories($id, Request $request) {
         $moduleCategorie = ModulesCategories::find($id);
-        $moduleCategorie->id_categories = $request->input(ModulesCategories::find('id_categories'));
-        $moduleCategorie->id_modules = $request->input(ModulesCategories::find('id_modules'));
+
+        $moduleCategorie->id_categories = Categories::find(
+            intval(
+                $request->input('id_categories')
+            )
+        )->id;
+
+        $moduleCategorie->id_modules = Modules::find(
+            intval(
+                $request->input('id_modules')
+            )
+        )->id;
+
         $moduleCategorie->save();
         return response()->json($moduleCategorie);
     }
 
-    public function changeModulesClass(Request $request) {
+    public function changeModulesClass($id, Request $request) {
         $moduleClasse = ModulesClass::find($id);
-        $moduleClasse->id_classes = $request->input(ModulesClass::find('id_classes'));
-        $moduleClasse->id_modules = $request->input(ModulesClass::find('id_modules'));
+
+        $moduleClasse->id_classes = Classes::find(
+            intval(
+                $request->input('id_classes')
+            )
+        )->id;
+
+        $moduleClasse->id_modules = Modules::find(
+            intval(
+                $request->input('id_modules')
+            )
+        )->id;
+
         $moduleClasse->save();
         return response()->json($moduleClasse);
     }

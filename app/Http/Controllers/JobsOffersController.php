@@ -3,11 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Models\JobsOffers;
+use App\Models\Users;
+use App\Models\PartnerContacts;
 use Illuminate\Http\Request;
 
 class JobsOffersController extends Controller
 {
-    public function getJobsOffers($jobsOffers) {
+    public function getJobsOffers() {
         $jobsOffers = JobsOffers::all();
         return response()->json($jobsOffers);
     }
@@ -18,27 +20,49 @@ class JobsOffersController extends Controller
         $jobsOffers->dateOffers = $request->input('dateOffers');
         $jobsOffers->description = $request->input('description');
         $jobsOffers->link = $request->input('link');
-        $jobsOffers->id_users = $request->input(JobsOffers::find('id_users'));
-        $jobsOffers->id_partnerContacts = $request->input(JobsOffers::find('id_partnerContacts'));
+
+        $jobsOffers->id_users = Users::find(
+            intval(
+                $request->input('id_users')
+            )
+        )->id;
+
+        $jobsOffers->id_partnerContacts = PartnerContacts::find(
+            intval(
+                $request->input('id_partnerContacts')
+            )
+        )->id;
+
         $jobsOffers->save();
         return response()->json($jobsOffers);
     }
 
-    public function deleteJobsOffers($id, $jobsOffers) {
+    public function deleteJobsOffers($id) {
         $jobsOffers = JobsOffers::find($id);
         $jobsOffers->delete();
         echo('Annonces de job bien supprimé');
     }
 
 
-    public function changeJobsOffers(Request $request) {
+    public function changeJobsOffers($id, Request $request) {
         $jobsOffers = JobsOffers::find($id);
         $jobsOffers->name = $request->input('name');
         $jobsOffers->dateOffers = $request->input('dateOffers');
         $jobsOffers->description = $request->input('description');
         $jobsOffers->link = $request->input('link');
-        $jobsOffers->id_users = $request->input(JobsOffers::find('id_users'));
-        $jobsOffers->id_partnerContacts = $request->input(JobsOffers::find('id_partnerContacts'));
+
+        $jobsOffers->id_users = Users::find(
+            intval(
+                $request->input('id_users')
+            )
+        )->id;
+
+        $jobsOffers->id_partnerContacts = PartnerContacts::find(
+            intval(
+                $request->input('id_partnerContacts')
+            )
+        )->id;
+
         $jobsOffers->save();
         return response()->json($jobsOffers);
     }

@@ -9,12 +9,12 @@ use Illuminate\Http\Request;
 class CalendarController extends Controller
 {
     //Get
-    public function getAppointmentsTypes($AppointmentsTypes) {
+    public function getAppointmentsTypes() {
         $AppointmentsTypes = AppointmentsTypes::all();
         return response()->json($AppointmentsTypes);
     }
 
-    public function getAppointments($Appointments) {
+    public function getAppointments() {
         $Appointments = Appointments::all();
         return response()->json($Appointments);
     }
@@ -33,42 +33,74 @@ class CalendarController extends Controller
         $Appointments->titleDetails = $request->input('titleDetails');
         $Appointments->descriptionDeatils = $request->input('descriptionDeatils');
         $Appointments->dateDetails = $request->input('dateDetails');
-        $Appointments->id_receiver = $request->input(Appointments::find('id_receiver'));
-        $Appointments->id_create = $request->input(Appointments::find('id_create'));
-        $Appointments->id_appointments_types = $request->input(Appointments::find('id_appointments_types'));
+
+        $Appointments->id_receiver = Users::find(
+            intval(
+                $request->input('id_receiver')
+            )
+        )->id;
+
+        $Appointments->id_create = Users::find(
+            intval(
+                $request->input('id_create')
+            )
+        )->id;
+
+        $Appointments->id_appointments_types = AppointmentsTypes::find(
+            intval(
+                $request->input('id_appointments_types')
+            )
+        )->id;
+
         $Appointments->save();
         return response()->json($Appointments);
     }
 
     //Delete
-    public function deleteAppointmentsTypes($id, $AppointmentsTypes) {
+    public function deleteAppointmentsTypes($id) {
         $AppointmentsTypes = AppointmentsTypes::find($id);
         $AppointmentsTypes->delete();
         echo('Type de rdv bien supprimé');
     }
 
-    public function deleteAppointments($id, $Appointments) {
+    public function deleteAppointments($id) {
         $Appointments = Appointments::find($id);
         $Appointments->delete();
         echo('Rdv bien supprimé');
     }
 
     //Change
-    public function changeAppointmentsTypes(Request $request) {
+    public function changeAppointmentsTypes($id, Request $request) {
         $AppointmentsTypes = AppointmentsTypes::find($id);
         $AppointmentsTypes->name = $request->input('name');
         $AppointmentsTypes->save();
         return response()->json($AppointmentsTypes);
     }
 
-    public function changeAppointments(Request $request) {
+    public function changeAppointments($id, Request $request) {
         $Appointments = Appointments::find($id);
         $Appointments->titleDetails = $request->input('titleDetails');
         $Appointments->descriptionDeatils = $request->input('descriptionDeatils');
         $Appointments->dateDetails = $request->input('dateDetails');
-        $Appointments->id_receiver = $request->input(Appointments::find('id_receiver'));
-        $Appointments->id_create = $request->input(Appointments::find('id_create'));
-        $Appointments->id_appointments_types = $request->input(Appointments::find('id_appointments_types'));
+
+        $Appointments->id_receiver = Users::find(
+            intval(
+                $request->input('id_receiver')
+            )
+        )->id;
+
+        $Appointments->id_create = Users::find(
+            intval(
+                $request->input('id_create')
+            )
+        )->id;
+
+        $Appointments->id_appointments_types = AppointmentsTypes::find(
+            intval(
+                $request->input('id_appointments_types')
+            )
+        )->id;
+        
         $Appointments->save();
         return response()->json($Appointments);
     }
