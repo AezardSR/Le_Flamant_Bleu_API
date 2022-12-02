@@ -10,5 +10,9 @@ class Classes extends Model
     use HasFactory;
 
     protected $table = 'classes';
-    protected $fillable = ['name', 'content', 'duration', 'id_parts'];
+    protected $fillable = ['name', 'content', 'duration'];
+
+    public function part() {
+        return $this->hasOne(Parts::class);
+    }
 }

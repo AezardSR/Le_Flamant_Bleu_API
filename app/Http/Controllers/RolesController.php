@@ -14,10 +14,10 @@ class RolesController extends Controller
         return response()->json($roles);
     }
 
-    public function addRole($id, $name)
+    public function addRole(Request $request)
     {
         $role = new Roles();
-        $role->name = $name;
+        $role->name = $request->input('name');
         $role->save();
         return response()->json($role);
     }
@@ -27,10 +27,10 @@ class RolesController extends Controller
         return response()->json($types);
     }
 
-    public function addTypes($name)
-   {
+    public function addTypes(Request $request)
+    {
         $type = new Types();
-        $type->name = $name;
+        $type->name = $request->input('name');
         $type->save();
         return response()->json($type);
     }
