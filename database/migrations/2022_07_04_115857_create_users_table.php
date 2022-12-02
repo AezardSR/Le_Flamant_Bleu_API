@@ -21,7 +21,7 @@ class CreateUsersTable extends Migration
             $table->string('mail', 100);
             $table->string('tel', 10)->nullable();
             $table->string('password', 255);
-            $table->string('adress', 255)->nullable();
+            $table->string('address', 255)->nullable();
             $table->string('city', 50)->nullable();
             $table->string('zipCode', 5)->nullable();
             $table->integer('id_roles')->unsigned();

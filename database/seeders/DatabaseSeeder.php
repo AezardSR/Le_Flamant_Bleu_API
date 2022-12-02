@@ -3,6 +3,9 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use App\Models\Users;
+use App\Models\Types;
+use App\Models\Roles;
 
 class DatabaseSeeder extends Seeder
 {
@@ -13,6 +16,9 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
+        Types::factory(5)->create();
+        Roles::factory(5)->create();
+        Users::factory(5)->create();
+        
     }
 }

@@ -13,7 +13,7 @@ class Users extends Authenticatable implements JWTSubject
     use HasFactory;
 
     protected $table = 'users';
-    protected $fillable = ['name','firstname','birthdate','mail','tel','password','adress','city','zipCode','id_roles','id_types'];
+    protected $fillable = ['name','firstname','birthdate','mail','tel','password','address','city','zipCode','id_roles','id_types'];
 
     /**
      * The attributes that should be hidden for arrays.

@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
 {
-    public function addUser($name,$firstname,$birthdate,$mail,$tel,$password,$adress,$city,$zipCode,$id_roles,$id_types){
+    public function addUser($name,$firstname,$birthdate,$mail,$tel,$password,$address,$city,$zipCode,$id_roles,$id_types){
 
         $user = new Users();
         $user->name = $name;
@@ -20,7 +20,7 @@ class UserController extends Controller
         $user->mail = $mail;
         $user->tel = $tel;
         $user->password = Hash::make($password);
-        $user->adress = $adress;
+        $user->address = $address;
         $user->city = $city;
         $user->zipCode = $zipCode;
         $user->id_roles = $id_roles;
@@ -36,7 +36,7 @@ class UserController extends Controller
     }
 
     public function getOneUser($id){
-        $user = DB::table('users')->select('name','firstname','mail','tel','adress','city','zipCode')->where('id','=', $id)->get();
+        $user = DB::table('users')->select('name','firstname','mail','tel','address','city','zipCode')->where('id','=', $id)->get();
         return response()->json($user);
     }
 
