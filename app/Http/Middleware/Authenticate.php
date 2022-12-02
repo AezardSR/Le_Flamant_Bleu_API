@@ -7,7 +7,7 @@ use JWTAuth;
 use Exception;
 use Tymon\JWTAuth\Http\Middleware\BaseMiddleware;
 
-class Authenticate extends Middleware
+class Authenticate
 {
     /**
      * Handle an incoming request.
