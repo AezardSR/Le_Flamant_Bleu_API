@@ -67,6 +67,7 @@ Route::post('/types', [RolesController::class, 'addTypes']);
 //Routes pour Modules
 Route::get('/modules', [LessonController::class, 'getModuleList']);
 
+
 //Routes pour Documents
 Route::get('/documents', [DocumentsController::class, 'getDocuments']);
 Route::post('/documents', [DocumentsController::class, 'addDocuments']);
@@ -87,6 +88,7 @@ Route::put('/jobsoffers/update/{id}', [JobsOffersController::class, 'changeJobsO
 
 //Routes pour rendez-vous
     //Type de rdv
+
 Route::put('/PromoStudent/{id}/{column}/{newValue}', [PromoController::class, 'editPromoStudent']);
 
 Route::get('/PromoTeachers', [PromoController::class, 'getPromoTeachersList']);
@@ -96,7 +98,7 @@ Route::put('/PromoTeacher/{id}', [PromoController::class, 'editPromoTeacher']);
 
 Route::get('/PromoCalendars', [PromoController::class, 'getPromoCalendarList']);
 Route::post('/PromoCalendar/create/{startDate}/{endDate}/{id_promos}', [PromoController::class, 'AddPromoCalendar']);
-
+	
 // routes pour les questions
 Route::get('/questions/{id}', [QuestionsController::class, 'viewQuestion']);
 Route::get('/questions', [QuestionsController::class, 'viewListQuestion']);
