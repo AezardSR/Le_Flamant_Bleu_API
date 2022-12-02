@@ -82,19 +82,19 @@ About
 ```php
       // config/app.php
 
-'providers' => [
-….
-'Tymon\JWTAuth\Providers\JWTAuthServiceProvider',
-],
-'aliases' => [
-….
-'JWTAuth' => 'Tymon\JWTAuth\Facades\JWTAuth',
-'JWTFactory' => 'Tymon\JWTAuth\Facades\JWTFactory',
-],
+    'providers' => [
+    ….
+    'Tymon\JWTAuth\Providers\JWTAuthServiceProvider',
+    ],
+    'aliases' => [
+    ….
+    'JWTAuth' => 'Tymon\JWTAuth\Facades\JWTAuth',
+    'JWTFactory' => 'Tymon\JWTAuth\Facades\JWTFactory',
+    ],
 ```
 
 ```bash
-php artisan vendor:publish --provider="Tymon\JWTAuth\Providers\JWTAuthServiceProvider::class"
+    php artisan vendor:publish --provider="Tymon\JWTAuth\Providers\JWTAuthServiceProvider::class"
 ```
 
 ```bash
