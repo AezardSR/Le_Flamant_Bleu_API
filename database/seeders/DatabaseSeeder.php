@@ -6,6 +6,8 @@ use Illuminate\Database\Seeder;
 use App\Models\User;
 use App\Models\Types;
 use App\Models\Roles;
+use App\Models\Surveys;
+use App\Models\SurveyAnswers;
 
 class DatabaseSeeder extends Seeder
 {
@@ -19,6 +21,8 @@ class DatabaseSeeder extends Seeder
         Types::factory(5)->create();
         Roles::factory(5)->create();
         User::factory(5)->create();
+        Surveys::factory(5)->create();
+        SurveyAnswers::factory(5)->create();
         
     }
 }

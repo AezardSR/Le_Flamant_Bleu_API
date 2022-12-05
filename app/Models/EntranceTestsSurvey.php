@@ -11,6 +11,6 @@ class EntranceTestsSurvey extends Model
 
     
     protected $table = 'entrance_tests_survey';
-    protected $fillable = ['id_entranceTests','id_surveys'];
+    protected $fillable = ['id_entranceTests','surveys_id'];
 }
 

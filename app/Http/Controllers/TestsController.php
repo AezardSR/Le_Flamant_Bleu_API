@@ -2,11 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\DB;
+use App\Models\User;
 use App\Models\ApplicantsTestSurvey;
 use App\Models\ApplicantsAnswers;
 use App\Models\SurveyAnswers;
 use App\Models\Surveys;
+use App\Models\EntranceTests;
 use App\Models\EntranceTestsSurvey;
+use App\Models\Promos;
 
 use Illuminate\Http\Request;
 
@@ -45,7 +49,7 @@ class TestsController extends Controller
         )->id;
 
         $ApplicantsTestSurvey->save();
-        return responce()->json($ApplicantsTestSurvey);
+        return response()->json($ApplicantsTestSurvey);
     }
 
     public function getOneApplicantsTestSurvey($id){
@@ -80,7 +84,7 @@ class TestsController extends Controller
         )->id;
 
         $ApplicantsAnswers->save();
-        return responce()->json($ApplicantsAnswers);
+        return response()->json($ApplicantsAnswers);
     }
 
     public function getApplicantAnswers($id){
@@ -99,18 +103,18 @@ class TestsController extends Controller
         $SurveyAnswers->answer = $request->input('answer');
         $SurveyAnswers->correctAnswer = $request->input('correctAnswer');
 
-        $SurveyAnswers->id_surveys = Surveys::find(
+        $SurveyAnswers->surveys_id = Surveys::find(
             intval(
-                $request->input('id_surveys')
+                $request->input('surveys_id')
             )
         )->id;
 
         $SurveyAnswers->save();
-        return responce()->json($SurveyAnswers);
+        return response()->json($SurveyAnswers);
     }
 
     public function getOneSurveyAnswers($id){
-        $SurveyAnswers = DB::table('applicants_test_survey')->select('answer','correctAnswer','id_surveys')->where('id','=', $id)->get();
+        $SurveyAnswers = DB::table('applicants_test_survey')->select('answer','correctAnswer','surveys_id')->where('id','=', $id)->get();
         return response()->json($SurveyAnswers);
     }
 
@@ -128,7 +132,7 @@ class TestsController extends Controller
         $Surveys = new Surveys();
         $Surveys->survey = $request->input('survey');
         $Surveys->save();
-        return responce()->json($Surveys);
+        return response()->json($Surveys);
     }
 
     public function getOneSurvey($id){
@@ -155,16 +159,16 @@ class TestsController extends Controller
             )
         )->id;
 
-        $EntranceTestsSurvey->id_surveys = Surveys::find(
+        $EntranceTestsSurvey->surveys_id = Surveys::find(
             intval(
-                $request->input('id_surveys')
+                $request->input('surveys_id')
             )
         )->id;
-        return responce()->json($EntranceTestsSurvey);
+        return response()->json($EntranceTestsSurvey);
     }
 
     public function getOneEntranceTestsSurvey($id){
-        $EntranceTestsSurvey = DB::table('entrance_tests_survey')->select('id_entranceTests','id_surveys')->where('id','=', $id)->get();
+        $EntranceTestsSurvey = DB::table('entrance_tests_survey')->select('id_entranceTests','surveys_id')->where('id','=', $id)->get();
         return response()->json($EntranceTestsSurvey);
     }
 
