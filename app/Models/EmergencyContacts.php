@@ -10,5 +10,5 @@ class EmergencyContacts extends Model
     use HasFactory;
 
     protected $table = 'emergency_contacts';
-    protected $fillable = ['name', 'firstname', 'tel', 'id_users'];
+    protected $fillable = ['name', 'firstname', 'tel', 'id_user'];
 }

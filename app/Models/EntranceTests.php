@@ -10,6 +10,6 @@ class EntranceTests extends Model
     use HasFactory;
     
     protected $table = 'entrance_tests';
-    protected $fillable = ['name','id_users'];
+    protected $fillable = ['name','id_user'];
 }
 

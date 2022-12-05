@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Users;
+use App\Models\user;
 use App\Models\Classes;
 use App\Models\Questions;
 use Illuminate\Http\Request;
@@ -21,9 +21,9 @@ class QuestionsController extends Controller
         //     )
         // )->id;
 
-        $questions->id_users = Users::find(
+        $questions->id_user = user::find(
             intval(
-                $request->input('id_users')
+                $request->input('id_user')
             )
         )->id;
         $questions->save();
@@ -32,7 +32,7 @@ class QuestionsController extends Controller
 
     public function viewQuestion($id)
     {
-        $questions = DB::table('questions')->select('question', 'id_classes', 'id_users', 'id_categories')->where('id','=', $id)->get();
+        $questions = DB::table('questions')->select('question', 'id_classes', 'id_user', 'id_categories')->where('id','=', $id)->get();
         return response()->json($questions);
     }
 
@@ -60,9 +60,9 @@ class QuestionsController extends Controller
         //     )
         // )->id;
 
-        $questions->id_users = Users::find(
+        $questions->id_user = user::find(
             intval(
-                $request->input('id_users')
+                $request->input('id_user')
             )
         )->id;
         $questions->save();

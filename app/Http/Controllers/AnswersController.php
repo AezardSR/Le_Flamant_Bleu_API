@@ -1,7 +1,7 @@
 <?php
 namespace App\Http\Controllers;
 
-use App\Models\Users;
+use App\Models\user;
 use App\Models\Answers;
 use App\Models\Questions;
 use Illuminate\Http\Request;
@@ -20,9 +20,9 @@ class AnswersController extends Controller
             )
         )->id;
 
-        $answers->id_users = Users::find(
+        $answers->id_user = user::find(
             intval(
-                $request->input('id_users')
+                $request->input('id_user')
             )
         )->id;
 
@@ -32,7 +32,7 @@ class AnswersController extends Controller
 
     public function viewAnswer($id)
     {
-        $answers = DB::table('answers')->select('answer', 'id_questions', 'id_users')->where('id','=', $id)->get();
+        $answers = DB::table('answers')->select('answer', 'id_questions', 'id_user')->where('id','=', $id)->get();
         return response()->json($answers);
     }
 
@@ -60,9 +60,9 @@ class AnswersController extends Controller
             )
         )->id;
 
-        $answers->id_users = Users::find(
+        $answers->id_user = user::find(
             intval(
-                $request->input('id_users')
+                $request->input('id_user')
             )
         )->id;
         $answers->save();

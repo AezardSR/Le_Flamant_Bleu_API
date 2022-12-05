@@ -55,16 +55,16 @@ class RegistrationController extends Controller
     }
 
     public function getSignatureList($id_registrations){
-        $signature = DB::table('signatures')->select('id_users','id_registrations','date')->where('id_registrations','=',$id_registrations)->get();
+        $signature = DB::table('signatures')->select('id_user','id_registrations','date')->where('id_registrations','=',$id_registrations)->get();
         return response()->json($signature);
     }
     
     public function addSignature(Request $request){
         $signature = new Signatures();
 
-        $signature->id_users = Users::find(
+        $signature->id_user = user::find(
             intval(
-                $request->input('id_users')
+                $request->input('id_user')
             )
         )->id;
 

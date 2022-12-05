@@ -16,13 +16,13 @@ class CreateDocuments extends Migration
         Schema::create('documents', function (Blueprint $table) {
             $table->increments('id',true);
             $table->string('name', 50);
-            $table->integer('id_users')->unsigned();
+            $table->integer('id_user')->unsigned();
             $table->timestamps();
         });
 
         Schema::table('documents', function ($table) {
             $table
-                ->foreign('id_users')
+                ->foreign('id_user')
                 ->references('id')
                 ->on('users');
         });

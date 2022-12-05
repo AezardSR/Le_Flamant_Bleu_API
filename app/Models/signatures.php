@@ -10,5 +10,5 @@ class Signatures extends Model
     use HasFactory;
 
     protected $table = 'signatures';
-    protected $fillable = ['id_users', 'id_registrations', 'date'];
+    protected $fillable = ['id_user', 'id_registrations', 'date'];
 }

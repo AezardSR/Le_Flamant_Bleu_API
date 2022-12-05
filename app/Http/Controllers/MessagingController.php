@@ -13,13 +13,13 @@ class MessagingController extends Controller
         $Message = new Messages();
         $Message->content = $request->input('content');
 
-        $Message->id_receiver = Users::find(
+        $Message->id_receiver = user::find(
             intval(
                 $request->input('id_receiver')
             )
         )->id;
 
-        $Message->id_sender = Users::find(
+        $Message->id_sender = user::find(
             intval(
                 $request->input('id_sender')
             )

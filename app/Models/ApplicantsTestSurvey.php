@@ -11,6 +11,6 @@ class ApplicantsTestSurvey extends Model
 
     
     protected $table = 'applicants_test_survey';
-    protected $fillable = ['name','firstname','dateSurvey','mail','id_entranceTests','id_users','id_promos'];
+    protected $fillable = ['name','firstname','dateSurvey','mail','id_entranceTests','id_user','id_promos'];
 }
 

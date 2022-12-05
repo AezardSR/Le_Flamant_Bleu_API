@@ -20,13 +20,13 @@ class CreatePartnerContacts extends Migration
             $table->string('mail', 100)->nullable();
             $table->string('tel', 10)->nullable();
             $table->string('nameCompany', 50);
-            $table->integer('id_users')->unsigned();
+            $table->integer('id_user')->unsigned();
             $table->timestamps();
         });
 
         Schema::table('partner_contacts', function ($table) {
             $table
-                ->foreign('id_users')
+                ->foreign('id_user')
                 ->references('id')
                 ->on('users');
         });

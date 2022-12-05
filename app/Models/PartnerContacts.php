@@ -10,5 +10,5 @@ class PartnerContacts extends Model
     use HasFactory;
 
     protected $table = 'partner_contacts';
-    protected $fillable = ['name', 'firstname', 'mail', 'tel', 'nameCompany', 'id_users'];
+    protected $fillable = ['name', 'firstname', 'mail', 'tel', 'nameCompany', 'id_user'];
 }

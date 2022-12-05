@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Users;
+use App\Models\user;
 use App\Models\Documents;
 use Illuminate\Http\Request;
 
@@ -19,9 +19,9 @@ class DocumentsController extends Controller
         $documents = new Documents();
         $documents->name = $request->input('name');
 
-        $documents->id_users = Users::find(
+        $documents->id_user = user::find(
             intval(
-                $request->input('id_users')
+                $request->input('id_user')
             )
         )->id;
 
@@ -42,9 +42,9 @@ class DocumentsController extends Controller
         $documents->id = $id;
         $documents->name = $request->input('name');
 
-        $documents->id_users = Users::find(
+        $documents->id_user = user::find(
             intval(
-                $request->input('id_users')
+                $request->input('id_user')
             )
         )->id;
         $documents->save();

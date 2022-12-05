@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Validator;
 
 class JwtController extends Controller
 {
-    protected $users;
+    protected $user;
  
     public function __construct()
     {

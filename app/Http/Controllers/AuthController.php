@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Users;
+use App\Models\user;
 use App\Models\Roles;
 use App\Models\Types;
 Use JWTAuth;
@@ -37,7 +37,7 @@ class AuthController extends Controller
             return response()->json($validator->errors(), 422);
         }
 
-        $user = Users::where('mail', $request->mail)->first();
+        $user = user::where('mail', $request->mail)->first();
 
         if ($user && Hash::check($request->password, $user->password)) {
                 if (! $token = JWTAuth::attempt($credentials)) {
@@ -65,7 +65,7 @@ class AuthController extends Controller
         $validator = Validator::make($request->all(), [
             'name' => 'required|string|between:2,100',
             'firstname' => 'required|string|between:2,100',
-            'mail' => 'required|string|max:100|unique:users',
+            'mail' => 'required|string|max:100|unique:user',
             'password' => ['required','string','confirmed','min:6','regex:/^(?=.*[a-z|A-Z])(?=.*[A-Z])(?=.*\d)(?=.*(_|[^\w])).+$/'],
             'password_confirmed' => 'same:password'
         ]);
@@ -74,14 +74,14 @@ class AuthController extends Controller
             return response()->json($validator->errors()->toJson(), 400);
         }
 
-       $user = Users::create(array_merge($validator->validated(),
+       $user = user::create(array_merge($validator->validated(),
         [
         'password' => bcrypt($request->password),
         'roles_id'=> Roles::find(1)->id,
         'types_id'=> Types::find(1)->id
         ]));
 
-        return response()->json(['message' => 'Users successfully registered','user' => $user ], 201);
+        return response()->json(['message' => 'user successfully registered','user' => $user ], 201);
 
     }
     

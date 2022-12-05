@@ -7,10 +7,10 @@ use Illuminate\Http\Request;
 
 class ConnexionController extends Controller
 {
-    public function getUsersList()
+    public function getuserList()
     {
-        $users = Users::all();
-        return response()->json($users);
+        $user = user::all();
+        return response()->json($user);
     }
 }
 

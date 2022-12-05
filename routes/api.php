@@ -38,9 +38,9 @@ Route::group(['middleware' => ['jwt.log']], function($router) {
     Route::post('/logout', [AuthController::class, 'logout']);
     Route::get('/user-profile', [AuthController::class,'userProfile']);  
 });
-//route pour users
+//route pour user
 //sert à afficher la liste des utilisateur
-Route::get('/users', [UserController::class, 'getUsersList']);
+Route::get('/user', [UserController::class, 'getuserList']);
 //affiche un seul utilisateur
 Route::get('/user/{id}', [UserController::class, 'getOneUser']);
 //ajouter un utilisateur

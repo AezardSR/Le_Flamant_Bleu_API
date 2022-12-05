@@ -17,14 +17,14 @@ class CreateQuestionsTable extends Migration
             $table->increments('id',true);
             $table->longText('question');
             $table->integer('id_classes')->unsigned();
-            $table->integer('id_users')->unsigned();
+            $table->integer('id_user')->unsigned();
             $table->integer('id_categories')->unsigned();
             $table->timestamps();
         });
 
         Schema::table('questions', function ($table) {
             $table
-            ->foreign('id_users')
+            ->foreign('id_user')
             ->references('id')
             ->on('users');
         });

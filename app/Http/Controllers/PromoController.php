@@ -65,7 +65,7 @@ class PromoController extends Controller
     public function AddStudentToPromo(Request $request){
         $promoStudent = new PromoStudents();
 
-        $promoStudent->id_students = Users::find(
+        $promoStudent->id_students = user::find(
             intval(
                 $request->input('id_students')
             )
@@ -98,7 +98,7 @@ class PromoController extends Controller
     public function AddTeacherToPromo(Request $request){
         $promoTeacher = new PromoTeachers();
 
-        $promoTeacher->id_teachers = Users::find(
+        $promoTeacher->id_teachers = user::find(
             intval(
                 $request->input('id_teachers')
             )

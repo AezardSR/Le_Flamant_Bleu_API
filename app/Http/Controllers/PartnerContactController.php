@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Users;
+use App\Models\user;
 use App\Models\PartnerContacts;
 use Illuminate\Http\Request;
 
@@ -21,9 +21,9 @@ class PartnerContactController extends Controller
         $partnerContact->tel = $request->input('tel');
         $partnerContact->nameCompany = $request->input('nameCompany');
 
-        $partnerContact->id_users = Users::find(
+        $partnerContact->id_user = user::find(
             intval(
-                $request->input('id_users')
+                $request->input('id_user')
             )
         )->id; 
 
@@ -46,9 +46,9 @@ class PartnerContactController extends Controller
         $partnerContact->tel = $request->input('tel');
         $partnerContact->nameCompany = $request->input('nameCompany');
 
-        $partnerContact->id_users = Users::find(
+        $partnerContact->id_user = user::find(
             intval(
-                $request->input('id_users')
+                $request->input('id_user')
             )
         )->id; 
 

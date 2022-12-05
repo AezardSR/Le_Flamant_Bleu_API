@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Users;
+use App\Models\user;
 use App\Models\Roles;
 use App\Models\Types;
 use App\Models\EmergencyContacts;
@@ -15,7 +15,7 @@ class UserController extends Controller
 {
     public function addUser(Request $request){
 
-        $user = new Users();
+        $user = new user();
 
         $user->name = $request->input('name');
         $user->firstname = $request->input('firstname');
@@ -43,22 +43,22 @@ class UserController extends Controller
         return response()->json($user);
 
     }
-    public function getUsersList()
+    public function getuserList()
     {
-        $users = Users::all();
-        return response()->json($users);
+        $user = user::all();
+        return response()->json($user);
     }
 
     public function getOneUser($id){
-        $user = DB::table('users')->select('name','firstname','mail','tel','address','city','zipCode')->where('id','=', $id)->get();
+        $user = DB::table('user')->select('name','firstname','mail','tel','address','city','zipCode')->where('id','=', $id)->get();
         return response()->json($user);
     }
 
     public function editUser($id, Request $request){
-        $user = DB::table('users')->where('id','=',$id)->update([$request->input('column') => $request->input('newValue')]);
+        $user = DB::table('user')->where('id','=',$id)->update([$request->input('column') => $request->input('newValue')]);
     }
     public function deleteUser($id){
-        $EmergencyContacts = DB::table('users')->where('id','=',$id)->delete();
+        $EmergencyContacts = DB::table('user')->where('id','=',$id)->delete();
     }
 
 //EmergencyContacts
@@ -68,9 +68,9 @@ public function addEmergencyContacts(Request $request){
     $EmergencyContacts->firstname = $request->input('firstname');
     $EmergencyContacts->tel = $request->input('tel');
 
-    $EmergencyContacts->id_users = Users::find(
+    $EmergencyContacts->id_user = user::find(
         intval(
-            $request->input('id_users')
+            $request->input('id_user')
         )
     )->id;
 
