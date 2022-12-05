@@ -31,11 +31,12 @@ use App\Http\Controllers\AuthController;
 */
 //connexion et inscription
 
-    Route::post('/connexion', [AuthController::class, 'login']);
-    Route::post('/inscription', [AuthController::class, 'register']);
+    Route::post('/login', [AuthController::class, 'login']);
+    Route::post('/register', [AuthController::class, 'register']);
 
 Route::group(['middleware' => ['jwt.log']], function($router) {
     Route::post('/logout', [AuthController::class, 'logout']);
+    Route::get('/refresh', [AuthController::class,'refresh']);  
     Route::get('/user-profile', [AuthController::class,'userProfile']);  
 });
 //route pour user
