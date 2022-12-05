@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Users;
 use App\Models\PartnerContacts;
 use Illuminate\Http\Request;
 
 class PartnerContactController extends Controller
 {
-    public function getPartnerContact($partnerContact) {
+    public function getPartnerContact() {
         $partnerContact = PartnerContacts::all();
         return response()->json($partnerContact);
     }
@@ -19,7 +20,13 @@ class PartnerContactController extends Controller
         $partnerContact->mail = $request->input('mail');
         $partnerContact->tel = $request->input('tel');
         $partnerContact->nameCompany = $request->input('nameCompany');
-        $partnerContact->id_users = $request->input(PartnerContacts::find('id_users'));
+
+        $partnerContact->id_users = Users::find(
+            intval(
+                $request->input('id_users')
+            )
+        )->id; 
+
         $partnerContact->save();
         return response()->json($partnerContact);
     }
@@ -31,14 +38,20 @@ class PartnerContactController extends Controller
     }
 
 
-    public function changePartnerContact(Request $request) {
+    public function changePartnerContact($id, Request $request) {
         $partnerContact = PartnerContacts::find($id);
         $partnerContact->name = $request->input('name');
         $partnerContact->firstname = $request->input('firstname');
         $partnerContact->mail = $request->input('mail');
         $partnerContact->tel = $request->input('tel');
         $partnerContact->nameCompany = $request->input('nameCompany');
-        $partnerContact->id_users = $request->input(PartnerContacts::find('id_users'));
+
+        $partnerContact->id_users = Users::find(
+            intval(
+                $request->input('id_users')
+            )
+        )->id; 
+
         $partnerContact->save();
         return response()->json($partnerContact);
     }

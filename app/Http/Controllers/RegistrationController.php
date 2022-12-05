@@ -15,16 +15,27 @@ class RegistrationController extends Controller
         $registationTypes = RegistrationTypes::all();
         return response()->json($registationTypes);
     }
-    public function editRegistrationType($id,$column,$newValue){
-        $registationTypes = DB::table('registrationTypes')->where('id','=',$id)->update([$column => $newValue]);
+    public function editRegistrationType($id, Request $request){
+        $registationTypes = DB::table('registrationTypes')->where('id','=',$id)->update([$request->input('column') => $request->input('newValue')]);
     }
 
-    public function createRegistration($dateRegistration,$detailRegistration,$id_promos,$id_registrationTypes){
+    public function createRegistration(Request $request){
         $registration = new Registrations();
-        $registration->dateRegistration = $dateRegistration;
-        $registration->detailRegistration = $detailRegistration;
-        $registration->id_promos = $id_promos;
-        $registration->id_registrationTypes = $id_registrationTypes;
+        $registration->dateRegistration = $request->input('dateRegistration');
+        $registration->detailRegistration = $request->input('detailRegistration');
+
+        $registration->id_promos = Promos::find(
+            intval(
+                $request->input('id_promos')
+            )
+        )->id;
+
+        $registration->id_registrationTypes = RegistrationsTypes::find(
+            intval(
+                $request->input('id_registrationTypes')
+            )
+        )->id;
+
         $registration->save();
         return responce()->json($registration);
     }
@@ -39,8 +50,8 @@ class RegistrationController extends Controller
         return response()->json($registration);
     }
 
-    public function editRegistration($id,$column,$newValue){
-        $registration = DB::table('registrations')->where('id','=',$id)->update([$column => $newValue]);
+    public function editRegistration($id, Request $request){
+        $registration = DB::table('registrations')->where('id','=',$id)->update([$request->input('column') => $request->input('newValue')]);
     }
 
     public function getSignatureList($id_registrations){
@@ -48,11 +59,22 @@ class RegistrationController extends Controller
         return response()->json($signature);
     }
     
-    public function addSignature($id_users,$id_registrations,$date){
+    public function addSignature(Request $request){
         $signature = new Signatures();
-        $signature->id_users = $id_users;
-        $signature->id_registrations = $id_registrations;
-        $signature->date = $date;
+
+        $signature->id_users = Users::find(
+            intval(
+                $request->input('id_users')
+            )
+        )->id;
+
+        $signature->id_registrations = Registrations::find(
+            intval(
+                $request->input('id_registrations')
+            )
+        )->id;
+
+        $signature->date = $request->input('date');
         $signature->save();
         return responce()->json($signature);
     }

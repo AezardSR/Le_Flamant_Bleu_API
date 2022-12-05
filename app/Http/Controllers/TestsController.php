@@ -18,15 +18,32 @@ class TestsController extends Controller
         return response()->json($ApplicantsTestSurvey);
     }
 
-    public function createApplicantsTestSurvey($name,$firstname,$dateSurvey,$mail,$id_entranceTests,$id_formationsFormats,$id_promos){
+    public function createApplicantsTestSurvey(Request $request){
         $ApplicantsTestSurvey = new ApplicantsTestSurvey();
-        $ApplicantsTestSurvey->name = $name;
-        $ApplicantsTestSurvey->firstname = $firstname;
-        $ApplicantsTestSurvey->dateSurvey = $dateSurvey;
-        $ApplicantsTestSurvey->mail = $mail;
-        $ApplicantsTestSurvey->id_entranceTests = $id_entranceTests;
-        $ApplicantsTestSurvey->id_users = $id_users;
-        $ApplicantsTestSurvey->id_promos = $id_promos;
+
+        $ApplicantsTestSurvey->name = $request->input('name');
+        $ApplicantsTestSurvey->firstname = $request->input('firstname');
+        $ApplicantsTestSurvey->dateSurvey = $request->input('dateSurvey');
+        $ApplicantsTestSurvey->mail = $request->input('mail');
+
+        $ApplicantsTestSurvey->id_entranceTests = EntranceTestsSurvey::find(
+            intval(
+                $request->input('id_entranceTests')
+            )
+        )->id;
+
+        $ApplicantsTestSurvey->id_users = Users::find(
+            intval(
+                $request->input('id_users')
+            )
+        )->id;
+
+        $ApplicantsTestSurvey->id_promos = Promos::find(
+            intval(
+                $request->input('id_promos')
+            )
+        )->id;
+
         $ApplicantsTestSurvey->save();
         return responce()->json($ApplicantsTestSurvey);
     }
@@ -36,8 +53,8 @@ class TestsController extends Controller
         return response()->json($ApplicantsTestSurvey);
     }
 
-    public function editApplicantsTestSurvey($id,$column,$newValue){
-        $ApplicantsTestSurvey = DB::table('applicants_test_survey')->where('id','=',$id)->update([$column => $newValue]);
+    public function editApplicantsTestSurvey($id, Request $request){
+        $ApplicantsTestSurvey = DB::table('applicants_test_survey')->where('id','=',$id)->update([$request->input('column') => $request->input('newValue')]);
     }
 
 //ApplicantsAnswers
@@ -46,11 +63,22 @@ class TestsController extends Controller
         return response()->json($ApplicantsAnswers);
     }
 
-    public function createApplicantsAnswers($answer,$id_surveyAnswers,$id_applicantsTestSurvey){
+    public function createApplicantsAnswers(Request $request){
         $ApplicantsAnswers = new ApplicantsAnswers();
-        $ApplicantsAnswers->answer = $answer;
-        $ApplicantsAnswers->id_surveyAnswers = $id_surveyAnswers;
-        $ApplicantsAnswers->id_applicantsTestSurvey = $id_applicantsTestSurvey;
+        $ApplicantsAnswers->answer = $request->input('answer');
+
+        $ApplicantsAnswers->id_surveyAnswers = SurveyAnswers::find(
+            intval(
+                $request->input('id_surveyAnswers')
+            )
+        )->id;
+
+        $ApplicantsAnswers->id_applicantsTestSurvey = ApplicantsTestSurvey::find(
+            intval(
+                $request->input('id_applicantsTestSurvey')
+            )
+        )->id;
+
         $ApplicantsAnswers->save();
         return responce()->json($ApplicantsAnswers);
     }
@@ -66,11 +94,17 @@ class TestsController extends Controller
         return response()->json($SurveyAnswers);
     }
 
-    public function createSurveyAnswers($answer,$correctAnswer,$id_surveys){
+    public function createSurveyAnswers(Request $request){
         $SurveyAnswers = new SurveyAnswers();
-        $SurveyAnswers->answer = $answer;
-        $SurveyAnswers->correctAnswer = $correctAnswer;
-        $SurveyAnswers->id_surveys = $id_surveys;
+        $SurveyAnswers->answer = $request->input('answer');
+        $SurveyAnswers->correctAnswer = $request->input('correctAnswer');
+
+        $SurveyAnswers->id_surveys = Surveys::find(
+            intval(
+                $request->input('id_surveys')
+            )
+        )->id;
+
         $SurveyAnswers->save();
         return responce()->json($SurveyAnswers);
     }
@@ -80,8 +114,8 @@ class TestsController extends Controller
         return response()->json($SurveyAnswers);
     }
 
-    public function editSurveyAnswers($id,$column,$newValue){
-        $ApplicantsTestSurvey = DB::table('survey_answers')->where('id','=',$id)->update([$column => $newValue]);
+    public function editSurveyAnswers($id, Request $request){
+        $ApplicantsTestSurvey = DB::table('survey_answers')->where('id','=',$id)->update([$request->input('column') => $request->input('newValue')]);
     }
 
 //Surveys
@@ -90,9 +124,9 @@ class TestsController extends Controller
         return response()->json($Surveys);
     }
 
-    public function createSurveys($survey){
+    public function createSurveys(Request $request){
         $Surveys = new Surveys();
-        $Surveys->survey = $survey;
+        $Surveys->survey = $request->input('survey');
         $Surveys->save();
         return responce()->json($Surveys);
     }
@@ -102,8 +136,8 @@ class TestsController extends Controller
         return response()->json($Surveys);
     }
 
-    public function editSurvey($id,$column,$newValue){
-        $Surveys = DB::table('surveys')->where('id','=',$id)->update([$column => $newValue]);
+    public function editSurvey($id, Request $request){
+        $Surveys = DB::table('surveys')->where('id','=',$id)->update([$request->input('column') => $request->input('newValue')]);
     }
 
 //EntranceTestsSurvey
@@ -112,10 +146,20 @@ class TestsController extends Controller
         return response()->json($EntranceTestsSurvey);
     }
 
-    public function createEntranceTestsSurvey($id_entranceTests,$id_surveys){
+    public function createEntranceTestsSurvey(Request $request){
         $EntranceTestsSurvey = new EntranceTestsSurvey();
-        $EntranceTestsSurvey->id_entranceTests = $sid_entranceTestsurvey;
-        $EntranceTestsSurvey->id_surveys = $id_surveys;$EntranceTestsSurvey->save();
+
+        $EntranceTestsSurvey->id_entranceTests = EntranceTests::find(
+            intval(
+                $request->input('id_entranceTests')
+            )
+        )->id;
+
+        $EntranceTestsSurvey->id_surveys = Surveys::find(
+            intval(
+                $request->input('id_surveys')
+            )
+        )->id;
         return responce()->json($EntranceTestsSurvey);
     }
 
@@ -124,7 +168,7 @@ class TestsController extends Controller
         return response()->json($EntranceTestsSurvey);
     }
 
-    public function editEntranceTestsSurvey($id,$column,$newValue){
-        $Surveys = DB::table('surveys')->where('id','=',$id)->update([$column => $newValue]);
+    public function editEntranceTestsSurvey($id, Request $request){
+        $Surveys = DB::table('surveys')->where('id','=',$id)->update([$request->input('column') => $request->input('newValue')]);
     }
 }

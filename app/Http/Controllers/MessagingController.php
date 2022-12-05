@@ -9,11 +9,22 @@ use Illuminate\Support\Facades\DB;
 
 class MessagingController extends Controller
 {
-    public function addMessage($content,$id_receiver,$id_sender){
+    public function addMessage(Request $request){
         $Message = new Messages();
-        $Message->content = $content;
-        $Message->id_receiver = $id_receiver;
-        $Message->id_sender = $id_sender;
+        $Message->content = $request->input('content');
+
+        $Message->id_receiver = Users::find(
+            intval(
+                $request->input('id_receiver')
+            )
+        )->id;
+
+        $Message->id_sender = Users::find(
+            intval(
+                $request->input('id_sender')
+            )
+        )->id;
+
         return response()->json($Messages);
     }
 
@@ -22,8 +33,8 @@ class MessagingController extends Controller
         return response()->json($Message);
     }
 
-    public function editMessage($id,$column,$newValue){
-        $user = DB::table('messages')->where('id','=',$id)->update([$column => $newValue]);
+    public function editMessage($id, Request $request){
+        $user = DB::table('messages')->where('id','=',$id)->update([$request->input('column') => $request->input('newValue')]);
     }
 
     public function deleteMessage($id){
