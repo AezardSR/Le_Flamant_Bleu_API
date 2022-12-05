@@ -4,7 +4,9 @@ services:
   db:
     image: mariadb:10.1
     environment:
+      - MYSQL_ROOT_PASSWORD=laravel
       - MYSQL_USER=laravel
+      - MYSQL_DATABASE=laravel
       - MYSQL_PASSWORD=laravel
     ports:
       - "3306:3306"
@@ -24,7 +26,7 @@ services:
     image: phpmyadmin
     restart: always
     ports:
-      - "40001:80"
+      - "4000:80"
     environment:
-      - PMA_HOST=mariadb
+      - PMA_HOST=db
       - PMA_PORT=3306
