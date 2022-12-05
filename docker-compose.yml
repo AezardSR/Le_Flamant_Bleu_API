@@ -20,3 +20,12 @@ services:
       - '.:/app'
     depends_on:
       - db
+
+  phpmyadmin:
+    image: phpmyadmin
+    restart: always
+    ports:
+      - "4000:80"
+    environment:
+      - PMA_HOST=db
+      - PMA_PORT=3306
