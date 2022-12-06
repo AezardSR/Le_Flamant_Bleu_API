@@ -18,7 +18,7 @@ class CreateAppointments extends Migration
             $table->string('titleDetails', 50);
             $table->longText('descriptionDeatils')->nullable();
             $table->date('dateDetails');
-            $table->integer('id_receiver')->unsigned();
+            $table->integer('receiver_id')->unsigned();
             $table->integer('id_create')->unsigned();
             $table->integer('id_appointments_types')->unsigned();
             $table->timestamps();
@@ -26,7 +26,7 @@ class CreateAppointments extends Migration
 
         Schema::table('appointments', function ($table) {
             $table
-                ->foreign('id_receiver')
+                ->foreign('receiver_id')
                 ->references('id')
                 ->on('users');
             

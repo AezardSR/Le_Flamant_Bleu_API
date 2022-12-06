@@ -68,9 +68,9 @@ public function addEmergencyContacts(Request $request){
     $EmergencyContacts->firstname = $request->input('firstname');
     $EmergencyContacts->tel = $request->input('tel');
 
-    $EmergencyContacts->id_user = user::find(
+    $EmergencyContacts->user_id = user::find(
         intval(
-            $request->input('id_user')
+            $request->input('user_id')
         )
     )->id;
 

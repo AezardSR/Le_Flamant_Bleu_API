@@ -10,5 +10,5 @@ class Appointments extends Model
     use HasFactory;
 
     protected $table = 'appointments';
-    protected $fillable = ['titleDetails', 'descriptionDeatils', 'dateDetails', 'id_receiver', 'id_create', 'id_appointments_types'];
+    protected $fillable = ['titleDetails', 'descriptionDeatils', 'dateDetails', 'receiver_id', 'id_create', 'id_appointments_types'];
 }

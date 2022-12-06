@@ -17,13 +17,13 @@ class CreateRegistrationsTable extends Migration
             $table->increments('id',true);
             $table->date('dateRegistration');
             $table->longText('detailRegistration');
-            $table->integer('id_promos')->unsigned();
-            $table->integer('id_registrationTypes')->unsigned();
+            $table->integer('promos_id')->unsigned();
+            $table->integer('registrationTypes_id')->unsigned();
             $table->timestamps();
         });
         Schema::table('registrations',function ($table){
-            $table->foreign('id_promos')->references('id')->on('promos');
-            $table->foreign('id_registrationTypes')->references('id')->on('registration_types');
+            $table->foreign('promos_id')->references('id')->on('promos');
+            $table->foreign('registrationTypes_id')->references('id')->on('registration_types');
         });
     }
 

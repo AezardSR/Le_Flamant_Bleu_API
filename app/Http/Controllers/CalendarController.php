@@ -34,9 +34,9 @@ class CalendarController extends Controller
         $Appointments->descriptionDeatils = $request->input('descriptionDeatils');
         $Appointments->dateDetails = $request->input('dateDetails');
 
-        $Appointments->id_receiver = user::find(
+        $Appointments->receiver_id = user::find(
             intval(
-                $request->input('id_receiver')
+                $request->input('receiver_id')
             )
         )->id;
 
@@ -83,9 +83,9 @@ class CalendarController extends Controller
         $Appointments->descriptionDeatils = $request->input('descriptionDeatils');
         $Appointments->dateDetails = $request->input('dateDetails');
 
-        $Appointments->id_receiver = user::find(
+        $Appointments->receiver_id = user::find(
             intval(
-                $request->input('id_receiver')
+                $request->input('receiver_id')
             )
         )->id;
 

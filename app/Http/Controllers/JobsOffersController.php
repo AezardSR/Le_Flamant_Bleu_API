@@ -21,15 +21,15 @@ class JobsOffersController extends Controller
         $jobsOffers->description = $request->input('description');
         $jobsOffers->link = $request->input('link');
 
-        $jobsOffers->id_user = user::find(
+        $jobsOffers->user_id = user::find(
             intval(
-                $request->input('id_user')
+                $request->input('user_id')
             )
         )->id;
 
-        $jobsOffers->id_partnerContacts = PartnerContacts::find(
+        $jobsOffers->partnerContacts_id = PartnerContacts::find(
             intval(
-                $request->input('id_partnerContacts')
+                $request->input('partnerContacts_id')
             )
         )->id;
 
@@ -51,15 +51,15 @@ class JobsOffersController extends Controller
         $jobsOffers->description = $request->input('description');
         $jobsOffers->link = $request->input('link');
 
-        $jobsOffers->id_user = user::find(
+        $jobsOffers->user_id = user::find(
             intval(
-                $request->input('id_user')
+                $request->input('user_id')
             )
         )->id;
 
-        $jobsOffers->id_partnerContacts = PartnerContacts::find(
+        $jobsOffers->partnerContacts_id = PartnerContacts::find(
             intval(
-                $request->input('id_partnerContacts')
+                $request->input('partnerContacts_id')
             )
         )->id;
 

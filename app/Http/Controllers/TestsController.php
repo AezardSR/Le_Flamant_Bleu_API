@@ -36,15 +36,15 @@ class TestsController extends Controller
             )
         )->id;
 
-        $ApplicantsTestSurvey->id_user = user::find(
+        $ApplicantsTestSurvey->user_id = user::find(
             intval(
-                $request->input('id_user')
+                $request->input('user_id')
             )
         )->id;
 
-        $ApplicantsTestSurvey->id_promos = Promos::find(
+        $ApplicantsTestSurvey->promos_id = Promos::find(
             intval(
-                $request->input('id_promos')
+                $request->input('promos_id')
             )
         )->id;
 
@@ -53,7 +53,7 @@ class TestsController extends Controller
     }
 
     public function getOneApplicantsTestSurvey($id){
-        $ApplicantsTestSurvey = DB::table('applicants_test_survey')->select('name','firstname','dateSurvey','mail','id_entranceTests','id_user','id_promos')->where('id','=', $id)->get();
+        $ApplicantsTestSurvey = DB::table('applicants_test_survey')->select('name','firstname','dateSurvey','mail','id_entranceTests','user_id','promos_id')->where('id','=', $id)->get();
         return response()->json($ApplicantsTestSurvey);
     }
 

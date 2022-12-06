@@ -24,15 +24,15 @@ class RegistrationController extends Controller
         $registration->dateRegistration = $request->input('dateRegistration');
         $registration->detailRegistration = $request->input('detailRegistration');
 
-        $registration->id_promos = Promos::find(
+        $registration->promos_id = Promos::find(
             intval(
-                $request->input('id_promos')
+                $request->input('promos_id')
             )
         )->id;
 
-        $registration->id_registrationTypes = RegistrationsTypes::find(
+        $registration->registrationTypes_id = RegistrationsTypes::find(
             intval(
-                $request->input('id_registrationTypes')
+                $request->input('registrationTypes_id')
             )
         )->id;
 
@@ -46,7 +46,7 @@ class RegistrationController extends Controller
     }
 
     public function getOneRegistration($id){
-        $registration = DB::table('registrations')->select('dateRegistration','detailRegistration','id_promos','id_registrationTypes')->where('id','=', $id)->get();
+        $registration = DB::table('registrations')->select('dateRegistration','detailRegistration','promos_id','registrationTypes_id')->where('id','=', $id)->get();
         return response()->json($registration);
     }
 
@@ -54,23 +54,23 @@ class RegistrationController extends Controller
         $registration = DB::table('registrations')->where('id','=',$id)->update([$request->input('column') => $request->input('newValue')]);
     }
 
-    public function getSignatureList($id_registrations){
-        $signature = DB::table('signatures')->select('id_user','id_registrations','date')->where('id_registrations','=',$id_registrations)->get();
+    public function getSignatureList($registrations_id){
+        $signature = DB::table('signatures')->select('user_id','registrations_id','date')->where('registrations_id','=',$registrations_id)->get();
         return response()->json($signature);
     }
     
     public function addSignature(Request $request){
         $signature = new Signatures();
 
-        $signature->id_user = user::find(
+        $signature->user_id = user::find(
             intval(
-                $request->input('id_user')
+                $request->input('user_id')
             )
         )->id;
 
-        $signature->id_registrations = Registrations::find(
+        $signature->registrations_id = Registrations::find(
             intval(
-                $request->input('id_registrations')
+                $request->input('registrations_id')
             )
         )->id;
 

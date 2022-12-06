@@ -10,5 +10,5 @@ class Registrations extends Model
     use HasFactory;
 
     protected $table = 'registrations';
-    protected $fillable = ['dateRegistration', 'detailRegistration' ,'id_promos','id_registrationTypes' ];
+    protected $fillable = ['dateRegistration', 'detailRegistration' ,'promos_id','registrationTypes_id' ];
 }

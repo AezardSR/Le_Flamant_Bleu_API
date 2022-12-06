@@ -15,19 +15,19 @@ class CreateModulesCategoriesTable extends Migration
     {
         Schema::create('modules_categories', function (Blueprint $table) {
             $table->increments('id',true);
-            $table->integer('id_categories')->unsigned();
-            $table->integer('id_modules')->unsigned();
+            $table->integer('categories_id')->unsigned();
+            $table->integer('modules_id')->unsigned();
             $table->timestamps();
         });
 
         Schema::table('modules_categories', function ($table) {
             $table
-            ->foreign('id_categories')
+            ->foreign('categories_id')
             ->references('id')
             ->on('categories');
 
             $table
-            ->foreign('id_modules')
+            ->foreign('modules_id')
             ->references('id')
             ->on('modules');
         });

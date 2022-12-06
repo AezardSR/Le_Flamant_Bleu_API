@@ -93,11 +93,11 @@ Route::put('/PromoStudent/{id}/{column}/{newValue}', [PromoController::class, 'e
 
 Route::get('/PromoTeachers', [PromoController::class, 'getPromoTeachersList']);
 Route::post('/PromoTeacher', [PromoController::class, 'AddTeacherToPromo']);
-Route::get('/PromoTeacher/{id_promos}', [PromoController::class, 'getPromoTeachers']);
+Route::get('/PromoTeacher/{promos_id}', [PromoController::class, 'getPromoTeachers']);
 Route::put('/PromoTeacher/{id}', [PromoController::class, 'editPromoTeacher']);
 
 Route::get('/PromoCalendars', [PromoController::class, 'getPromoCalendarList']);
-Route::post('/PromoCalendar/create/{startDate}/{endDate}/{id_promos}', [PromoController::class, 'AddPromoCalendar']);
+Route::post('/PromoCalendar/create/{startDate}/{endDate}/{promos_id}', [PromoController::class, 'AddPromoCalendar']);
 	
 // routes pour les questions
 Route::get('/questions/{id}', [QuestionsController::class, 'viewQuestion']);

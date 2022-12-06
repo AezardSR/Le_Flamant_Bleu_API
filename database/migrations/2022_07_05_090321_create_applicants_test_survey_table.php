@@ -20,14 +20,14 @@ class CreateApplicantsTestSurveyTable extends Migration
             $table->date('dateSurvey');
             $table->string('mail',255);
             $table->integer('id_entranceTests')->unsigned();
-            $table->integer('id_user')->unsigned()->nullable();
-            $table->integer('id_promos')->unsigned();
+            $table->integer('user_id')->unsigned()->nullable();
+            $table->integer('promos_id')->unsigned();
             $table->timestamps();
         });
         Schema::table('applicants_test_survey',function ($table){
             $table->foreign('id_entranceTests')->references('id')->on('entrance_tests');
-            $table->foreign('id_user')->references('id')->on('users');
-            $table->foreign('id_promos')->references('id')->on('promos');
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('promos_id')->references('id')->on('promos');
         });
     }
 

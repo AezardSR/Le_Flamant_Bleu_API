@@ -43,9 +43,9 @@ class LessonController extends Controller
         $lesson->name = $request->input('name');
         $lesson->contenu = $request->input('contenu');
 
-        $lesson->id_parts = Parts::find(
+        $lesson->parts_id = Parts::find(
             intval(
-                $request->input('id_parts')
+                $request->input('parts_id')
             )
         )->id;
 
@@ -58,9 +58,9 @@ class LessonController extends Controller
         $exercice->name = $request->input('name');
         $exercice->contenu = $request->input('contenu');
 
-        $exercice->id_parts = Parts::find(
+        $exercice->parts_id = Parts::find(
             intval(
-                $request->input('id_parts')
+                $request->input('parts_id')
             )
         )->id;
         
@@ -78,15 +78,15 @@ class LessonController extends Controller
     public function addModulesCategories(Request $request) {
         $moduleCategorie = new ModulesCategories();
 
-        $moduleCategorie->id_categories = Categories::find(
+        $moduleCategorie->categories_id = Categories::find(
             intval(
-                $request->input('id_categories')
+                $request->input('categories_id')
             )
         )->id;
 
-        $moduleCategorie->id_modules = Modules::find(
+        $moduleCategorie->modules_id = Modules::find(
             intval(
-                $request->input('id_modules')
+                $request->input('modules_id')
             )
         )->id;
         
@@ -97,15 +97,15 @@ class LessonController extends Controller
     public function addModulesClass(Request $request) {
         $moduleClasse = new ModulesClass();
 
-        $moduleCategorie->id_classes = Classes::find(
+        $moduleCategorie->classes_id = Classes::find(
             intval(
-                $request->input('id_classes')
+                $request->input('classes_id')
             )
         )->id;
 
-        $moduleCategorie->id_modules = Modules::find(
+        $moduleCategorie->modules_id = Modules::find(
             intval(
-                $request->input('id_modules')
+                $request->input('modules_id')
             )
         )->id;
 
@@ -176,9 +176,9 @@ class LessonController extends Controller
         $lesson->name = $request->input('name');
         $lesson->contenu = $request->input('contenu');
 
-        $lesson->id_parts = Parts::find(
+        $lesson->parts_id = Parts::find(
             intval(
-                $request->input('id_parts')
+                $request->input('parts_id')
             )
         )->id;
 
@@ -191,9 +191,9 @@ class LessonController extends Controller
         $exercice->name = $request->input('name');
         $exercice->contenu = $request->input('contenu');
 
-        $exercice->id_parts = Parts::find(
+        $exercice->parts_id = Parts::find(
             intval(
-                $request->input('id_parts')
+                $request->input('parts_id')
             )
         )->id;
 
@@ -211,15 +211,15 @@ class LessonController extends Controller
     public function changeModulesCategories($id, Request $request) {
         $moduleCategorie = ModulesCategories::find($id);
 
-        $moduleCategorie->id_categories = Categories::find(
+        $moduleCategorie->categories_id = Categories::find(
             intval(
-                $request->input('id_categories')
+                $request->input('categories_id')
             )
         )->id;
 
-        $moduleCategorie->id_modules = Modules::find(
+        $moduleCategorie->modules_id = Modules::find(
             intval(
-                $request->input('id_modules')
+                $request->input('modules_id')
             )
         )->id;
 
@@ -230,15 +230,15 @@ class LessonController extends Controller
     public function changeModulesClass($id, Request $request) {
         $moduleClasse = ModulesClass::find($id);
 
-        $moduleClasse->id_classes = Classes::find(
+        $moduleClasse->classes_id = Classes::find(
             intval(
-                $request->input('id_classes')
+                $request->input('classes_id')
             )
         )->id;
 
-        $moduleClasse->id_modules = Modules::find(
+        $moduleClasse->modules_id = Modules::find(
             intval(
-                $request->input('id_modules')
+                $request->input('modules_id')
             )
         )->id;
 
