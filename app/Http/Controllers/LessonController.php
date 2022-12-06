@@ -262,7 +262,7 @@ class LessonController extends Controller
 
     public function getLessonList()
     {
-        $lesson = Lesson::all();
+        $lesson = Classes::all();
         return response()->json($lesson);
     }
 
