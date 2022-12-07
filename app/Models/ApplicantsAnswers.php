@@ -11,6 +11,6 @@ class ApplicantsAnswers extends Model
 
     
     protected $table = 'applicants_anwsers';
-    protected $fillable = ['answer','id_surveyAnswers','id_applicantsTestSurvey'];
+    protected $fillable = ['answer','surveyAnswers_id','applicantsTestSurvey_id'];
 }
 

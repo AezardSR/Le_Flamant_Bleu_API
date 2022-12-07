@@ -16,11 +16,11 @@ class CreateAppointments extends Migration
         Schema::create('appointments', function (Blueprint $table) {
             $table->increments('id',true);
             $table->string('titleDetails', 50);
-            $table->longText('descriptionDeatils')->nullable();
+            $table->longText('descriptionDetails')->nullable();
             $table->date('dateDetails');
             $table->integer('receiver_id')->unsigned();
-            $table->integer('id_create')->unsigned();
-            $table->integer('id_appointments_types')->unsigned();
+            $table->integer('create_id')->unsigned();
+            $table->integer('appointments_types_id')->unsigned();
             $table->timestamps();
         });
 
@@ -31,12 +31,12 @@ class CreateAppointments extends Migration
                 ->on('users');
             
             $table
-                ->foreign('id_create')
+                ->foreign('create_id')
                 ->references('id')
                 ->on('users');
 
             $table
-                ->foreign('id_appointments_types')
+                ->foreign('appointments_types_id')
                 ->references('id')
                 ->on('appointments_types');
         });

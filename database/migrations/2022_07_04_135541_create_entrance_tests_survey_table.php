@@ -15,12 +15,12 @@ class CreateEntranceTestsSurveyTable extends Migration
     {
         Schema::create('entrance_tests_survey', function (Blueprint $table) {
             $table->increments('id',true);
-            $table->integer('id_entranceTests')->unsigned();
+            $table->integer('entranceTests_id')->unsigned();
             $table->integer('surveys_id')->unsigned();
             $table->timestamps();
         });
         Schema::table('entrance_tests_survey',function ($table){
-            $table->foreign('id_entranceTests')->references('id')->on('entrance_tests');
+            $table->foreign('entranceTests_id')->references('id')->on('entrance_tests');
             $table->foreign('surveys_id')->references('id')->on('surveys');
         });
     }

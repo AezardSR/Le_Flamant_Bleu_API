@@ -3,6 +3,17 @@
 namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 
+use App\Models\Answers;
+use App\Models\ApplicantsAnswers;
+use App\Models\ApplicantsTestSurvey;
+use App\Models\Appointments;
+use App\Models\AppointmentsTypes;
+use App\Models\Documents;
+use App\Models\EmergencyContacts;
+use App\Models\EntranceTests;
+use App\Models\EntranceTestsSurvey;
+use App\Models\Exercices;
+
 use App\Models\FormationsTypes;
 use App\Models\JobsOffers;
 use App\Models\ModulesCategories;
@@ -24,6 +35,10 @@ use App\Models\Questions;
 use App\Models\Parts;
 use App\Models\Modules;
 use App\Models\Messages;
+use App\Models\Classes;
+use App\Models\Categories;
+
+
 
 class DatabaseSeeder extends Seeder
 {
@@ -55,7 +70,18 @@ class DatabaseSeeder extends Seeder
         Messages::factory(5)->create();
         JobsOffers::factory(5)->create();
         FormationsTypes::factory(5)->create();
-        
-        
+        Exercices::factory(5)->create();
+        EntranceTestsSurvey::factory(5)->create();
+        EntranceTests::factory(5)->create();
+        EmergencyContacts::factory(5)->create();
+        Documents::factory(5)->create();
+        Classes::factory(5)->create();
+        Categories::factory(5)->create();
+        AppointmentsTypes::factory(5)->create();
+        Appointments::factory(5)->create();
+        ApplicantsTestSurvey::factory(5)->create();
+        ApplicantsAnswers::factory(5)->create();
+        Answers::factory(5)->create();
+
     }
 }
