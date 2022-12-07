@@ -10,9 +10,9 @@ class Exercices extends Model
     use HasFactory;
 
     protected $table = 'exercices';
-    protected $fillable = ['name', 'content', 'image', 'file', 'id_parts'];
+    protected $fillable = ['name', 'content', 'image', 'file'];
 
-    // public function part() {
-    //     return $this->hasOne(Parts::class);
-    // }
+    public function part() {
+        return $this->hasOne(Categories::class);
+    }
 }

@@ -19,15 +19,15 @@ class CreateExercicesTable extends Migration
             $table->longText('contenu')->nullable();
             $table->string('image', 255)->nullable();
             $table->string('file', 255)->nullable();
-            $table->integer('id_parts')->unsigned();
+            $table->integer('categorie_id')->unsigned();
             $table->timestamps();
         });
 
         Schema::table('exercices', function ($table) {
             $table
-                ->foreign('id_parts')
+                ->foreign('categorie_id')
                 ->references('id')
-                ->on('parts');
+                ->on('categories');
         });
     }
 

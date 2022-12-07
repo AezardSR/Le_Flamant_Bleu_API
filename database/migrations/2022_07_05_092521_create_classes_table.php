@@ -18,15 +18,15 @@ class CreateClassesTable extends Migration
             $table->string('name', 50);
             $table->longText('content');
             $table->integer('duration');
-            $table->integer('id_parts')->unsigned();
+            $table->integer('categorie_id')->unsigned();
             $table->timestamps();
         });
 
         Schema::table('classes', function ($table) {
             $table
-                ->foreign('id_parts')
+                ->foreign('categorie_id')
                 ->references('id')
-                ->on('parts');
+                ->on('categories');
         });
     }
 
