@@ -42,7 +42,8 @@ class LessonController extends Controller
     public function addLesson(Request $request) {
         $lesson = new Classes();
         $lesson->name = $request->input('name');
-        $lesson->contenu = $request->input('contenu');
+        $lesson->content = $request->input('content');
+        $lesson->duration = $request->input('duration');
 
         $lesson->parts_id = Parts::find(
             intval(
@@ -57,7 +58,9 @@ class LessonController extends Controller
     public function addExercice(Request $request) {
         $exercice = new Exercices();
         $exercice->name = $request->input('name');
-        $exercice->contenu = $request->input('contenu');
+        $exercice->content = $request->input('content');
+        $exercice->image = $request->input('image');
+        $exercice->file = $request->input('file');
 
         $exercice->parts_id = Parts::find(
             intval(
@@ -263,7 +266,7 @@ class LessonController extends Controller
 
     public function getLessonList()
     {
-        $lesson = Lesson::all();
+        $lesson = Classes::all();
         return response()->json($lesson);
     }
 
