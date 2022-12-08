@@ -16,7 +16,7 @@ class CreateExercicesTable extends Migration
         Schema::create('exercices', function (Blueprint $table) {
             $table->increments('id',true);
             $table->string('name', 50);
-            $table->longText('contenu')->nullable();
+            $table->longText('content')->nullable();
             $table->string('image', 255)->nullable();
             $table->string('file', 255)->nullable();
             $table->integer('categorie_id')->unsigned();
