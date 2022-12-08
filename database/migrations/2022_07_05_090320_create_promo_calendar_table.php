@@ -17,11 +17,11 @@ class CreatePromoCalendarTable extends Migration
             $table->increments('id',true);
             $table->date('startDate');
             $table->date('endDate');
-            $table->integer('id_promos')->unsigned();
+            $table->integer('promos_id')->unsigned();
             $table->timestamps();
         });
         Schema::table('promo_calendar',function ($table){
-            $table->foreign('id_promos')->references('id')->on('promos');
+            $table->foreign('promos_id')->references('id')->on('promos');
         });
     }
 

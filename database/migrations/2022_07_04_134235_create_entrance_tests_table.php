@@ -16,11 +16,11 @@ class CreateEntranceTestsTable extends Migration
         Schema::create('entrance_tests', function (Blueprint $table) {
             $table->increments('id',true);
             $table->string('name',30);
-            $table->integer('id_user')->unsigned();
+            $table->integer('user_id')->unsigned();
             $table->timestamps();
         });
         Schema::table('entrance_tests',function ($table){
-            $table->foreign('id_user')->references('id')->on('users');
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 

@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\user;
+use App\Models\User;
 use App\Models\Roles;
 use App\Models\Types;
 use App\Models\EmergencyContacts;
@@ -15,7 +15,7 @@ class UserController extends Controller
 {
     public function addUser(Request $request){
 
-        $user = new user();
+        $user = new User();
 
         $user->name = $request->input('name');
         $user->firstname = $request->input('firstname');
@@ -68,9 +68,9 @@ public function addEmergencyContacts(Request $request){
     $EmergencyContacts->firstname = $request->input('firstname');
     $EmergencyContacts->tel = $request->input('tel');
 
-    $EmergencyContacts->id_user = user::find(
+    $EmergencyContacts->user_id = user::find(
         intval(
-            $request->input('id_user')
+            $request->input('user_id')
         )
     )->id;
 

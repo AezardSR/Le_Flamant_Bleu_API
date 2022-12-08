@@ -10,5 +10,5 @@ class PromoCalendar extends Model
     use HasFactory;
 
     protected $table = 'promo_calendar';
-    protected $fillable = ['startDate','endDate','id_promos'];
+    protected $fillable = ['startDate','endDate','promos_id'];
 }

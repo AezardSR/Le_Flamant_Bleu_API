@@ -16,29 +16,29 @@ class CreateQuestionsTable extends Migration
         Schema::create('questions', function (Blueprint $table) {
             $table->increments('id',true);
             $table->longText('question');
-            $table->integer('id_classes')->unsigned();
-            $table->integer('id_user')->unsigned();
-            $table->integer('id_categories')->unsigned();
+            $table->integer('classes_id')->unsigned();
+            $table->integer('user_id')->unsigned();
+            $table->integer('categories_id')->unsigned();
             $table->timestamps();
         });
 
         Schema::table('questions', function ($table) {
             $table
-            ->foreign('id_user')
+            ->foreign('user_id')
             ->references('id')
             ->on('users');
         });
 
         Schema::table('questions', function ($table) {
             $table
-            ->foreign('id_classes')
+            ->foreign('classes_id')
             ->references('id')
             ->on('classes');
         });
 
         Schema::table('questions', function ($table) {
             $table
-            ->foreign('id_categories')
+            ->foreign('categories_id')
             ->references('id')
             ->on('categories');
         });

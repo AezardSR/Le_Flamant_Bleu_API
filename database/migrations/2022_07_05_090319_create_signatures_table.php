@@ -15,14 +15,14 @@ class CreateSignaturesTable extends Migration
     {
         Schema::create('signatures', function (Blueprint $table) {
             $table->increments('id',true);
-            $table->integer('id_user')->unsigned();
-            $table->integer('id_registrations')->unsigned();
+            $table->integer('user_id')->unsigned();
+            $table->integer('registrations_id')->unsigned();
             $table->date('date');
             $table->timestamps('');
         });
         Schema::table('signatures',function ($table){
-            $table->foreign('id_user')->references('id')->on('users');
-            $table->foreign('id_registrations')->references('id')->on('registrations');
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('registrations_id')->references('id')->on('registrations');
         });
     }
 

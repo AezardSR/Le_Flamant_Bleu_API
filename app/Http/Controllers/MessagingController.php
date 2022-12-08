@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Messages;
-
+use App\Models\User;
+use App\Models\Messages;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 
@@ -13,23 +14,23 @@ class MessagingController extends Controller
         $Message = new Messages();
         $Message->content = $request->input('content');
 
-        $Message->id_receiver = user::find(
+        $Message->receiver_id = user::find(
             intval(
-                $request->input('id_receiver')
+                $request->input('receiver_id')
             )
         )->id;
 
-        $Message->id_sender = user::find(
+        $Message->sender_id = user::find(
             intval(
-                $request->input('id_sender')
+                $request->input('sender_id')
             )
         )->id;
 
-        return response()->json($Messages);
+        return response()->json($Message);
     }
 
-    public function getChat($id_receiver,$id_sender){
-        $Message = DB::table('messages')->select('id_receiver','id_sender','content')->where('id_receiver','=', $id_receiver)->where('id_sender','=', $id_sender)->get();
+    public function getChat($receiver_id,$sender_id){
+        $Message = DB::table('messages')->select('receiver_id','sender_id','content')->where('receiver_id','=', $receiver_id)->where('sender_id','=', $sender_id)->get();
         return response()->json($Message);
     }
 

@@ -19,13 +19,13 @@ class CreatePromosTable extends Migration
             $table->date('startDate');
             $table->date('endDate');
             $table->integer('duration');
-            $table->integer('id_formationsTypes')->unsigned();
-            $table->integer('id_formationsFormats')->unsigned();
+            $table->integer('formationsTypes_id')->unsigned();
+            $table->integer('formationsFormats_id')->unsigned();
             $table->timestamps();
         });
         Schema::table('promos',function ($table){
-            $table->foreign('id_formationsTypes')->references('id')->on('formations_types');
-            $table->foreign('id_formationsFormats')->references('id')->on('formations_formats');
+            $table->foreign('formationsTypes_id')->references('id')->on('formations_types');
+            $table->foreign('formationsFormats_id')->references('id')->on('formations_formats');
         });
     }
 

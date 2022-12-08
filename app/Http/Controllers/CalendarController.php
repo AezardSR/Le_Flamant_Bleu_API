@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\AppointmentsTypes;
 use App\Models\Appointments;
 use Illuminate\Http\Request;
@@ -31,24 +32,24 @@ class CalendarController extends Controller
     public function addAppointments(Request $request) {
         $Appointments = new Appointments();
         $Appointments->titleDetails = $request->input('titleDetails');
-        $Appointments->descriptionDeatils = $request->input('descriptionDeatils');
+        $Appointments->descriptionDetails = $request->input('descriptionDetails');
         $Appointments->dateDetails = $request->input('dateDetails');
 
-        $Appointments->id_receiver = user::find(
+        $Appointments->receiver_id = User::find(
             intval(
-                $request->input('id_receiver')
+                $request->input('receiver_id')
             )
         )->id;
 
-        $Appointments->id_create = user::find(
+        $Appointments->create_id = User::find(
             intval(
-                $request->input('id_create')
+                $request->input('create_id')
             )
         )->id;
 
-        $Appointments->id_appointments_types = AppointmentsTypes::find(
+        $Appointments->appointments_types_id = AppointmentsTypes::find(
             intval(
-                $request->input('id_appointments_types')
+                $request->input('appointments_types_id')
             )
         )->id;
 
@@ -80,24 +81,24 @@ class CalendarController extends Controller
     public function changeAppointments($id, Request $request) {
         $Appointments = Appointments::find($id);
         $Appointments->titleDetails = $request->input('titleDetails');
-        $Appointments->descriptionDeatils = $request->input('descriptionDeatils');
+        $Appointments->descriptionDetails = $request->input('descriptionDetails');
         $Appointments->dateDetails = $request->input('dateDetails');
 
-        $Appointments->id_receiver = user::find(
+        $Appointments->receiver_id = User::find(
             intval(
-                $request->input('id_receiver')
+                $request->input('receiver_id')
             )
         )->id;
 
-        $Appointments->id_create = user::find(
+        $Appointments->create_id = User::find(
             intval(
-                $request->input('id_create')
+                $request->input('create_id')
             )
         )->id;
 
-        $Appointments->id_appointments_types = AppointmentsTypes::find(
+        $Appointments->appointments_types_id = AppointmentsTypes::find(
             intval(
-                $request->input('id_appointments_types')
+                $request->input('appointments_types_id')
             )
         )->id;
         

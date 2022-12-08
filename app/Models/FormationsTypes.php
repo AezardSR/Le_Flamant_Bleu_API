@@ -9,7 +9,7 @@ class FormationsTypes extends Model
 {
     use HasFactory;
 
-    protected $table = 'formationsTypes';
+    protected $table = 'formations_types';
     protected $fillable = ['name'];
 
 }

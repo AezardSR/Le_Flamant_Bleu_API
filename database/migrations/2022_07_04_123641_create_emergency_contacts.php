@@ -18,13 +18,13 @@ class CreateEmergencyContacts extends Migration
             $table->string('name', 50);
             $table->string('firstname', 50);
             $table->string('tel', 10);
-            $table->integer('id_user')->unsigned();
+            $table->integer('user_id')->unsigned();
             $table->timestamps();
         });
 
         Schema::table('emergency_contacts', function ($table) {
             $table
-                ->foreign('id_user')
+                ->foreign('user_id')
                 ->references('id')
                 ->on('users');
         });

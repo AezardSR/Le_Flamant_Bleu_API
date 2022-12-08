@@ -10,5 +10,5 @@ class JobsOffers extends Model
     use HasFactory;
 
     protected $table = 'jobs_offers';
-    protected $fillable = ['name', 'dateOffers', 'description', 'link', 'id_user', 'id_partnerContacts'];
+    protected $fillable = ['name', 'dateOffers', 'description', 'link', 'user_id', 'partnerContacts_id'];
 }

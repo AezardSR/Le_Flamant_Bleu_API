@@ -8,6 +8,7 @@ use App\Models\PromoTeachers;
 use App\Models\PromoCalendar;
 use App\Models\FormationsTypes;
 use App\Models\FormationsFormats;
+use App\Models\User;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -16,7 +17,7 @@ class PromoController extends Controller
 {
     public function getPromosList(){
         $promo = Promos::all();
-        return response()->json($promos);
+        return response()->json($promo);
     }
 
     public function createPromo(Request $request){
@@ -27,24 +28,24 @@ class PromoController extends Controller
         $promo->endDate = $request->input('endDate');
         $promo->duration = $request->input('duration');
 
-        $promo->id_formationsTypes = FormationsTypes::find(
+        $promo->formationsTypes_id = FormationsTypes::find(
             intval(
-                $request->input('id_formationsTypes')
+                $request->input('formationsTypes_id')
             )
         )->id;
 
-        $promo->id_formationsFormats = FormationsFormats::find(
+        $promo->formationsFormats_id = FormationsFormats::find(
             intval(
-                $request->input('id_formationsFormats')
+                $request->input('formationsFormats_id')
             )
         )->id;
 
         $promo->save();
-        return responce()->json($promo);
+        return response()->json($promo);
     }
 
     public function getOnePromo($id){
-        $promo = DB::table('promos')->select('name','startDate','endDate','duration','id_formationsTypes','id_formationsFormats')->where('id','=', $id)->get();
+        $promo = DB::table('promos')->select('name','startDate','endDate','duration','formationsTypes_id','formationsFormats_id')->where('id','=', $id)->get();
         return response()->json($promo);
     }
 
@@ -57,28 +58,28 @@ class PromoController extends Controller
         return response()->json($promoStudent);
     }
 
-    public function getPromoStudents($id_promos){
-        $promoStudent = DB::table('promo_students')->select('id_students')->where('id_promos','=', $id_promos)->get();
+    public function getPromoStudents($promos_id){
+        $promoStudent = DB::table('promo_students')->select('students_id')->where('promos_id','=', $promos_id)->get();
         return response()->json($promoStudent);
     }
 
     public function AddStudentToPromo(Request $request){
         $promoStudent = new PromoStudents();
 
-        $promoStudent->id_students = user::find(
+        $promoStudent->students_id = User::find(
             intval(
-                $request->input('id_students')
+                $request->input('students_id')
             )
         )->id;
 
-        $promoStudent->id_promos = Promos::find(
+        $promoStudent->promos_id = Promos::find(
             intval(
-                $request->input('id_promos')
+                $request->input('promos_id')
             )
         )->id;
 
         $promoStudent->save();
-        return responce()->json($promoStudent);
+        return response()->json($promoStudent);
     }
 
     public function editPromoStudent($id, Request $request){
@@ -90,28 +91,28 @@ class PromoController extends Controller
         return response()->json($promoTeacher);
     }
 
-    public function getPromoTeachers($id_promos){
-        $promoTeacher = DB::table('promo_teachers')->select('id_teachers')->where('id_promos','=', $id_promos)->get();
+    public function getPromoTeachers($promos_id){
+        $promoTeacher = DB::table('promo_teachers')->select('teachers_id')->where('promos_id','=', $promos_id)->get();
         return response()->json($promoTeacher);
     }
 
     public function AddTeacherToPromo(Request $request){
         $promoTeacher = new PromoTeachers();
 
-        $promoTeacher->id_teachers = user::find(
+        $promoTeacher->teachers_id = user::find(
             intval(
-                $request->input('id_teachers')
+                $request->input('teachers_id')
             )
         )->id;
         
-        $promoTeacher->id_promos = Promos::find(
+        $promoTeacher->promos_id = Promos::find(
             intval(
-                $request->input('id_promos')
+                $request->input('promos_id')
             )
         )->id;
 
         $promoTeacher->save();
-        return responce()->json($promoTeacher);
+        return response()->json($promoTeacher);
     }
 
     public function editPromoTeacher($id, Request $request){
@@ -124,8 +125,8 @@ class PromoController extends Controller
         return response()->json($promoCalendar);
     }
 
-    public function getPromoCalendar($id_promos){
-        $promoCalendar = DB::table('promo_calendar')->select('startDate','endDate')->where('id_promos','=', $id_promos)->get();
+    public function getPromoCalendar($promos_id){
+        $promoCalendar = DB::table('promo_calendar')->select('startDate','endDate')->where('promos_id','=', $promos_id)->get();
         return response()->json($promoCalendar);
     }
 
@@ -134,14 +135,14 @@ class PromoController extends Controller
         $promoCalendar->startDate = $request->input('startDate');
         $promoCalendar->endDate = $request->input('endDate');
 
-        $promoCalendar->id_promos = Promos::find(
+        $promoCalendar->promos_id = Promos::find(
             intval(
-                $request->input('id_promos')
+                $request->input('promos_id')
             )
         )->id;
 
         $promoCalendar->save();
-        return responce()->json($promoCalendar);
+        return response()->json($promoCalendar);
     }
 
     public function editPromoCalendar($id, Request $request){

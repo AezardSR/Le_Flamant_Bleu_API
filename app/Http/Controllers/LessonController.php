@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Classes;
 use App\Models\Modules;
 use App\Models\Exercices;
+use App\Models\Lesson;
 use App\Models\Parts;
 use App\Models\Categories;
 use App\Models\ModulesCategories;
@@ -44,9 +45,9 @@ class LessonController extends Controller
         $lesson->content = $request->input('content');
         $lesson->duration = $request->input('duration');
 
-        $lesson->categorie_id = Categories::find(
+        $lesson->parts_id = Parts::find(
             intval(
-                $request->input('categorie_id')
+                $request->input('parts_id')
             )
         )->id;
 
@@ -61,9 +62,9 @@ class LessonController extends Controller
         $exercice->image = $request->input('image');
         $exercice->file = $request->input('file');
 
-        $exercice->categorie_id = Categories::find(
+        $exercice->parts_id = Parts::find(
             intval(
-                $request->input('categorie_id')
+                $request->input('parts_id')
             )
         )->id;
         
@@ -81,15 +82,15 @@ class LessonController extends Controller
     public function addModulesCategories(Request $request) {
         $moduleCategorie = new ModulesCategories();
 
-        $moduleCategorie->id_categories = Categories::find(
+        $moduleCategorie->categories_id = Categories::find(
             intval(
-                $request->input('id_categories')
+                $request->input('categories_id')
             )
         )->id;
 
-        $moduleCategorie->id_modules = Modules::find(
+        $moduleCategorie->modules_id = Modules::find(
             intval(
-                $request->input('id_modules')
+                $request->input('modules_id')
             )
         )->id;
         
@@ -100,15 +101,15 @@ class LessonController extends Controller
     public function addModulesClass(Request $request) {
         $moduleClasse = new ModulesClass();
 
-        $moduleCategorie->id_classes = Classes::find(
+        $moduleClasse->classes_id = Classes::find(
             intval(
-                $request->input('id_classes')
+                $request->input('classes_id')
             )
         )->id;
 
-        $moduleCategorie->id_modules = Modules::find(
+        $moduleClasse->modules_id = Modules::find(
             intval(
-                $request->input('id_modules')
+                $request->input('modules_id')
             )
         )->id;
 
@@ -179,9 +180,9 @@ class LessonController extends Controller
         $lesson->name = $request->input('name');
         $lesson->contenu = $request->input('contenu');
 
-        $lesson->id_parts = Parts::find(
+        $lesson->parts_id = Parts::find(
             intval(
-                $request->input('id_parts')
+                $request->input('parts_id')
             )
         )->id;
 
@@ -194,9 +195,9 @@ class LessonController extends Controller
         $exercice->name = $request->input('name');
         $exercice->contenu = $request->input('contenu');
 
-        $exercice->id_parts = Parts::find(
+        $exercice->parts_id = Parts::find(
             intval(
-                $request->input('id_parts')
+                $request->input('parts_id')
             )
         )->id;
 
@@ -214,15 +215,15 @@ class LessonController extends Controller
     public function changeModulesCategories($id, Request $request) {
         $moduleCategorie = ModulesCategories::find($id);
 
-        $moduleCategorie->id_categories = Categories::find(
+        $moduleCategorie->categories_id = Categories::find(
             intval(
-                $request->input('id_categories')
+                $request->input('categories_id')
             )
         )->id;
 
-        $moduleCategorie->id_modules = Modules::find(
+        $moduleCategorie->modules_id = Modules::find(
             intval(
-                $request->input('id_modules')
+                $request->input('modules_id')
             )
         )->id;
 
@@ -233,15 +234,15 @@ class LessonController extends Controller
     public function changeModulesClass($id, Request $request) {
         $moduleClasse = ModulesClass::find($id);
 
-        $moduleClasse->id_classes = Classes::find(
+        $moduleClasse->classes_id = Classes::find(
             intval(
-                $request->input('id_classes')
+                $request->input('classes_id')
             )
         )->id;
 
-        $moduleClasse->id_modules = Modules::find(
+        $moduleClasse->modules_id = Modules::find(
             intval(
-                $request->input('id_modules')
+                $request->input('modules_id')
             )
         )->id;
 
@@ -253,7 +254,7 @@ class LessonController extends Controller
     //Get
     public function getModuleList()
     {
-        $module = Module::all();
+        $module = Modules::all();
         return response()->json($module);
     }
 

@@ -159,8 +159,8 @@ Route::patch('/PromoStudent/{id}/{column}/{newValue}', [PromoController::class, 
 
 Route::get('/PromoTeachers', [PromoController::class, 'getPromoTeachersList']);
 Route::post('/PromoTeacher', [PromoController::class, 'AddTeacherToPromo']);
-Route::get('/PromoTeacher/{id_promos}', [PromoController::class, 'getPromoTeachers']);
-Route::patch('/PromoTeacher/{id}', [PromoController::class, 'editPromoTeacher']);
+Route::get('/PromoTeacher/{promos_id}', [PromoController::class, 'getPromoTeachers']);
+Route::put('/PromoTeacher/{id}', [PromoController::class, 'editPromoTeacher']);
 
 Route::get('/PromoCalendars', [PromoController::class, 'getPromoCalendarList']);
 Route::post('/PromoCalendar/create/{startDate}/{endDate}/{id_promos}', [PromoController::class, 'AddPromoCalendar']);
