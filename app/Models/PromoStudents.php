@@ -10,5 +10,5 @@ class PromoStudents extends Model
     use HasFactory;
 
     protected $table = 'promo_students';
-    protected $fillable = ['id_students','id_promos'];
+    protected $fillable = ['students_id','promos_id'];
 }

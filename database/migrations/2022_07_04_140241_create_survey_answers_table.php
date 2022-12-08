@@ -17,11 +17,11 @@ class CreateSurveyanswersTable extends Migration
             $table->increments('id',true);
             $table->longText('answer');
             $table->boolean('correctAnswer');
-            $table->integer('id_surveys')->unsigned();
+            $table->integer('surveys_id')->unsigned();
             $table->timestamps();
         });
         Schema::table('survey_answers',function ($table){
-            $table->foreign('id_surveys')->references('id')->on('surveys');
+            $table->foreign('surveys_id')->references('id')->on('surveys');
         });
     }
 

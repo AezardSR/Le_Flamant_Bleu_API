@@ -15,13 +15,13 @@ class CreatePromoTeachersTable extends Migration
     {
         Schema::create('promo_teachers', function (Blueprint $table) {
             $table->increments('id',true);
-            $table->integer('id_teachers')->unsigned();
-            $table->integer('id_promos')->unsigned();
+            $table->integer('teachers_id')->unsigned();
+            $table->integer('promos_id')->unsigned();
             $table->timestamps();
         });        
         Schema::table('promo_teachers',function ($table){
-            $table->foreign('id_teachers')->references('id')->on('users');
-            $table->foreign('id_promos')->references('id')->on('promos');
+            $table->foreign('teachers_id')->references('id')->on('users');
+            $table->foreign('promos_id')->references('id')->on('promos');
         });
     }
 

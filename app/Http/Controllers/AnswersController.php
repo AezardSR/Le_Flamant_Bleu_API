@@ -14,15 +14,15 @@ class AnswersController extends Controller
         $answers = new Answers();
         $answers->anwser = $request->input('anwser');
 
-        $answers->id_questions = Questions::find(
+        $answers->questions_id = Questions::find(
             intval(
-                $request->input('id_questions')
+                $request->input('questions_id')
             )
         )->id;
 
-        $answers->id_user = user::find(
+        $answers->user_id = user::find(
             intval(
-                $request->input('id_user')
+                $request->input('user_id')
             )
         )->id;
 
@@ -32,7 +32,7 @@ class AnswersController extends Controller
 
     public function viewAnswer($id)
     {
-        $answers = DB::table('answers')->select('answer', 'id_questions', 'id_user')->where('id','=', $id)->get();
+        $answers = DB::table('answers')->select('answer', 'questions_id', 'user_id')->where('id','=', $id)->get();
         return response()->json($answers);
     }
 
@@ -54,15 +54,15 @@ class AnswersController extends Controller
         $answers = Answers::find($id);
         $answers->anwser = $request->input('anwser');
 
-        $answers->id_questions = Questions::find(
+        $answers->questions_id = Questions::find(
             intval(
-                $request->input('id_questions')
+                $request->input('questions_id')
             )
         )->id;
 
-        $answers->id_user = user::find(
+        $answers->user_id = user::find(
             intval(
-                $request->input('id_user')
+                $request->input('user_id')
             )
         )->id;
         $answers->save();

@@ -16,16 +16,16 @@ class CreateExercicesTable extends Migration
         Schema::create('exercices', function (Blueprint $table) {
             $table->increments('id',true);
             $table->string('name', 50);
-            $table->longText('contenu')->nullable();
+            $table->longText('content')->nullable();
             $table->string('image', 255)->nullable();
             $table->string('file', 255)->nullable();
-            $table->integer('id_parts')->unsigned();
+            $table->integer('parts_id')->unsigned();
             $table->timestamps();
         });
 
         Schema::table('exercices', function ($table) {
             $table
-                ->foreign('id_parts')
+                ->foreign('parts_id')
                 ->references('id')
                 ->on('parts');
         });

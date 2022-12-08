@@ -16,19 +16,19 @@ class CreateAnswersTable extends Migration
         Schema::create('answers', function (Blueprint $table) {
             $table->increments('id',true);
             $table->longText('answer');
-            $table->integer('id_user')->unsigned();
-            $table->integer('id_questions')->unsigned();
+            $table->integer('user_id')->unsigned();
+            $table->integer('questions_id')->unsigned();
             $table->timestamps();
         });
 
         Schema::table('answers', function ($table) {
             $table
-            ->foreign('id_user')
+            ->foreign('user_id')
             ->references('id')
             ->on('users');
 
             $table
-            ->foreign('id_questions')
+            ->foreign('questions_id')
             ->references('id')
             ->on('questions');
         });

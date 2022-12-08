@@ -19,19 +19,19 @@ class CreateJobsOffers extends Migration
             $table->date('dateOffers')->nullable();
             $table->longText('description');
             $table->string('link', 255)->nullable();
-            $table->integer('id_user')->unsigned()->nullable();
-            $table->integer('id_partnerContacts')->unsigned()->nullable();
+            $table->integer('user_id')->unsigned()->nullable();
+            $table->integer('partnerContacts_id')->unsigned()->nullable();
             $table->timestamps();
         });
 
         Schema::table('jobs_offers', function ($table) {
             $table
-                ->foreign('id_user')
+                ->foreign('user_id')
                 ->references('id')
                 ->on('users');
 
             $table
-                ->foreign('id_partnerContacts')
+                ->foreign('partnerContacts_id')
                 ->references('id')
                 ->on('partner_contacts');
         });

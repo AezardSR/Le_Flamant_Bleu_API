@@ -16,19 +16,19 @@ class CreateMessages extends Migration
         Schema::create('messages', function (Blueprint $table) {
             $table->increments('id',true);
             $table->longText('content');
-            $table->integer('id_receiver')->unsigned();
-            $table->integer('id_sender')->unsigned();
+            $table->integer('receiver_id')->unsigned();
+            $table->integer('sender_id')->unsigned();
             $table->timestamps();
         });
 
         Schema::table('messages', function ($table) {
             $table
-                ->foreign('id_receiver')
+                ->foreign('receiver_id')
                 ->references('id')
                 ->on('users');
 
             $table
-                ->foreign('id_sender')
+                ->foreign('sender_id')
                 ->references('id')
                 ->on('users');
         });
