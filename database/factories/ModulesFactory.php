@@ -3,13 +3,16 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Illuminate\Support\Str;
-use App\Models\FormationsTypes;
-
-
+use App\Models\Modules;
 
 class ModulesFactory extends Factory
 {
+    /**
+     * The name of the factory's corresponding model.
+     *
+     * @var string
+     */
+    protected $model = Modules::class;
     /**
      * Define the model's default state.
      *
@@ -18,8 +21,7 @@ class ModulesFactory extends Factory
     public function definition()
     {
         return [
-            'name' => $this->faker->word(),
-            'formationsTypes_id' =>FormationsTypes::all()->random()->id,
+            'name' => $this->faker->word()
         ];
     }
 }

@@ -4,8 +4,8 @@ namespace Database\Factories;
 
 use App\Models\Questions;
 use App\Models\User;
+use App\Models\Answers;
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Illuminate\Support\Str;
 
 class AnswersFactory extends Factory
 {
@@ -14,7 +14,7 @@ class AnswersFactory extends Factory
      *
      * @var string
      */
-    protected $model = User::class;
+    protected $model = Answers::class;
 
     /**
      * Define the model's default state.

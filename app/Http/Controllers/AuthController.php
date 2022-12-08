@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\user;
+use App\Models\User;
 use App\Models\Roles;
 use App\Models\Types;
 Use JWTAuth;

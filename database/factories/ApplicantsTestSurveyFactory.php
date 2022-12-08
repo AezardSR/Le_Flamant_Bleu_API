@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\ApplicantsTestSurvey;
 use App\Models\EntranceTests;
 use App\Models\User;
 use App\Models\Promos;
@@ -15,7 +16,7 @@ class ApplicantsTestSurveyFactory extends Factory
      *
      * @var string
      */
-    protected $model = User::class;
+    protected $model = ApplicantsTestSurvey::class;
 
     /**
      * Define the model's default state.

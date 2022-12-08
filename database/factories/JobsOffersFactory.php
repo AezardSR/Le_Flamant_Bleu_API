@@ -2,14 +2,20 @@
 
 namespace Database\Factories;
 
+use App\Models\JobsOffers;
 use App\Models\PartnerContacts;
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Illuminate\Support\Str;
 use App\Models\User;
 
 
 class JobsOffersFactory extends Factory
 {
+    /**
+     * The name of the factory's corresponding model.
+     *
+     * @var string
+     */
+    protected $model = JobsOffers::class;
     /**
      * Define the model's default state.
      *

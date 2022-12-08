@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\JobsOffers;
-use App\Models\user;
+use App\Models\User;
 use App\Models\PartnerContacts;
 use Illuminate\Http\Request;
 
@@ -21,7 +21,7 @@ class JobsOffersController extends Controller
         $jobsOffers->description = $request->input('description');
         $jobsOffers->link = $request->input('link');
 
-        $jobsOffers->user_id = user::find(
+        $jobsOffers->user_id = User::find(
             intval(
                 $request->input('user_id')
             )
@@ -51,7 +51,7 @@ class JobsOffersController extends Controller
         $jobsOffers->description = $request->input('description');
         $jobsOffers->link = $request->input('link');
 
-        $jobsOffers->user_id = user::find(
+        $jobsOffers->user_id = User::find(
             intval(
                 $request->input('user_id')
             )

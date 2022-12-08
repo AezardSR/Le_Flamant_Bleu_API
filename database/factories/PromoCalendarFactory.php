@@ -2,13 +2,19 @@
 
 namespace Database\Factories;
 
+use App\Models\PromoCalendar;
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Illuminate\Support\Str;
 use App\Models\Promos;
 
 
 class PromoCalendarFactory extends Factory
 {
+    /**
+     * The name of the factory's corresponding model.
+     *
+     * @var string
+     */
+    protected $model = PromoCalendar::class;
     /**
      * Define the model's default state.
      *

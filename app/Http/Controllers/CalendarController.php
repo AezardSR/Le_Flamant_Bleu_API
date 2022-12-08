@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\AppointmentsTypes;
 use App\Models\Appointments;
 use Illuminate\Http\Request;
@@ -34,13 +35,13 @@ class CalendarController extends Controller
         $Appointments->descriptionDetails = $request->input('descriptionDetails');
         $Appointments->dateDetails = $request->input('dateDetails');
 
-        $Appointments->receiver_id = user::find(
+        $Appointments->receiver_id = User::find(
             intval(
                 $request->input('receiver_id')
             )
         )->id;
 
-        $Appointments->create_id = user::find(
+        $Appointments->create_id = User::find(
             intval(
                 $request->input('create_id')
             )
@@ -83,13 +84,13 @@ class CalendarController extends Controller
         $Appointments->descriptionDetails = $request->input('descriptionDetails');
         $Appointments->dateDetails = $request->input('dateDetails');
 
-        $Appointments->receiver_id = user::find(
+        $Appointments->receiver_id = User::find(
             intval(
                 $request->input('receiver_id')
             )
         )->id;
 
-        $Appointments->create_id = user::find(
+        $Appointments->create_id = User::find(
             intval(
                 $request->input('create_id')
             )

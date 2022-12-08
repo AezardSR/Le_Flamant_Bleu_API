@@ -8,6 +8,7 @@ use App\Models\PromoTeachers;
 use App\Models\PromoCalendar;
 use App\Models\FormationsTypes;
 use App\Models\FormationsFormats;
+use App\Models\User;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -16,7 +17,7 @@ class PromoController extends Controller
 {
     public function getPromosList(){
         $promo = Promos::all();
-        return response()->json($promos);
+        return response()->json($promo);
     }
 
     public function createPromo(Request $request){
@@ -40,7 +41,7 @@ class PromoController extends Controller
         )->id;
 
         $promo->save();
-        return responce()->json($promo);
+        return response()->json($promo);
     }
 
     public function getOnePromo($id){
@@ -65,7 +66,7 @@ class PromoController extends Controller
     public function AddStudentToPromo(Request $request){
         $promoStudent = new PromoStudents();
 
-        $promoStudent->students_id = user::find(
+        $promoStudent->students_id = User::find(
             intval(
                 $request->input('students_id')
             )
@@ -78,7 +79,7 @@ class PromoController extends Controller
         )->id;
 
         $promoStudent->save();
-        return responce()->json($promoStudent);
+        return response()->json($promoStudent);
     }
 
     public function editPromoStudent($id, Request $request){
@@ -111,7 +112,7 @@ class PromoController extends Controller
         )->id;
 
         $promoTeacher->save();
-        return responce()->json($promoTeacher);
+        return response()->json($promoTeacher);
     }
 
     public function editPromoTeacher($id, Request $request){
@@ -141,7 +142,7 @@ class PromoController extends Controller
         )->id;
 
         $promoCalendar->save();
-        return responce()->json($promoCalendar);
+        return response()->json($promoCalendar);
     }
 
     public function editPromoCalendar($id, Request $request){

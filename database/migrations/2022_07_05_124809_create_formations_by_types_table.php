@@ -15,19 +15,19 @@ class CreateFormationsByTypesTable extends Migration
     {
         Schema::create('formations_by_types', function (Blueprint $table) {
             $table->increments('id',true);
-            $table->integer('id_formations_formats')->unsigned();
-            $table->integer('id_formations_types')->unsigned();
+            $table->integer('formationsFormats_id')->unsigned();
+            $table->integer('formationsTypes_id')->unsigned();
             $table->timestamps();
         });
 
         Schema::table('formations_by_types', function ($table) {
             $table
-            ->foreign('id_formations_types')
+            ->foreign('formationsTypes_id')
             ->references('id')
             ->on('formations_types');
 
             $table
-            ->foreign('id_formations_formats')
+            ->foreign('formationsFormats_id')
             ->references('id')
             ->on('formations_formats');
         });

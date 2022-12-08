@@ -2,19 +2,19 @@
 
 namespace Database\Factories;
 
+use App\Models\Appointments;
 use App\Models\AppointmentsTypes;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Illuminate\Support\Str;
 
-class DocumentsFactory extends Factory
+class AppointmentsFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = User::class;
+    protected $model = Appointments::class;
 
     /**
      * Define the model's default state.

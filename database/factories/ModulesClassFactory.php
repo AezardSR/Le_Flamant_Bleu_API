@@ -3,15 +3,18 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Illuminate\Support\Str;
 use App\Models\Classes;
 use App\Models\Modules;
-
-
-
+use App\Models\ModulesClass;
 
 class ModulesClassFactory extends Factory
 {
+    /**
+     * The name of the factory's corresponding model.
+     *
+     * @var string
+     */
+    protected $model = ModulesClass::class;
     /**
      * Define the model's default state.
      *

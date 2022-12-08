@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\user;
+use App\Models\User;
 use App\Models\Classes;
 use App\Models\Questions;
 use Illuminate\Http\Request;
@@ -21,7 +21,7 @@ class QuestionsController extends Controller
         //     )
         // )->id;
 
-        $questions->user_id = user::find(
+        $questions->user_id = User::find(
             intval(
                 $request->input('user_id')
             )
@@ -60,7 +60,7 @@ class QuestionsController extends Controller
         //     )
         // )->id;
 
-        $questions->user_id = user::find(
+        $questions->user_id = User::find(
             intval(
                 $request->input('user_id')
             )

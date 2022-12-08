@@ -3,14 +3,20 @@
 namespace Database\Factories;
 
 use App\Models\EntranceTests;
+use App\Models\EntranceTestsSurvey;
 use App\Models\Surveys;
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Illuminate\Support\Str;
 
 
 
 class EntranceTestsSurveyFactory extends Factory
 {
+    /**
+     * The name of the factory's corresponding model.
+     *
+     * @var string
+     */
+    protected $model = EntranceTestsSurvey::class;
     /**
      * Define the model's default state.
      *

@@ -9,6 +9,6 @@ class FormationsByTypes extends Model
 {
     use HasFactory;
 
-    protected $table = 'formationsByTypes';
+    protected $table = 'formations_by_types';
     protected $fillable = ['formationsTypes_id', 'formationsFormats_id'];
 }

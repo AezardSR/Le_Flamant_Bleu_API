@@ -2,10 +2,10 @@
 
 namespace Database\Factories;
 
+use App\Models\ApplicantsAnswers;
 use App\Models\ApplicantsTestSurvey;
 use App\Models\SurveyAnswers;
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Illuminate\Support\Str;
 
 class ApplicantsAnswersFactory extends Factory
 {
@@ -14,7 +14,7 @@ class ApplicantsAnswersFactory extends Factory
      *
      * @var string
      */
-    protected $model = User::class;
+    protected $model = ApplicantsAnswers::class;
 
     /**
      * Define the model's default state.
@@ -24,7 +24,7 @@ class ApplicantsAnswersFactory extends Factory
     public function definition()
     {
         return [
-            'answers' => $this->faker->name(),
+            'answer' => $this->faker->name(),
             'surveyAnswers_id' => SurveyAnswers::all()->random()->id,
             'applicantsTestSurvey_id' => ApplicantsTestSurvey::all()->random()->id,
         ];

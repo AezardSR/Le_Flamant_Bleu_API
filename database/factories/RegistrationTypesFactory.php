@@ -2,11 +2,17 @@
 
 namespace Database\Factories;
 
+use App\Models\RegistrationTypes;
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Illuminate\Support\Str;
 
-class RegistationTypesFactory extends Factory
+class RegistrationTypesFactory extends Factory
 {
+    /**
+     * The name of the factory's corresponding model.
+     *
+     * @var string
+     */
+    protected $model = RegistrationTypes::class;
     /**
      * Define the model's default state.
      *

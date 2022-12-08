@@ -2,13 +2,19 @@
 
 namespace Database\Factories;
 
+use App\Models\FormationsTypes;
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Illuminate\Support\Str;
 
 
 
 class FormationsTypesFactory extends Factory
 {
+    /**
+     * The name of the factory's corresponding model.
+     *
+     * @var string
+     */
+    protected $model = FormationsTypes::class;
     /**
      * Define the model's default state.
      *

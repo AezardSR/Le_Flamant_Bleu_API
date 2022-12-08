@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Classes;
 use App\Models\Modules;
 use App\Models\Exercices;
+use App\Models\Lesson;
 use App\Models\Parts;
 use App\Models\Categories;
 use App\Models\ModulesCategories;
@@ -97,13 +98,13 @@ class LessonController extends Controller
     public function addModulesClass(Request $request) {
         $moduleClasse = new ModulesClass();
 
-        $moduleCategorie->classes_id = Classes::find(
+        $moduleClasse->classes_id = Classes::find(
             intval(
                 $request->input('classes_id')
             )
         )->id;
 
-        $moduleCategorie->modules_id = Modules::find(
+        $moduleClasse->modules_id = Modules::find(
             intval(
                 $request->input('modules_id')
             )
@@ -250,7 +251,7 @@ class LessonController extends Controller
     //Get
     public function getModuleList()
     {
-        $module = Module::all();
+        $module = Modules::all();
         return response()->json($module);
     }
 

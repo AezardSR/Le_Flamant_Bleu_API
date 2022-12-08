@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Messages;
-
+use App\Models\User;
+use App\Models\Messages;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 
@@ -25,7 +26,7 @@ class MessagingController extends Controller
             )
         )->id;
 
-        return response()->json($Messages);
+        return response()->json($Message);
     }
 
     public function getChat($receiver_id,$sender_id){

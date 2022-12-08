@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\User;
+use App\Models\Documents;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 
@@ -13,7 +14,7 @@ class DocumentsFactory extends Factory
      *
      * @var string
      */
-    protected $model = User::class;
+    protected $model = Documents::class;
 
     /**
      * Define the model's default state.

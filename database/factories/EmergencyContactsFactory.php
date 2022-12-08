@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\EmergencyContacts;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
@@ -13,7 +14,7 @@ class EmergencyContactsFactory extends Factory
      *
      * @var string
      */
-    protected $model = User::class;
+    protected $model = EmergencyContacts::class;
 
     /**
      * Define the model's default state.

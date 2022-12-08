@@ -10,7 +10,7 @@ class ApplicantsAnswers extends Model
     use HasFactory;
 
     
-    protected $table = 'applicants_anwsers';
+    protected $table = 'applicants_answers';
     protected $fillable = ['answer','surveyAnswers_id','applicantsTestSurvey_id'];
 }
 

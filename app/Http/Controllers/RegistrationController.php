@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\RegistrationTypes;
 use App\Models\Registrations;
 use App\Models\Signatures;
+use App\Models\Promos;
+use App\Models\User;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -30,14 +32,14 @@ class RegistrationController extends Controller
             )
         )->id;
 
-        $registration->registrationTypes_id = RegistrationsTypes::find(
+        $registration->registrationTypes_id = RegistrationTypes::find(
             intval(
                 $request->input('registrationTypes_id')
             )
         )->id;
 
         $registration->save();
-        return responce()->json($registration);
+        return response()->json($registration);
     }
 
     public function getRegistrationsList(){
@@ -62,7 +64,7 @@ class RegistrationController extends Controller
     public function addSignature(Request $request){
         $signature = new Signatures();
 
-        $signature->user_id = user::find(
+        $signature->user_id = User::find(
             intval(
                 $request->input('user_id')
             )
@@ -76,6 +78,6 @@ class RegistrationController extends Controller
 
         $signature->date = $request->input('date');
         $signature->save();
-        return responce()->json($signature);
+        return response()->json($signature);
     }
 }

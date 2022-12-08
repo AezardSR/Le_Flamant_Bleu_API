@@ -2,11 +2,17 @@
 
 namespace Database\Factories;
 
+use App\Models\Types;
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Illuminate\Support\Str;
 
 class TypesFactory extends Factory
 {
+    /**
+     * The name of the factory's corresponding model.
+     *
+     * @var string
+     */
+    protected $model = Types::class;
     /**
      * Define the model's default state.
      *

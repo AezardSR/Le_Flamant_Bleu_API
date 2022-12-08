@@ -37,8 +37,8 @@ use App\Models\Modules;
 use App\Models\Messages;
 use App\Models\Classes;
 use App\Models\Categories;
-
-
+use App\Models\FormationsFormats;
+use App\Models\FormationsByTypes;
 
 class DatabaseSeeder extends Seeder
 {
@@ -54,29 +54,31 @@ class DatabaseSeeder extends Seeder
         User::factory(5)->create();
         Surveys::factory(5)->create();
         SurveyAnswers::factory(5)->create();
-        Promos::factory(5)->create();
-        Registrations::factory(5)->create();
-        Signatures::factory(5)->create();
         RegistrationTypes::factory(5)->create();
-        Questions::factory(5)->create();
+        Parts::factory(5)->create();
+        PartnerContacts::factory(5)->create();
+        Messages::factory(5)->create();
+        JobsOffers::factory(5)->create();
+        FormationsFormats::factory(5)->create();
+        FormationsTypes::factory(5)->create();
+        FormationsByTypes::factory(5)->create();
+        Modules::factory(5)->create();
+        Promos::factory(5)->create();
         PromoTeachers::factory(5)->create();
         PromoStudents::factory(5)->create();
         PromoCalendar::factory(5)->create();
-        Parts::factory(5)->create();
-        PartnerContacts::factory(5)->create();
-        ModulesClass::factory(5)->create();
-        ModulesCategories::factory(5)->create();
-        Modules::factory(5)->create();
-        Messages::factory(5)->create();
-        JobsOffers::factory(5)->create();
-        FormationsTypes::factory(5)->create();
+        Registrations::factory(5)->create();
+        Signatures::factory(5)->create();
         Exercices::factory(5)->create();
-        EntranceTestsSurvey::factory(5)->create();
         EntranceTests::factory(5)->create();
+        EntranceTestsSurvey::factory(5)->create();
         EmergencyContacts::factory(5)->create();
         Documents::factory(5)->create();
         Classes::factory(5)->create();
+        ModulesClass::factory(5)->create();
         Categories::factory(5)->create();
+        ModulesCategories::factory(5)->create();
+        Questions::factory(5)->create();
         AppointmentsTypes::factory(5)->create();
         Appointments::factory(5)->create();
         ApplicantsTestSurvey::factory(5)->create();

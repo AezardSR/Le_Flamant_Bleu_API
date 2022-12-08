@@ -2,13 +2,19 @@
 
 namespace Database\Factories;
 
+use App\Models\Parts;
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Illuminate\Support\Str;
 
 
 
 class PartsFactory extends Factory
 {
+    /**
+     * The name of the factory's corresponding model.
+     *
+     * @var string
+     */
+    protected $model = Parts::class;
     /**
      * Define the model's default state.
      *
