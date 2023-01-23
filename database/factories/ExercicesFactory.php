@@ -27,9 +27,7 @@ class ExercicesFactory extends Factory
             'content'=> $this->faker->text(50),
             'image'=> $this->faker->text(50),
             'file'=> $this->faker->text(35),
-            'parts_id' =>Parts::all()->random()->id,
-
-
+            'parts_id' => Parts::all()->random()->id,
             
 
         ];

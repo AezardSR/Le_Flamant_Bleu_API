@@ -12,6 +12,8 @@ use App\Models\Documents;
 use App\Models\EmergencyContacts;
 use App\Models\EntranceTests;
 use App\Models\EntranceTestsSurvey;
+use App\Models\Parts;
+
 use App\Models\Exercices;
 
 use App\Models\FormationsTypes;
@@ -32,7 +34,6 @@ use App\Models\Promos;
 use App\Models\PromoStudents;
 use App\Models\PromoTeachers;
 use App\Models\Questions;
-use App\Models\Parts;
 use App\Models\Modules;
 use App\Models\Messages;
 use App\Models\Classes;
