@@ -46,7 +46,9 @@ class AuthController extends Controller
                         'message' => 'Login credentials are invalid.',
                     ], 400);
                 } else {
-                    return $this->respondWithToken($token);
+                    return response()->json([
+                        'message' => 'connected',
+                        'token' => $this->respondWithToken($token)], 200);
                 }
 
             } else {
