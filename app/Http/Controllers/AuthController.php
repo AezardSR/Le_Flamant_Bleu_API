@@ -53,7 +53,7 @@ class AuthController extends Controller
 
             } else {
             $response = ["message" =>'information de connexion eronné'];
-            return response($response, 422);
+            return response()->json([$response], 422);
         }
     }
     
