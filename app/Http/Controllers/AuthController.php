@@ -46,9 +46,7 @@ class AuthController extends Controller
                         'message' => 'Login credentials are invalid.',
                     ], 400);
                 } else {
-                    return response()->json([
-                        'message' => 'connected',
-                        'token' => $this->respondWithToken($token)], 200);
+                    return $this->respondWithToken($token);
                 }
 
             } else {
@@ -95,6 +93,7 @@ class AuthController extends Controller
 
     protected function respondWithToken($token) {
         return response()->json([
+            'message' => 'connected',
             'access_token' => $token,
             'token_type' => 'bearer',
             'expires_in' => auth()->factory()->getTTL() * 60
