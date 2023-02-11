@@ -46,15 +46,12 @@ class AuthController extends Controller
                         'message' => 'Login credentials are invalid.',
                     ], 400);
                 } else {
-                    return response()->json([
-                        'success' => true,
-                        'token' => $token,
-                        ]);
+                    return $this->respondWithToken($token);
                 }
 
             } else {
             $response = ["message" =>'information de connexion eronné'];
-            return response($response, 422);
+            return response()->json([$response], 422);
         }
     }
     
@@ -65,7 +62,7 @@ class AuthController extends Controller
         $validator = Validator::make($request->all(), [
             'name' => 'required|string|between:2,100',
             'firstname' => 'required|string|between:2,100',
-            'mail' => 'required|string|max:100|unique:user',
+            'mail' => 'required|string|max:100|unique:users',
             'password' => ['required','string','confirmed','min:6','regex:/^(?=.*[a-z|A-Z])(?=.*[A-Z])(?=.*\d)(?=.*(_|[^\w])).+$/'],
             'password_confirmed' => 'same:password'
         ]);
@@ -91,7 +88,16 @@ class AuthController extends Controller
     }
 
     public function refresh() {
-        return $this->createNewToken(auth()->refresh());
+        return $this->respondWithToken(auth()->refresh());
+    }
+
+    protected function respondWithToken($token) {
+        return response()->json([
+            'message' => 'connected',
+            'access_token' => $token,
+            'token_type' => 'bearer',
+            'expires_in' => auth()->factory()->getTTL() * 60
+        ]);
     }
 
     public function userProfile() {

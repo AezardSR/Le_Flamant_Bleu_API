@@ -12,7 +12,7 @@ class Exercices extends Model
     protected $table = 'exercices';
     protected $fillable = ['name', 'content', 'image', 'file', 'parts_id'];
 
-    // public function part() {
-    //     return $this->hasOne(Parts::class);
-    // }
+    public function part() {
+        return $this->hasOne(Categories::class);
+    }
 }
