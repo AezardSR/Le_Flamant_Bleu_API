@@ -1,7 +1,7 @@
 <?php
 namespace App\Http\Controllers;
 
-use App\Models\user;
+use App\Models\User;
 use App\Models\Answers;
 use App\Models\Questions;
 use Illuminate\Http\Request;
