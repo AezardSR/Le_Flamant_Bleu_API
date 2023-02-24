@@ -51,7 +51,7 @@ class AuthController extends Controller
 
             } else {
             $response = ["message" =>'information de connexion eronné'];
-            return response($response, 422);
+            return response()->json([$response], 422);
         }
     }
     
@@ -93,6 +93,7 @@ class AuthController extends Controller
 
     protected function respondWithToken($token) {
         return response()->json([
+            'message' => 'connected',
             'access_token' => $token,
             'token_type' => 'bearer',
             'expires_in' => auth()->factory()->getTTL() * 60
@@ -100,7 +101,9 @@ class AuthController extends Controller
     }
 
     public function userProfile() {
-        return response()->json(auth()->user());
+        return response()->json([
+            'message' => 'succes',
+            'user' => auth()->user()]);
     }
 
 
