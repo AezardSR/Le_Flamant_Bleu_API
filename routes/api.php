@@ -138,14 +138,14 @@ Route::patch('/jobsoffers/update/{id}', [JobsOffersController::class, 'changeJob
     //Type de rdv
     Route::get('/appointmentstypes', [CalendarController::class, 'getAppointmentsTypes']);
     Route::post('/appointmentstypes', [CalendarController::class, 'addAppointmentsTypes']);
-    Route::delete('/appointmentstypes/{id}/{name}', [CalendarController::class, 'deleteAppointmentsTypes']);
+    Route::delete('/appointmentstypes/{id}', [CalendarController::class, 'deleteAppointmentsTypes']);
     Route::patch('/appointmentstypes', [CalendarController::class, 'changeAppointmentsTypes']);
 
     //RDV
     Route::get('/appointments', [CalendarController::class, 'getAppointments']);
     Route::post('/appointments', [CalendarController::class, 'addAppointments']);
-    Route::delete('/appointments/{id}/{titleDetails}/{descriptionDeatils}/{dateDetails}/{id_receiver}/{id_create}/{id_appointments_types}', [CalendarController::class, 'deleteAppointments']);
-    Route::patch('/appointments', [CalendarController::class, 'changeAppointments']);
+    Route::delete('/appointments/{id}', [CalendarController::class, 'deleteAppointments']);
+    Route::patch('/appointments/{id}', [CalendarController::class, 'changeAppointments']);
 //promosController
 Route::get('/Promos', [PromoController::class, 'getPromosList']);
 Route::post('/Promo/create/{name}/{startDate}/{endDate}/{duration}/{id_formationsTypes}/{id_formationsFormats}', [PromoController::class, 'createPromo']);
