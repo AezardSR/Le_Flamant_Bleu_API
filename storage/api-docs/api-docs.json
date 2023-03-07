@@ -25,8 +25,132 @@
                     "documents"
                 ],
                 "summary": "Tous les documents",
-                "description": "Returns all countries and associated provinces. The country_slug variable is used for country specific data",
-                "operationId": "Documents",
+                "description": "",
+                "operationId": "getDocuments",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "404": {
+                        "description": "not found"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "documents"
+                ],
+                "summary": "Ajouter un documents",
+                "description": "Voici la fonction qui permet d'ajouter un document dans l'API. Nous pouvons voir les messages d'erreurs si cela ne marche pas",
+                "operationId": "addDocuments",
+                "responses": {
+                    "200": {
+                        "description": "Operation Reussie",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "404": {
+                        "description": "not found"
+                    }
+                }
+            }
+        },
+        "/documents/{id}": {
+            "delete": {
+                "tags": [
+                    "documents"
+                ],
+                "summary": "Supprimer un Documents",
+                "description": "Permets de supprimer un documents en fonction de son ID",
+                "operationId": "deleteDocuments",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "404": {
+                        "description": "not found"
+                    }
+                }
+            },
+            "patch": {
+                "tags": [
+                    "documents"
+                ],
+                "summary": "modifier un Documents",
+                "description": "Permets de modifier un documents en fonction de son ID",
+                "operationId": "changeDocuments",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    },
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "description": "changement name",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "user_id",
+                        "in": "path",
+                        "description": "changement user_id",
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful operation",
@@ -55,7 +179,7 @@
                     "Roles"
                 ],
                 "summary": "Tous les roles",
-                "description": "Returns all countries and associated provinces. The country_slug variable is used for country specific data",
+                "description": "",
                 "operationId": "getRolesList",
                 "responses": {
                     "200": {
@@ -82,9 +206,49 @@
                 "tags": [
                     "Roles"
                 ],
-                "summary": "Tous les roles",
-                "description": "Returns all countries and associated provinces. The country_slug variable is used for country specific data",
+                "summary": "Ajouter un role",
+                "description": "Ajouter un role en lui indiquant un nom, l'id s'ajoutera automatiquement",
                 "operationId": "addRole",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "": {
+                                        "properties": {
+                                            "name": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                },
+                                "type": "object",
+                                "example": {
+                                    "name": "ajouter un role"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/types": {
+            "get": {
+                "tags": [
+                    "Roles"
+                ],
+                "summary": "Tous les types de roles",
+                "description": "Liste de tous les types de roles",
+                "operationId": "getTypesList",
                 "responses": {
                     "200": {
                         "description": "Successful operation",
@@ -103,6 +267,44 @@
                     },
                     "404": {
                         "description": "not found"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Roles"
+                ],
+                "summary": "Ajouter un type de role",
+                "description": "Ajouter un type de role en lui indiquant un nom, l'id s'ajoutera automatiquement",
+                "operationId": "addTypes",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "": {
+                                        "properties": {
+                                            "name": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                },
+                                "type": "object",
+                                "example": {
+                                    "name": "ajouter un type"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {}
+                        }
                     }
                 }
             }

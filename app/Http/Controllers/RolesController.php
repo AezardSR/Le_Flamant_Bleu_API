@@ -15,7 +15,7 @@ class RolesController extends Controller
      *      tags={"Roles"},
 
      *      summary="Tous les roles",
-     *      description="Returns all countries and associated provinces. The country_slug variable is used for country specific data",
+     *      description="",
      *      @OA\Response(
      *          response=200,
      *          description="Successful operation",
@@ -51,9 +51,50 @@ class RolesController extends Controller
      *      path="/roles",
      *      operationId="addRole",
      *      tags={"Roles"},
+     *      summary="Ajouter un role",
+     *      description="Ajouter un role en lui indiquant un nom, l'id s'ajoutera automatiquement",
+     *      @OA\RequestBody(
+     *         @OA\MediaType(
+     *             mediaType="application/json",
+     *             @OA\Schema(
+     *                 @OA\Property(
+     *                      type="object",
+     *                      @OA\Property(
+     *                          property="name",
+     *                          type="string"
+     *                      )
+     *                 ),
+     *                 example={
+     *                     "name":"ajouter un role"
+     *                }
+     *             )
+     *         )
+     *      ),
+     *      @OA\Response(
+     *          response=200,
+     *          description="Successful operation",
+     *          @OA\MediaType(
+     *           mediaType="application/json",
+     *      )
+     *      ),
+     *  )
+     */
+    public function addRole(Request $request)
+    {
+        $role = new Roles();
+        $role->name = $request->input('name');
+        $role->save();
+        return response()->json($role);
+    }
 
-     *      summary="Tous les roles",
-     *      description="Returns all countries and associated provinces. The country_slug variable is used for country specific data",
+    /**
+     * @OA\Get(
+     *      path="/types",
+     *      operationId="getTypesList",
+     *      tags={"Roles"},
+
+     *      summary="Tous les types de roles",
+     *      description="Liste de tous les types de roles",
      *      @OA\Response(
      *          response=200,
      *          description="Successful operation",
@@ -79,19 +120,44 @@ class RolesController extends Controller
      *   ),
      *  )
      */
-    public function addRole(Request $request)
-    {
-        $role = new Roles();
-        $role->name = $request->input('name');
-        $role->save();
-        return response()->json($role);
-    }
-
     public function getTypesList(){
         $types = Types::all();
         return response()->json($types);
     }
 
+    /**
+     * @OA\Post(
+     *      path="/types",
+     *      operationId="addTypes",
+     *      tags={"Roles"},
+     *      summary="Ajouter un type de role",
+     *      description="Ajouter un type de role en lui indiquant un nom, l'id s'ajoutera automatiquement",
+     *      @OA\RequestBody(
+     *         @OA\MediaType(
+     *             mediaType="application/json",
+     *             @OA\Schema(
+     *                 @OA\Property(
+     *                      type="object",
+     *                      @OA\Property(
+     *                          property="name",
+     *                          type="string"
+     *                      )
+     *                 ),
+     *                 example={
+     *                     "name":"ajouter un type"
+     *                }
+     *             )
+     *         )
+     *      ),
+     *      @OA\Response(
+     *          response=200,
+     *          description="Successful operation",
+     *          @OA\MediaType(
+     *           mediaType="application/json",
+     *      )
+     *      ),
+     *  )
+     */
     public function addTypes(Request $request)
     {
         $type = new Types();
