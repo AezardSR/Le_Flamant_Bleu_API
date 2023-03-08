@@ -55,30 +55,36 @@ class DocumentsController extends Controller
      *      tags={"documents"},
 
      *      summary="Ajouter un documents",
-     *      description="Voici la fonction qui permet d'ajouter un document dans l'API. Nous pouvons voir les messages d'erreurs si cela ne marche pas",
+     *      description="Voici la fonction qui permet d'ajouter un document dans l'API.",
+     *      @OA\RequestBody(
+     *         @OA\MediaType(
+     *             mediaType="application/json",
+     *             @OA\Schema(
+     *                 @OA\Property(
+     *                      type="object",
+     *                      @OA\Property(
+     *                          property="name",
+     *                          type="string"
+     *                      ),
+     *                          @OA\Property(
+     *                          property="user_id",
+     *                          type="integer"
+     *                      )
+     *                 ),
+     *                 example={
+     *                     "name":"ajouter un document",
+     *                     "user_id":1
+     *                }
+     *             )
+     *         )
+     *      ),
      *      @OA\Response(
      *          response=200,
-     *          description="Operation Reussie",
+     *          description="Successful operation",
      *          @OA\MediaType(
      *           mediaType="application/json",
      *      )
      *      ),
-     *      @OA\Response(
-     *          response=401,
-     *          description="Unauthenticated",
-     *      ),
-     *      @OA\Response(
-     *          response=403,
-     *          description="Forbidden"
-     *      ),
-     * @OA\Response(
-     *      response=400,
-     *      description="Bad Request"
-     *   ),
-     * @OA\Response(
-     *      response=404,
-     *      description="not found"
-     *   ),
      *  )
      */
     //Add
@@ -157,26 +163,30 @@ class DocumentsController extends Controller
      *      required=true,
      *      @OA\Schema (
      *           type="integer",
-     *           format="int64",
      *      ),
      * ),
-     * @OA\Parameter (
-     *      name="name",
-     *      in="query",
-     *      description="changement name",
-     *      @OA\Schema (
-     *           type="string"
-     *      )
-     *   ),
-     * * @OA\Parameter (
-     *      name="user_id",
-     *      in="path",
-     *      description="changement user_id",
-     *      @OA\Schema (
-     *           type="integer",
-     *           format="int64",
-     *      )
-     *   ),
+     *      *      @OA\RequestBody(
+     *         @OA\MediaType(
+     *             mediaType="application/json",
+     *             @OA\Schema(
+     *                 @OA\Property(
+     *                      type="object",
+     *                      @OA\Property(
+     *                          property="name",
+     *                          type="string"
+     *                      ),
+     *                      @OA\Property(
+     *                          property="user_id",
+     *                          type="integer"
+     *                      )
+     *                 ),
+     *                 example={
+     *                     "name":"nom document",
+     *                      "user_id":1
+     *                }
+     *             )
+     *         )
+     * ),
      *      @OA\Response (
      *          response=200,
      *          description="Successful operation",
@@ -184,22 +194,6 @@ class DocumentsController extends Controller
      *           mediaType="application/json",
      *      )
      *      ),
-     *      @OA\Response (
-     *          response=401,
-     *          description="Unauthenticated",
-     *      ),
-     *      @OA\Response (
-     *          response=403,
-     *          description="Forbidden"
-     *      ),
-     * @OA\Response (
-     *      response=400,
-     *      description="Bad Request"
-     *   ),
-     * @OA\Response (
-     *      response=404,
-     *      description="not found"
-     *   ),
      *  )
      */
     //Change
