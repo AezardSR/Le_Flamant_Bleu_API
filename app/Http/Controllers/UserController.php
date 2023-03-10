@@ -43,22 +43,92 @@ class UserController extends Controller
         return response()->json($user);
 
     }
+
+         /**
+     * @OA\Get(
+     *      path="/user",
+     *      operationId="getuserList",
+     *      tags={"User"},
+
+     *      summary="Voir tous les users",
+     *      description="Voir tous les users",
+     *      @OA\Response(
+     *          response=200,
+     *          description="Successful operation",
+     *          @OA\MediaType(
+     *           mediaType="application/json",
+     *      )
+     *      ),
+     *  )
+     */
     public function getuserList()
     {
         $user = user::all();
         return response()->json($user);
     }
 
+  /**
+     * @OA\Get (
+     *      path="/user/{id}",
+     *      operationId="getOneUser",
+     *      tags={"User"},
+     *      summary="Voir un user fonction de son ID",
+     *      description="Voir un user en fonction de son ID",
+     *     @OA\Parameter (
+     *      name="id",
+     *      in="path",
+     *      required=true,
+     *      @OA\Schema (
+     *           type="integer"
+     *      )
+     *   ),
+     *      @OA\Response (
+     *          response=200,
+     *          description="Successful operation",
+     *          @OA\MediaType(
+     *           mediaType="application/json",
+     *      )
+     *      ),
+     *  )
+     */
     public function getOneUser($id){
-        $user = DB::table('user')->select('name','firstname','mail','tel','address','city','zipCode')->where('id','=', $id)->get();
+        $user = DB::table('users')->select('name','firstname','birthdate','mail','tel','address','city','zipCode','roles_id','types_id')->where('id','=', $id)->get();
         return response()->json($user);
     }
 
     public function editUser($id, Request $request){
         $user = DB::table('user')->where('id','=',$id)->update([$request->input('column') => $request->input('newValue')]);
     }
+
+  /**
+     * @OA\Delete (
+     *      path="/user/{id}",
+     *      operationId="deleteUser",
+     *      tags={"User"},
+     *      summary="Supprimer une reponse",
+     *      description="Supprimer une reponse avec son ID",
+     *     @OA\Parameter (
+     *      name="id",
+     *      in="path",
+     *      required=true,
+     *      @OA\Schema (
+     *           type="integer"
+     *      )
+     *   ),
+     *      @OA\Response (
+     *          response=200,
+     *          description="Successful operation",
+     *          @OA\MediaType(
+     *           mediaType="application/json",
+     *      )
+     *      ),
+     *  )
+     */
     public function deleteUser($id){
-        $EmergencyContacts = DB::table('user')->where('id','=',$id)->delete();
+        $user = DB::table('users')->where('id','=',$id)->delete();
+        // $user = User::find($id);
+        // $user->delete();
+        // echo('User supprimé');
     }
 
 //EmergencyContacts
@@ -78,11 +148,52 @@ public function addEmergencyContacts(Request $request){
     return response()->json($EmergencyContacts);
 }
 
+     /**
+     * @OA\Get(
+     *      path="/EmergencyContact",
+     *      operationId="getEmergencyContactsList",
+     *      tags={"User"},
+
+     *      summary="Voir les contacts d'urgences",
+     *      description="Voir les contacts d'urgences",
+     *      @OA\Response(
+     *          response=200,
+     *          description="Successful operation",
+     *          @OA\MediaType(
+     *           mediaType="application/json",
+     *      )
+     *      ),
+     *  )
+     */
 public function getEmergencyContactsList(){
     $EmergencyContacts = EmergencyContacts::all();
     return response()->json($EmergencyContacts);
 }
 
+  /**
+     * @OA\Get (
+     *      path="/EmergencyContact/{id}",
+     *      operationId="getOneEmergencyContact",
+     *      tags={"User"},
+     *      summary="Voir les contacts d'urgences en fonction de son ID",
+     *      description="Voir les contacts d'urgences en fonction de son ID",
+     *     @OA\Parameter (
+     *      name="id",
+     *      in="path",
+     *      required=true,
+     *      @OA\Schema (
+     *           type="integer"
+     *      )
+     *   ),
+     *      @OA\Response (
+     *          response=200,
+     *          description="Successful operation",
+     *          @OA\MediaType(
+     *           mediaType="application/json",
+     *      )
+     *      ),
+     *  )
+     */
 public function getOneEmergencyContact($id){
     $EmergencyContacts = DB::table('emergency_contacts')->select('name','firstname','tel')->where('id','=', $id)->get();
     return response()->json($EmergencyContacts);

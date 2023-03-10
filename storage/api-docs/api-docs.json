@@ -19,6 +19,180 @@
         }
     ],
     "paths": {
+        "/answers": {
+            "get": {
+                "tags": [
+                    "Answers"
+                ],
+                "summary": "Voir toutes les reponses",
+                "description": "Voir toutes les reponses",
+                "operationId": "viewListAnswer",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Answers"
+                ],
+                "summary": "Ajouter une reponse",
+                "description": "Ajouter une reponse",
+                "operationId": "addAnswer",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "": {
+                                        "properties": {
+                                            "answer": {
+                                                "type": "string"
+                                            },
+                                            "user_id": {
+                                                "type": "integer"
+                                            },
+                                            "questions_id": {
+                                                "type": "integer"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                },
+                                "type": "object",
+                                "example": {
+                                    "answer": "ajouter un document",
+                                    "user_id": 1,
+                                    "questions_id": 3
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/answers/{id}": {
+            "get": {
+                "tags": [
+                    "Answers"
+                ],
+                "summary": "Voir une reponse en fonction de son ID",
+                "description": "Voir une reponse en fonction de son ID",
+                "operationId": "viewAnswer",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Answers"
+                ],
+                "summary": "Supprimer une reponse",
+                "description": "Supprimer une reponse avec son ID",
+                "operationId": "deleteAnswer",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            },
+            "patch": {
+                "tags": [
+                    "Answers"
+                ],
+                "summary": "modifier une reponse",
+                "description": "Permets de modifier une reponse",
+                "operationId": "changeAnswer",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "": {
+                                        "properties": {
+                                            "answer": {
+                                                "type": "string"
+                                            },
+                                            "user_id": {
+                                                "type": "integer"
+                                            },
+                                            "questions_id": {
+                                                "type": "integer"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                },
+                                "type": "object",
+                                "example": {
+                                    "answer": "nom document",
+                                    "user_id": 1,
+                                    "questions_id": 2
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
         "/documents": {
             "get": {
                 "tags": [
@@ -183,6 +357,482 @@
                 }
             }
         },
+        "/jobsoffers": {
+            "get": {
+                "tags": [
+                    "Job Offer"
+                ],
+                "summary": "Voir toutes les offres d'emplois",
+                "description": "Voir toutes les offres d'emplois",
+                "operationId": "getJobsOffers",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/jobsoffers/delete/{id}": {
+            "delete": {
+                "tags": [
+                    "Job Offer"
+                ],
+                "summary": "Supprimer une offre d'emploi avec son ID",
+                "description": "Supprimer une offre d'emploi avec son ID",
+                "operationId": "deleteJobsOffers",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/jobsoffers/update/{id}": {
+            "patch": {
+                "tags": [
+                    "Job Offer"
+                ],
+                "summary": "modifier une offre d'emploi",
+                "description": "Permets de modifier une offre d'emploi",
+                "operationId": "changeJobsOffers",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "": {
+                                        "properties": {
+                                            "name": {
+                                                "type": "string"
+                                            },
+                                            "dateOffers": {
+                                                "type": "string",
+                                                "format": "date",
+                                                "pattern": "/([0-9]{4})-(?:[0-9]{2})-([0-9]{2})/"
+                                            },
+                                            "description": {
+                                                "type": "string"
+                                            },
+                                            "link": {
+                                                "type": "string"
+                                            },
+                                            "user_id": {
+                                                "type": "integer"
+                                            },
+                                            "partnerContacts_id": {
+                                                "type": "integer"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                },
+                                "type": "object",
+                                "example": {
+                                    "name": "nom",
+                                    "dateOffers": "2012-09-04",
+                                    "description": "mettre du texte",
+                                    "link": "mettre du texte",
+                                    "user_id": 1,
+                                    "partnerContacs_id": 2
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/partnercontacts": {
+            "get": {
+                "tags": [
+                    "Partner Contact"
+                ],
+                "summary": "Liste des partenaires",
+                "description": "Liste des partenaires",
+                "operationId": "getPartnerContact",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/partnercontacts/add": {
+            "post": {
+                "tags": [
+                    "Partner Contact"
+                ],
+                "summary": "Ajouter un contact partenaire",
+                "description": "Ajouter un contact partenaire",
+                "operationId": "addPartnerContact",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "": {
+                                        "properties": {
+                                            "name": {
+                                                "type": "string"
+                                            },
+                                            "firstname": {
+                                                "type": "string"
+                                            },
+                                            "mail": {
+                                                "type": "string"
+                                            },
+                                            "tel": {
+                                                "type": "string"
+                                            },
+                                            "nameCompany": {
+                                                "type": "string"
+                                            },
+                                            "user_id": {
+                                                "type": "integer"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                },
+                                "type": "object",
+                                "example": {
+                                    "name": "Benjamin",
+                                    "firstname": "Pmt",
+                                    "mail": "lamanu@gmail.fr",
+                                    "tel": "0344556677",
+                                    "nameCompany": "nom document",
+                                    "user_id": 1
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/partnercontacts/delete/{id}": {
+            "delete": {
+                "tags": [
+                    "Partner Contact"
+                ],
+                "summary": "Supprimer un partenaire",
+                "description": "Supprimer un partenaire en fonction de son ID",
+                "operationId": "deletePartnerContact",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/partnercontacts/update/{id}": {
+            "patch": {
+                "tags": [
+                    "Partner Contact"
+                ],
+                "summary": "Modifier un partenaire",
+                "description": "Modifier un partenaire",
+                "operationId": "changePartnerContact",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "": {
+                                        "properties": {
+                                            "name": {
+                                                "type": "string"
+                                            },
+                                            "firstname": {
+                                                "type": "string"
+                                            },
+                                            "mail": {
+                                                "type": "string"
+                                            },
+                                            "tel": {
+                                                "type": "string"
+                                            },
+                                            "nameCompany": {
+                                                "type": "string"
+                                            },
+                                            "user_id": {
+                                                "type": "integer"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                },
+                                "type": "object",
+                                "example": {
+                                    "name": "Benjamin",
+                                    "firstname": "Pmt",
+                                    "mail": "lamanu@gmail.fr",
+                                    "tel": "0344556677",
+                                    "nameCompany": "nom document",
+                                    "user_id": 1
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/questions": {
+            "get": {
+                "tags": [
+                    "Questions"
+                ],
+                "summary": "Voir toutes les questions",
+                "description": "Voir toutes les questions",
+                "operationId": "viewListQuestion",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Questions"
+                ],
+                "summary": "Ajouter une question",
+                "description": "Ajouter une question",
+                "operationId": "addQuestion",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "": {
+                                        "properties": {
+                                            "question": {
+                                                "type": "string"
+                                            },
+                                            "classes_id": {
+                                                "type": "integer"
+                                            },
+                                            "user_id": {
+                                                "type": "integer"
+                                            },
+                                            "categories_id": {
+                                                "type": "integer"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                },
+                                "type": "object",
+                                "example": {
+                                    "question": "ajouter un document",
+                                    "classes_id": 1,
+                                    "user_id": 1,
+                                    "categories_id": 3
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/questions/{id}": {
+            "get": {
+                "tags": [
+                    "Questions"
+                ],
+                "summary": "Voir une question en fonction de son ID",
+                "description": "Voir une question en fonction de son ID",
+                "operationId": "viewQuestion",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Questions"
+                ],
+                "summary": "Supprimer une question",
+                "description": "Supprimer une question avec son ID",
+                "operationId": "deleteQuestion",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            },
+            "patch": {
+                "tags": [
+                    "Questions"
+                ],
+                "summary": "modifier une question",
+                "description": "Permets de modifier une question",
+                "operationId": "changeQuestion",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "": {
+                                        "properties": {
+                                            "question": {
+                                                "type": "string"
+                                            },
+                                            "classes_id": {
+                                                "type": "integer"
+                                            },
+                                            "user_id": {
+                                                "type": "integer"
+                                            },
+                                            "categories_id": {
+                                                "type": "integer"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                },
+                                "type": "object",
+                                "example": {
+                                    "question": "nom document",
+                                    "classes_id": 2,
+                                    "user_id": 1,
+                                    "categories_id": 2
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
         "/roles": {
             "get": {
                 "tags": [
@@ -309,6 +959,124 @@
                         }
                     }
                 },
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/user": {
+            "get": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Voir tous les users",
+                "description": "Voir tous les users",
+                "operationId": "getuserList",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/user/{id}": {
+            "get": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Voir un user fonction de son ID",
+                "description": "Voir un user en fonction de son ID",
+                "operationId": "getOneUser",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Supprimer une reponse",
+                "description": "Supprimer une reponse avec son ID",
+                "operationId": "deleteUser",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/EmergencyContact": {
+            "get": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Voir les contacts d'urgences",
+                "description": "Voir les contacts d'urgences",
+                "operationId": "getEmergencyContactsList",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/EmergencyContact/{id}": {
+            "get": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Voir les contacts d'urgences en fonction de son ID",
+                "description": "Voir les contacts d'urgences en fonction de son ID",
+                "operationId": "getOneEmergencyContact",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful operation",
