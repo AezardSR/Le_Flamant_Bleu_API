@@ -147,15 +147,16 @@ Route::patch('/jobsoffers/update/{id}', [JobsOffersController::class, 'changeJob
     Route::delete('/appointments/{id}', [CalendarController::class, 'deleteAppointments']);
     Route::patch('/appointments/{id}', [CalendarController::class, 'changeAppointments']);
 //promosController
-Route::get('/Promos', [PromoController::class, 'getPromosList']);
-Route::post('/Promo/create/{name}/{startDate}/{endDate}/{duration}/{id_formationsTypes}/{id_formationsFormats}', [PromoController::class, 'createPromo']);
-Route::get('/Promo/{id}', [PromoController::class, 'getOnePromo']);
-Route::patch('/Promo/{id}/{column}/{newValue}', [PromoController::class, 'editPromo']);
+Route::get('/promos', [PromoController::class, 'getPromosList']);
+Route::post('/promos', [PromoController::class, 'createPromo']);
+Route::delete('/promos/{id}', [PromoController::class, 'deletePromos']);
+Route::get('/promos/{id}', [PromoController::class, 'getOnePromo']);
+Route::patch('/promos/{id}', [PromoController::class, 'editPromo']);
 
-Route::get('/PromoStudents', [PromoController::class, 'getPromoStudentsList']);
-Route::post('/PromoStudent/create/{id_students}/{id_promos}', [PromoController::class, 'AddStudentToPromo']);
-Route::get('/PromoStudent/{id_promos}', [PromoController::class, 'getPromoStudents']);
-Route::patch('/PromoStudent/{id}/{column}/{newValue}', [PromoController::class, 'editPromoStudent']);
+Route::get('/promoStudents', [PromoController::class, 'getPromoStudentsList']);
+Route::post('/promoStudent/create/{id_students}/{id_promos}', [PromoController::class, 'AddStudentToPromo']);
+Route::get('/promoStudent/{id_promos}', [PromoController::class, 'getPromoStudents']);
+Route::patch('/promoStudent/{id}/{column}/{newValue}', [PromoController::class, 'editPromoStudent']);
 
 Route::get('/PromoTeachers', [PromoController::class, 'getPromoTeachersList']);
 Route::post('/PromoTeacher', [PromoController::class, 'AddTeacherToPromo']);
@@ -166,6 +167,9 @@ Route::get('/PromoCalendars', [PromoController::class, 'getPromoCalendarList']);
 Route::post('/PromoCalendar/create/{startDate}/{endDate}/{id_promos}', [PromoController::class, 'AddPromoCalendar']);
 Route::get('/PromoCalendar/{id_promos}', [PromoController::class, 'getPromoCalendar']);
 Route::patch('/PromoCalendar/{id}/{column}/{newValue}', [PromoController::class, 'editPromoCalendar']);
+
+Route::get('/promos-types', [PromoController::class, 'getPromosTypes']);
+Route::get('/promos-formats', [PromoController::class, 'getPromosFormat']);
 
 //testsController
 Route::get('/ApplicantsTestSurvey', [TestsController::class, 'getApplicantsTestSurveyList']);

@@ -15,9 +15,30 @@ use Illuminate\Support\Facades\DB;
 
 class PromoController extends Controller
 {
+
+    public function getPromosTypes(){
+        $promo = FormationsTypes::all();
+        return response()->json($promo);
+    }
+
+    public function getPromosFormat(){
+        $promo = FormationsFormats::all();
+        return response()->json($promo);
+    }
+
     public function getPromosList(){
         $promo = Promos::all();
         return response()->json($promo);
+    }
+
+    public function deletePromos($id) {
+        $promo = Promos::find($id);
+        $promo->promo_calendar()->delete();
+        $promo->promo_student()->delete();
+        $promo->signatures()->delete(); // supprime les enregistrements liés dans la table "signatures" d'abord
+        $promo->registrations()->delete(); // supprime les enregistrements dans la table "registrations" ensuite
+        $promo->delete();
+        echo('promos bien supprimé');
     }
 
     public function createPromo(Request $request){
@@ -50,7 +71,15 @@ class PromoController extends Controller
     }
 
     public function editPromo($id, Request $request){
-        $promo = DB::table('promos')->where('id','=',$id)->update([$request->input('column') => $request->input('newValue')]);
+        $promo = DB::table('promos')->where('id','=',$id);
+        $promo->update([
+            'name' => $request->input('name'),
+            'startDate' => $request->input('startDate'),
+            'endDate' => $request->input('endDate'),
+            'duration' => $request->input('duration'),
+            'formationsTypes_id' => $request->input('formationsTypes_id'),
+            'formationsFormats_id' => $request->input('formationsFormats_id'),
+        ]);
     }
 //promostudents
     public function getPromoStudentsList(){
