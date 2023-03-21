@@ -38,7 +38,6 @@ class PromoController extends Controller
         $promo->signatures()->delete(); // supprime les enregistrements liés dans la table "signatures" d'abord
         $promo->registrations()->delete(); // supprime les enregistrements dans la table "registrations" ensuite
         $promo->delete();
-        echo('promos bien supprimé');
     }
 
     public function createPromo(Request $request){

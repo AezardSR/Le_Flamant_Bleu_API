@@ -33,7 +33,6 @@ class DocumentsController extends Controller
     public function deleteDocuments($id) {
         $documents = Documents::find($id);
         $documents->delete();
-        echo('Document bien supprimé');
     }
 
     //Change
