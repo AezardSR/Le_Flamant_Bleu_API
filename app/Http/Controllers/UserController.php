@@ -61,7 +61,7 @@ class UserController extends Controller
         $EmergencyContacts = DB::table('user')->where('id','=',$id)->delete();
     }
 
-//EmergencyContacts
+//emergency-contactss
 public function addEmergencyContacts(Request $request){
     $EmergencyContacts = new EmergencyContacts();
     $EmergencyContacts->name = $request->input('name');

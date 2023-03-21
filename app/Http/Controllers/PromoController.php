@@ -81,7 +81,7 @@ class PromoController extends Controller
             'formationsFormats_id' => $request->input('formationsFormats_id'),
         ]);
     }
-//promostudents
+//promo-studentss
     public function getPromoStudentsList(){
         $promoStudent = PromoStudents::all();
         return response()->json($promoStudent);
@@ -114,7 +114,7 @@ class PromoController extends Controller
     public function editPromoStudent($id, Request $request){
         $promo = DB::table('promo_students')->where('id','=',$id)->update([$request->input('column') => $request->input('newValue')]);
     }
-//promoTeachers
+//promo-teacherss
     public function getPromoTeachersList(){
         $promoTeacher = PromoTeachers::all();
         return response()->json($promoTeacher);
@@ -148,7 +148,7 @@ class PromoController extends Controller
         $promo = DB::table('promo_teachers')->where('id','=',$id)->update([$request->input('column') => $request->input('newValue')]);
     }
 
-//promoCalendar
+//promo-calendars
     public function getPromoCalendarList(){
         $promoCalendar = PromoCalendar::all();
         return response()->json($promoCalendar);
