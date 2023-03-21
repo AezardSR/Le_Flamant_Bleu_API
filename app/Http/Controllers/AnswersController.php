@@ -46,7 +46,6 @@ class AnswersController extends Controller
     {
         $answers = Answers::find($id);
         $answers->delete();
-        echo('Response bien supprimée');
     }
 
     public function changeAnswer($id, Request $request)
