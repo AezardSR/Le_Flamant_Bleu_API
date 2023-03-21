@@ -34,7 +34,14 @@ class LessonController extends Controller
 
     public function addParts(Request $request) {
         $parts = new Parts();
-        $parts->partName = $request->input('partName');
+        $parts->name = $request->input('name');
+
+        $parts->categories_id = Categories::find(
+            intval(
+                $request->input('categories_id')
+            )
+        )->id;
+
         $parts->save();
         return response()->json($parts);
     }
@@ -163,7 +170,12 @@ class LessonController extends Controller
 
     public function changeParts($id, Request $request) {
         $parts = Parts::find($id);
-        $parts->partName = $request->input('partName');
+        $parts->name = $request->input('name');
+        $parts->categories_id = Categories::find(
+            intval(
+                $request->input('categories_id')
+            )
+        )->id;
         $parts->save();
         return response()->json($parts);
     }

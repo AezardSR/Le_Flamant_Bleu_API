@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\Parts;
+use App\Models\Categories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 
@@ -24,6 +25,8 @@ class PartsFactory extends Factory
     {
         return [
             'name' => $this->faker->word(),
+            'categories_id' =>Categories::all()->random()->id,
+
         ];
     }
 }
