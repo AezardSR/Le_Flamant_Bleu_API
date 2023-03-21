@@ -475,6 +475,132 @@
                 }
             }
         },
+        "/modules": {
+            "get": {
+                "tags": [
+                    "Lesson"
+                ],
+                "summary": "Voir tous les modules",
+                "description": "Voir tous les modules",
+                "operationId": "getModuleList",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/part": {
+            "get": {
+                "tags": [
+                    "Lesson"
+                ],
+                "summary": "",
+                "description": "",
+                "operationId": "getPartsList",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/leçons": {
+            "get": {
+                "tags": [
+                    "Lesson"
+                ],
+                "summary": "",
+                "description": "",
+                "operationId": "getLessonList",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/exercice": {
+            "get": {
+                "tags": [
+                    "Lesson"
+                ],
+                "summary": "Liste des exercices",
+                "description": "Liste des exercices",
+                "operationId": "getExerciceList",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/categories": {
+            "get": {
+                "tags": [
+                    "Lesson"
+                ],
+                "summary": "Liste des categories",
+                "description": "Liste des categories",
+                "operationId": "getCategoriesList",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/modulescategories": {
+            "get": {
+                "tags": [
+                    "Lesson"
+                ],
+                "summary": "Liste des modules categories",
+                "description": "Liste des modules categories",
+                "operationId": "getModulesCategoriesList",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/modulesclasses": {
+            "get": {
+                "tags": [
+                    "Lesson"
+                ],
+                "summary": "Liste des modules de classes",
+                "description": "Liste des modules de classes",
+                "operationId": "getModulesClassesList",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
         "/partnercontacts": {
             "get": {
                 "tags": [
@@ -823,6 +949,98 @@
                         }
                     }
                 },
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/registrationTypes": {
+            "get": {
+                "tags": [
+                    "Registration"
+                ],
+                "summary": "",
+                "description": "",
+                "operationId": "getRegistrationTypeList",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/registrations": {
+            "get": {
+                "tags": [
+                    "Registration"
+                ],
+                "summary": "",
+                "description": "",
+                "operationId": "getRegistrationsList",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/registration/{id}": {
+            "get": {
+                "tags": [
+                    "Registration"
+                ],
+                "summary": "",
+                "description": "",
+                "operationId": "getOneRegistration",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/signatures/{id_registration}": {
+            "get": {
+                "tags": [
+                    "Registration"
+                ],
+                "summary": "",
+                "description": "",
+                "operationId": "getSignatureList",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful operation",
