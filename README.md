@@ -1,4 +1,20 @@
 # Le Flamant Bleu API
+## Installation en local
+Les étapes pour une installation en local, si vous avez docker à disposition, passé directement à la section suivante.
+
+```bash
+composer install 
+```
+```bash
+php artisan migrate:fresh --seed  
+```
+```bash
+php artisan jwt:generate
+```
+```bash
+php artisan key:generate 
+```
+
 ## Installation et configuration avec Docker
 
 ```bash
@@ -56,6 +72,7 @@ JWT_SECRET : la clé secrète pour votre JWT
 L5_SWAGGER_CONST_HOST : l'URL de base pour l'API de votre application Laravel pour la documentation Swagger
 ```
 ### APP_KEY
+
 ```bash
 php artisan key:generate
 ```
@@ -66,10 +83,10 @@ php artisan key:generate
     php artisan jwt:generate
 ```
 
-
 # SWAGGER 
 
 Commande pour generer le changement pour la doc swagger
+
 ```bash
     docker-compose run api php artisan l5-swagger:generate
 ```
