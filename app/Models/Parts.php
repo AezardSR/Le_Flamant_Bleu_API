@@ -10,5 +10,5 @@ class Parts extends Model
     use HasFactory;
 
     protected $table = 'parts';
-    protected $fillable = ['name'];
+    protected $fillable = ['name', 'categories_id'];
 }

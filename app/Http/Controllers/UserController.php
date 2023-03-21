@@ -131,7 +131,7 @@ class UserController extends Controller
         // echo('User supprimé');
     }
 
-//EmergencyContacts
+//emergency-contactss
 public function addEmergencyContacts(Request $request){
     $EmergencyContacts = new EmergencyContacts();
     $EmergencyContacts->name = $request->input('name');

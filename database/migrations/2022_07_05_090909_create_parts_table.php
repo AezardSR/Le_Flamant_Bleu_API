@@ -16,7 +16,11 @@ class CreatePartsTable extends Migration
         Schema::create('parts', function (Blueprint $table) {
             $table->increments('id',true);
             $table->string('name', 100);
+            $table->integer('categories_id')->unsigned();
             $table->timestamps();
+        });
+        Schema::table('parts',function ($table){
+            $table->foreign('categories_id')->references('id')->on('categories');
         });
     }
 

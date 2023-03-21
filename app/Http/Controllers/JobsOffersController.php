@@ -80,7 +80,6 @@ class JobsOffersController extends Controller
     public function deleteJobsOffers($id) {
         $jobsOffers = JobsOffers::find($id);
         $jobsOffers->delete();
-        echo('Annonces de job bien supprimé');
     }
 
     /**

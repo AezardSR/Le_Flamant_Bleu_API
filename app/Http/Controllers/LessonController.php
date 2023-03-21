@@ -34,7 +34,14 @@ class LessonController extends Controller
 
     public function addParts(Request $request) {
         $parts = new Parts();
-        $parts->partName = $request->input('partName');
+        $parts->name = $request->input('name');
+
+        $parts->categories_id = Categories::find(
+            intval(
+                $request->input('categories_id')
+            )
+        )->id;
+
         $parts->save();
         return response()->json($parts);
     }
@@ -121,43 +128,36 @@ class LessonController extends Controller
     public function deleteModule($id) {
         $module = Modules::find($id);
         $module->delete();
-        echo('Module bien supprimé');
     }
 
     public function deleteParts($id) {
         $parts = Parts::find($id);
         $parts->delete();
-        echo('Partie bien supprimé');
     }
 
     public function deleteLesson($id) {
         $lesson = Classes::find($id);
         $lesson->delete();
-        echo('Leçon bien supprimé');
     }
 
     public function deleteExercice($id) {
         $exercice = Exercices::find($id);
         $exercice->delete();
-        echo('Exercice bien supprimé');
     }
 
     public function deleteCategories($id) {
         $categories = Categories::find($id);
         $categories->delete();
-        echo('Catégorie est bien supprimée');
     }
 
     public function deleteModulesCategories($id) {
         $moduleCategorie = ModulesCategories::find($id);
         $moduleCategorie->delete();
-        echo('Module de la catégorie est bien supprimé');
     }
 
     public function deleteModulesClasses($id) {
         $moduleClasses = ModulesClass::find($id);
         $moduleClasses->delete();
-        echo('Module de la classe est bien supprimé');
     }
 
     //Modifier
@@ -170,7 +170,12 @@ class LessonController extends Controller
 
     public function changeParts($id, Request $request) {
         $parts = Parts::find($id);
-        $parts->partName = $request->input('partName');
+        $parts->name = $request->input('name');
+        $parts->categories_id = Categories::find(
+            intval(
+                $request->input('categories_id')
+            )
+        )->id;
         $parts->save();
         return response()->json($parts);
     }

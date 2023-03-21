@@ -61,13 +61,11 @@ class CalendarController extends Controller
     public function deleteAppointmentsTypes($id) {
         $AppointmentsTypes = AppointmentsTypes::find($id);
         $AppointmentsTypes->delete();
-        echo('Type de rdv bien supprimé');
     }
 
     public function deleteAppointments($id) {
         $Appointments = Appointments::find($id);
         $Appointments->delete();
-        echo('Rdv bien supprimé');
     }
 
     //Change

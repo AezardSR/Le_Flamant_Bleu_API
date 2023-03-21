@@ -132,7 +132,6 @@ class PartnerContactController extends Controller
     public function deletePartnerContact($id) {
         $partnerContact = PartnerContacts::find($id);
         $partnerContact->delete();
-        echo('Partenaire bien supprimé');
     }
 
     /**

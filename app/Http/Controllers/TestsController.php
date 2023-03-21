@@ -61,7 +61,7 @@ class TestsController extends Controller
         $ApplicantsTestSurvey = DB::table('applicants_test_survey')->where('id','=',$id)->update([$request->input('column') => $request->input('newValue')]);
     }
 
-//ApplicantsAnswers
+//applicant-answerss
     public function getApplicantsAnswersList(){
         $ApplicantsAnswers = ApplicantsAnswers::all();
         return response()->json($ApplicantsAnswers);
@@ -92,7 +92,7 @@ class TestsController extends Controller
         return response()->json($ApplicantsAnswers);
     }
 
-//SurveyAnswers
+//survey-answers
     public function getSurveyAnswersList(){
         $SurveyAnswers = SurveyAnswers::all();
         return response()->json($SurveyAnswers);
@@ -122,7 +122,7 @@ class TestsController extends Controller
         $ApplicantsTestSurvey = DB::table('survey_answers')->where('id','=',$id)->update([$request->input('column') => $request->input('newValue')]);
     }
 
-//Surveys
+//surveys
     public function getSurveysList(){
         $Surveys = Surveys::all();
         return response()->json($Surveys);
@@ -144,7 +144,7 @@ class TestsController extends Controller
         $Surveys = DB::table('surveys')->where('id','=',$id)->update([$request->input('column') => $request->input('newValue')]);
     }
 
-//EntranceTestsSurvey
+//entrance-test-surveys
     public function getEntranceTestsSurveyList(){
         $EntranceTestsSurvey = EntranceTestsSurvey::all();
         return response()->json($EntranceTestsSurvey);

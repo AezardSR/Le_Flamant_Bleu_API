@@ -56,7 +56,8 @@ class DatabaseSeeder extends Seeder
         Surveys::factory(5)->create();
         SurveyAnswers::factory(5)->create();
         RegistrationTypes::factory(5)->create();
-        Parts::factory(10)->create();
+        Categories::factory(10)->create();
+        Parts::factory(20)->create();
         PartnerContacts::factory(5)->create();
         Messages::factory(5)->create();
         JobsOffers::factory(5)->create();
@@ -76,9 +77,8 @@ class DatabaseSeeder extends Seeder
         EmergencyContacts::factory(5)->create();
         Documents::factory(5)->create();
         Classes::factory(10)->create();
-        ModulesClass::factory(5)->create();
-        Categories::factory(10)->create();
-        ModulesCategories::factory(5)->create();
+        ModulesClass::factory(10)->create();
+        ModulesCategories::factory(10)->create();
         Questions::factory(5)->create();
         AppointmentsTypes::factory(5)->create();
         Appointments::factory(5)->create();

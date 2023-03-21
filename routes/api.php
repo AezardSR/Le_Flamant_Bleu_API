@@ -49,12 +49,12 @@ Route::post('/user', [UserController::class, 'addUser']);
 Route::patch('/user/{id}', [UserController::class, 'editUser']);
 Route::delete('/user/{id}', [UserController::class, 'deleteUser']);
 
-//EmergencyContacts
-Route::get('/EmergencyContact', [UserController::class, 'getEmergencyContactsList']);
-Route::get('/EmergencyContact/{id}', [UserController::class, 'getOneEmergencyContact']);
-Route::post('/EmergencyContact', [UserController::class, 'addEmergencyContacts']);
-Route::patch('/EmergencyContact/{id}', [UserController::class, 'editEmergencyContact']);
-Route::delete('/EmergencyContact/{id}', [UserController::class, 'deleteEmergencyContact']);
+//emergency-contactss
+Route::get('/emergency-contacts', [UserController::class, 'getEmergencyContactsList']);
+Route::get('/emergency-contacts/{id}', [UserController::class, 'getOneEmergencyContact']);
+Route::post('/emergency-contacts', [UserController::class, 'addEmergencyContacts']);
+Route::patch('/emergency-contacts/{id}', [UserController::class, 'editEmergencyContact']);
+Route::delete('/emergency-contacts/{id}', [UserController::class, 'deleteEmergencyContact']);
 
 //rolesController
 
@@ -72,31 +72,36 @@ Route::delete('/modules/{id}/{moduleName}', [LessonController::class, 'deleteMod
 Route::patch('/modules', [LessonController::class, 'changeModule']);
 
 //Routes pour Parties
-Route::get('/part', [LessonController::class, 'getPartsList']);
-Route::post('/part', [LessonController::class, 'addParts']);
-Route::delete('/part/{id}/{partName}', [LessonController::class, 'deleteParts']);
-Route::patch('/part', [LessonController::class, 'changeParts']);
+Route::get('/parts', [LessonController::class, 'getPartsList']);
+Route::post('/parts', [LessonController::class, 'addParts']);
+Route::delete('/parts/{id}/{partName}', [LessonController::class, 'deleteParts']);
+Route::patch('/parts', [LessonController::class, 'changeParts']);
 
 //RegistrationController
-Route::get('/registrationTypes', [RegistrationController::class, 'getRegistrationTypeList']);
-Route::get('/registrations', [RegistrationController::class, 'getRegistrationsList']);
-Route::get('/registration/{id}', [RegistrationController::class, 'getOneRegistration']);
-Route::post('/registration/create/{dateRegistration}/{detailRegistration}/{id_promos}/{id_registrationTypes}', [RegistrationController::class, 'createRegistration']);
-Route::patch('/registration/update/{id}/{column}/{newValue}', [RegistrationController::class, 'editRegistration']);
-Route::patch('/registrationType/update/{id}/{column}/{newValue}', [RegistrationController::class, 'editRegistrationType']);
+    //Types RegistrationController
+    Route::get('/registration-types', [RegistrationController::class, 'getRegistrationTypeList']);
+    Route::patch('/registration-types/update/{id}/{column}/{newValue}', [RegistrationController::class, 'editRegistrationType']);
+
+    //Registrations
+    Route::get('/registrations', [RegistrationController::class, 'getRegistrationsList']);
+    Route::get('/registrations/{id}', [RegistrationController::class, 'getOneRegistration']);
+    Route::post('/registrations/create/{dateRegistration}/{detailRegistration}/{id_promos}/{id_registrationTypes}', [RegistrationController::class, 'createRegistration']);
+    Route::patch('/registrations/update/{id}/{column}/{newValue}', [RegistrationController::class, 'editRegistration']);
+
+//Signatures
 Route::get('/signatures/{id_registration}', [RegistrationController::class, 'getSignatureList']);
 Route::post('/signatures/{id_users}/{id_registrations}/{date}', [RegistrationController::class, 'addSignature']);
 //Routes pour Leçons
-Route::get('/leçons', [LessonController::class, 'getLessonList']);
-Route::post('/leçons', [LessonController::class, 'addLesson']);
-Route::delete('/leçons/{id}/{content}/{id_parts}', [LessonController::class, 'deleteLesson']);
-Route::patch('/leçons', [LessonController::class, 'changeLesson']);
+Route::get('/lessons', [LessonController::class, 'getLessonList']);
+Route::post('/lessons', [LessonController::class, 'addLesson']);
+Route::delete('/lessons/{id}/{content}/{id_parts}', [LessonController::class, 'deleteLesson']);
+Route::patch('/lessons', [LessonController::class, 'changeLesson']);
 
 //Routes pour Exercices
-Route::get('/exercice', [LessonController::class, 'getExerciceList']);
-Route::post('/exercice', [LessonController::class, 'addExercice']);
-Route::delete('/exercice/{id}/{name}/{content}/{id_parts}', [LessonController::class, 'deleteExercice']);
-Route::patch('/exercice', [LessonController::class, 'changeExercice']);
+Route::get('/exercices', [LessonController::class, 'getExerciceList']);
+Route::post('/exercices', [LessonController::class, 'addExercice']);
+Route::delete('/exercices/{id}/{name}/{content}/{id_parts}', [LessonController::class, 'deleteExercice']);
+Route::patch('/exercices', [LessonController::class, 'changeExercice']);
 
 //Routes pour Catégories
 Route::get('/categories', [LessonController::class, 'getCategoriesList']);
@@ -105,16 +110,16 @@ Route::delete('/categories/{id}', [LessonController::class, 'deleteCategories'])
 Route::patch('/categories/{id}', [LessonController::class, 'changeCategories']);
 
 //Routes pour Modules Catégories
-Route::get('/modulescategories', [LessonController::class, 'getModulesCategoriesList']);
-Route::post('/modulescategories', [LessonController::class, 'addModulesCategories']);
-Route::delete('/modulescategories/{id}/{id_categories}/{id_modules}', [LessonController::class, 'deleteModulesCategories']);
-Route::patch('/modulescategories', [LessonController::class, 'changeModulesCategories']);
+Route::get('/module-categories', [LessonController::class, 'getModulesCategoriesList']);
+Route::post('/module-categories', [LessonController::class, 'addModulesCategories']);
+Route::delete('/module-categories/{id}/{id_categories}/{id_modules}', [LessonController::class, 'deleteModulesCategories']);
+Route::patch('/module-categories', [LessonController::class, 'changeModulesCategories']);
 
 //Routes pour Modules Classes
-Route::get('/modulesclasses', [LessonController::class, 'getModulesClassesList']);
-Route::post('/modulesclasses', [LessonController::class, 'addModulesClass']);
-Route::delete('/modulesclasses/{id}/{id_classes}/{id_modules}', [LessonController::class, 'deleteModulesClasses']);
-Route::patch('/modulesclasses', [LessonController::class, 'changeModulesClass']);
+Route::get('/module-classes', [LessonController::class, 'getModulesClassesList']);
+Route::post('/module-classes', [LessonController::class, 'addModulesClass']);
+Route::delete('/module-classes/{id}/{id_classes}/{id_modules}', [LessonController::class, 'deleteModulesClasses']);
+Route::patch('/module-classes', [LessonController::class, 'changeModulesClass']);
 
 //Routes pour Documents
 Route::get('/documents', [DocumentsController::class, 'getDocuments']);
@@ -123,80 +128,84 @@ Route::delete('/documents/{id}', [DocumentsController::class, 'deleteDocuments']
 Route::patch('/documents/{id}', [DocumentsController::class, 'changeDocuments']);
 
 //Routes pour PartnerContacts
-Route::get('/partnercontacts', [PartnerContactController::class, 'getPartnerContact']);
-Route::post('/partnercontacts/add', [PartnerContactController::class, 'addPartnerContact']);
-Route::delete('/partnercontacts/delete/{id}', [PartnerContactController::class, 'deletePartnerContact']);
-Route::patch('/partnercontacts/update/{id}', [PartnerContactController::class, 'changePartnerContact']);
+Route::get('/partner-contacts', [PartnerContactController::class, 'getPartnerContact']);
+Route::post('/partner-contacts/add', [PartnerContactController::class, 'addPartnerContact']);
+Route::delete('/partner-contacts/delete/{id}', [PartnerContactController::class, 'deletePartnerContact']);
+Route::patch('/partner-contacts/update/{id}', [PartnerContactController::class, 'changePartnerContact']);
 
 //Routes pour JobsOffers
-Route::get('/jobsoffers', [JobsOffersController::class, 'getJobsOffers']);
-Route::post('/jobsoffers/add', [JobsOffersController::class, 'addJobsOffers']);
-Route::delete('/jobsoffers/delete/{id}', [JobsOffersController::class, 'deleteJobsOffers']);
-Route::patch('/jobsoffers/update/{id}', [JobsOffersController::class, 'changeJobsOffers']);
+Route::get('/job-offers', [JobsOffersController::class, 'getJobsOffers']);
+Route::post('/job-offers/add', [JobsOffersController::class, 'addJobsOffers']);
+Route::delete('/job-offers/delete/{id}', [JobsOffersController::class, 'deleteJobsOffers']);
+Route::patch('/job-offers/update/{id}', [JobsOffersController::class, 'changeJobsOffers']);
 
 //Routes pour rendez-vous
     //Type de rdv
-    Route::get('/appointmentstypes', [CalendarController::class, 'getAppointmentsTypes']);
-    Route::post('/appointmentstypes', [CalendarController::class, 'addAppointmentsTypes']);
-    Route::delete('/appointmentstypes/{id}/{name}', [CalendarController::class, 'deleteAppointmentsTypes']);
-    Route::patch('/appointmentstypes', [CalendarController::class, 'changeAppointmentsTypes']);
+    Route::get('/appointment-types', [CalendarController::class, 'getAppointmentsTypes']);
+    Route::post('/appointment-types', [CalendarController::class, 'addAppointmentsTypes']);
+    Route::delete('/appointment-types/{id}', [CalendarController::class, 'deleteAppointmentsTypes']);
+    Route::patch('/appointment-types', [CalendarController::class, 'changeAppointmentsTypes']);
 
     //RDV
     Route::get('/appointments', [CalendarController::class, 'getAppointments']);
     Route::post('/appointments', [CalendarController::class, 'addAppointments']);
-    Route::delete('/appointments/{id}/{titleDetails}/{descriptionDeatils}/{dateDetails}/{id_receiver}/{id_create}/{id_appointments_types}', [CalendarController::class, 'deleteAppointments']);
-    Route::patch('/appointments', [CalendarController::class, 'changeAppointments']);
+    Route::delete('/appointments/{id}', [CalendarController::class, 'deleteAppointments']);
+    Route::patch('/appointments/{id}', [CalendarController::class, 'changeAppointments']);
 //promosController
-Route::get('/Promos', [PromoController::class, 'getPromosList']);
-Route::post('/Promo/create/{name}/{startDate}/{endDate}/{duration}/{id_formationsTypes}/{id_formationsFormats}', [PromoController::class, 'createPromo']);
-Route::get('/Promo/{id}', [PromoController::class, 'getOnePromo']);
-Route::patch('/Promo/{id}/{column}/{newValue}', [PromoController::class, 'editPromo']);
+Route::get('/promos', [PromoController::class, 'getPromosList']);
+Route::post('/promos', [PromoController::class, 'createPromo']);
+Route::delete('/promos/{id}', [PromoController::class, 'deletePromos']);
+Route::get('/promos/{id}', [PromoController::class, 'getOnePromo']);
+Route::patch('/promos/{id}', [PromoController::class, 'editPromo']);
 
-Route::get('/PromoStudents', [PromoController::class, 'getPromoStudentsList']);
-Route::post('/PromoStudent/create/{id_students}/{id_promos}', [PromoController::class, 'AddStudentToPromo']);
-Route::get('/PromoStudent/{id_promos}', [PromoController::class, 'getPromoStudents']);
-Route::patch('/PromoStudent/{id}/{column}/{newValue}', [PromoController::class, 'editPromoStudent']);
+Route::get('/promo-students', [PromoController::class, 'getPromoStudentsList']);
+Route::post('/promo-students/create/{id_students}/{id_promos}', [PromoController::class, 'AddStudentToPromo']);
+Route::get('/promo-students/{id_promos}', [PromoController::class, 'getPromoStudents']);
+Route::patch('/promo-students/{id}/{column}/{newValue}', [PromoController::class, 'editPromoStudent']);
 
-Route::get('/PromoTeachers', [PromoController::class, 'getPromoTeachersList']);
-Route::post('/PromoTeacher', [PromoController::class, 'AddTeacherToPromo']);
-Route::get('/PromoTeacher/{promos_id}', [PromoController::class, 'getPromoTeachers']);
-Route::put('/PromoTeacher/{id}', [PromoController::class, 'editPromoTeacher']);
+Route::get('/promo-teachers', [PromoController::class, 'getPromoTeachersList']);
+Route::post('/promo-teachers', [PromoController::class, 'AddTeacherToPromo']);
+Route::get('/promo-teachers/{promos_id}', [PromoController::class, 'getPromoTeachers']);
+Route::put('/promo-teachers/{id}', [PromoController::class, 'editPromoTeacher']);
 
-Route::get('/PromoCalendars', [PromoController::class, 'getPromoCalendarList']);
-Route::post('/PromoCalendar/create/{startDate}/{endDate}/{id_promos}', [PromoController::class, 'AddPromoCalendar']);
-Route::get('/PromoCalendar/{id_promos}', [PromoController::class, 'getPromoCalendar']);
-Route::patch('/PromoCalendar/{id}/{column}/{newValue}', [PromoController::class, 'editPromoCalendar']);
+Route::get('/promo-calendars', [PromoController::class, 'getPromoCalendarList']);
+Route::post('/promo-calendars/create/{startDate}/{endDate}/{id_promos}', [PromoController::class, 'AddPromoCalendar']);
+Route::get('/promo-calendars/{id_promos}', [PromoController::class, 'getPromoCalendar']);
+Route::patch('/promo-calendars/{id}/{column}/{newValue}', [PromoController::class, 'editPromoCalendar']);
+
+Route::get('/promos-types', [PromoController::class, 'getPromosTypes']);
+Route::get('/promos-formats', [PromoController::class, 'getPromosFormat']);
 
 //testsController
-Route::get('/ApplicantsTestSurvey', [TestsController::class, 'getApplicantsTestSurveyList']);
-Route::post('/ApplicantTestSurvey/create/{name}/{firstname}/{dateSurvey}/{mail}/{id_entranceTests}/{id_formationsFormats}/{id_promos}', [TestsController::class, 'createApplicantsTestSurvey']);
-Route::get('/ApplicantTestSurvey/{id}', [TestsController::class, 'getOneApplicantsTestSurvey']);
-Route::patch('/ApplicantTestSurvey/{id}/{column}/{newValue}', [TestsController::class, 'editApplicantsTestSurvey']);
+Route::get('/applicant-test-surveys', [TestsController::class, 'getApplicantsTestSurveyList']);
+Route::post('/applicant-test-surveys/create/{name}/{firstname}/{dateSurvey}/{mail}/{id_entranceTests}/{id_formationsFormats}/{id_promos}', [TestsController::class, 'createApplicantsTestSurvey']);
+Route::get('/applicant-test-surveys/{id}', [TestsController::class, 'getOneApplicantsTestSurvey']);
+Route::patch('/applicant-test-surveys/{id}/{column}/{newValue}', [TestsController::class, 'editApplicantsTestSurvey']);
 
-Route::get('/ApplicantsAnswers', [TestsController::class, 'getApplicantsAnswersList']);
-Route::post('/ApplicantsAnswer/create/{answer}/{id_surveyAnswers}/{id_applicantsTestSurvey}', [TestsController::class, 'createApplicantsAnswers']);
-Route::get('/ApplicantsAnswer/{id}', [TestsController::class, 'getApplicantAnswers']);
+Route::get('/applicant-answers', [TestsController::class, 'getApplicantsAnswersList']);
+Route::post('/applicant-answers/create/{answer}/{id_surveyAnswers}/{id_applicantsTestSurvey}', [TestsController::class, 'createApplicantsAnswers']);
+Route::get('/applicant-answers/{id}', [TestsController::class, 'getApplicantAnswers']);
 
-Route::get('/SurveyAnswers', [TestsController::class, 'getSurveyAnswersList']);
-Route::post('/SurveyAnswer/create/{answer}/{correctAnswer}/{id_surveys}', [TestsController::class, 'createSurveyAnswers']);
-Route::get('/SurveyAnswer/{id}', [TestsController::class, 'getOneSurveyAnswers']);
-Route::patch('/SurveyAnswer/{id}/{column}/{newValue}', [TestsController::class, 'editSurveyAnswers']);
+Route::get('/survey-answers', [TestsController::class, 'getSurveyAnswersList']);
+Route::post('/survey-answers/create/{answer}/{correctAnswer}/{id_surveys}', [TestsController::class, 'createSurveyAnswers']);
+Route::get('/survey-answers/{id}', [TestsController::class, 'getOneSurveyAnswers']);
+Route::patch('/survey-answers/{id}/{column}/{newValue}', [TestsController::class, 'editSurveyAnswers']);
 
-Route::get('/Surveys', [TestsController::class, 'getSurveysList']);
-Route::post('/Survey/create/{survey}', [TestsController::class, 'createSurveys']);
-Route::get('/Survey/{id}', [TestsController::class, 'getOneSurvey']);
-Route::patch('/Survey/{id}/{column}/{newValue}', [TestsController::class, 'editSurvey']);
+Route::get('/surveys', [TestsController::class, 'getSurveysList']);
+Route::post('/surveys/create/{survey}', [TestsController::class, 'createSurveys']);
+Route::get('/surveys/{id}', [TestsController::class, 'getOneSurvey']);
+Route::patch('/surveys/{id}/{column}/{newValue}', [TestsController::class, 'editSurvey']);
 
-Route::get('/EntranceTestsSurvey', [TestsController::class, 'getEntranceTestsSurveyList']);
-Route::post('/EntranceTestsSurvey/create/{id_entranceTests}/{id_surveys}', [TestsController::class, 'createEntranceTestsSurvey']);
-Route::get('/EntranceTestsSurvey/{id}', [TestsController::class, 'getOneEntranceTestsSurvey']);
-Route::patch('/EntranceTestsSurvey/{id}/{column}/{newValue}', [TestsController::class, 'editEntranceTestsSurvey']);
+Route::get('/entrance-test-surveys', [TestsController::class, 'getEntranceTestsSurveyList']);
+Route::post('/entrance-test-surveys/create/{id_entranceTests}/{id_surveys}', [TestsController::class, 'createEntranceTestsSurvey']);
+Route::get('/entrance-test-surveys/{id}', [TestsController::class, 'getOneEntranceTestsSurvey']);
+Route::patch('/entrance-test-surveys/{id}/{column}/{newValue}', [TestsController::class, 'editEntranceTestsSurvey']);
 
 //messagingController
-Route::post('/Message/create/{content}/{id_receiver}/{id_sender}', [MessagingController::class, 'addMessage']);
-Route::get('/Message/{id_receiver}/{id_sender}', [MessagingController::class, 'getChat']);
-Route::patch('/Message/{id}/{column}/{newValue}', [MessagingController::class, 'editMessage']);
-Route::delete('/message/delete/{id}', [MessagingController::class, 'deleteMessage']);
+Route::post('/messages/create/{content}/{id_receiver}/{id_sender}', [MessagingController::class, 'addMessage']);
+Route::get('/messages/{id_receiver}/{id_sender}', [MessagingController::class, 'getChat']);
+Route::patch('/messages/{id}/{column}/{newValue}', [MessagingController::class, 'editMessage']);
+Route::delete('/messages/delete/{id}', [MessagingController::class, 'deleteMessage']);
 	
 // routes pour les questions
 Route::get('/questions/{id}', [QuestionsController::class, 'viewQuestion']);
@@ -211,13 +220,3 @@ Route::get('/answers', [AnswersController::class, 'viewListAnswer']);
 Route::post('/answers',[AnswersController::class, 'addAnswer']);
 Route::delete('/answers/{id}',[AnswersController::class, 'deleteAnswer']);
 Route::patch('/answers/{id}',[AnswersController::class, 'changeAnswer']);
-
-/*
-Route::get('/partnerscontacts', [PartnerContactController::class, '//NameFunction']);v
-Route::get('/offres-emplois', [JobsOffersController::class, '//NameFunction']);
-Route::get('/modules', [LessonController::class, '//NameFunction']);
-Route::get('/cours', [LessonController::class, '//NameFunction']);
-Route::get('/exercices', [LessonController::class, '//NameFunction']);
-Route::get('/planning', [CalendarController::class, '//NameFunction']);
-Route::get('/messagerie', [MessagesController::class, '//NameFunction']);
- */

@@ -15,9 +15,29 @@ use Illuminate\Support\Facades\DB;
 
 class PromoController extends Controller
 {
+
+    public function getPromosTypes(){
+        $promo = FormationsTypes::all();
+        return response()->json($promo);
+    }
+
+    public function getPromosFormat(){
+        $promo = FormationsFormats::all();
+        return response()->json($promo);
+    }
+
     public function getPromosList(){
         $promo = Promos::all();
         return response()->json($promo);
+    }
+
+    public function deletePromos($id) {
+        $promo = Promos::find($id);
+        $promo->promo_calendar()->delete();
+        $promo->promo_student()->delete();
+        $promo->signatures()->delete(); // supprime les enregistrements liés dans la table "signatures" d'abord
+        $promo->registrations()->delete(); // supprime les enregistrements dans la table "registrations" ensuite
+        $promo->delete();
     }
 
     public function createPromo(Request $request){
@@ -50,9 +70,17 @@ class PromoController extends Controller
     }
 
     public function editPromo($id, Request $request){
-        $promo = DB::table('promos')->where('id','=',$id)->update([$request->input('column') => $request->input('newValue')]);
+        $promo = DB::table('promos')->where('id','=',$id);
+        $promo->update([
+            'name' => $request->input('name'),
+            'startDate' => $request->input('startDate'),
+            'endDate' => $request->input('endDate'),
+            'duration' => $request->input('duration'),
+            'formationsTypes_id' => $request->input('formationsTypes_id'),
+            'formationsFormats_id' => $request->input('formationsFormats_id'),
+        ]);
     }
-//promostudents
+//promo-studentss
     public function getPromoStudentsList(){
         $promoStudent = PromoStudents::all();
         return response()->json($promoStudent);
@@ -85,7 +113,7 @@ class PromoController extends Controller
     public function editPromoStudent($id, Request $request){
         $promo = DB::table('promo_students')->where('id','=',$id)->update([$request->input('column') => $request->input('newValue')]);
     }
-//promoTeachers
+//promo-teacherss
     public function getPromoTeachersList(){
         $promoTeacher = PromoTeachers::all();
         return response()->json($promoTeacher);
@@ -119,7 +147,7 @@ class PromoController extends Controller
         $promo = DB::table('promo_teachers')->where('id','=',$id)->update([$request->input('column') => $request->input('newValue')]);
     }
 
-//promoCalendar
+//promo-calendars
     public function getPromoCalendarList(){
         $promoCalendar = PromoCalendar::all();
         return response()->json($promoCalendar);

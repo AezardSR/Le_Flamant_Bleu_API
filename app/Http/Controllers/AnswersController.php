@@ -153,7 +153,6 @@ class AnswersController extends Controller
     {
         $answers = Answers::find($id);
         $answers->delete();
-        echo('Response bien supprimée');
     }
 
     /**

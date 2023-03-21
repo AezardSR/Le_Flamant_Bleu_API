@@ -160,7 +160,6 @@ class QuestionsController extends Controller
     {
         $questions = Questions::find($id);
         $questions->delete();
-        echo('Question bien supprimée');
     }
     /**
      * @OA\Patch (
