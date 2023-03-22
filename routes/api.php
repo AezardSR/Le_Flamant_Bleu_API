@@ -175,8 +175,8 @@ Route::post('/promo-calendars/create/{startDate}/{endDate}/{id_promos}', [PromoC
 Route::get('/promo-calendars/{id_promos}', [PromoController::class, 'getPromoCalendar']);
 Route::patch('/promo-calendars/{id}/{column}/{newValue}', [PromoController::class, 'editPromoCalendar']);
 
-Route::get('/promos-types', [PromoController::class, 'getPromosTypes']);
-Route::get('/promos-formats', [PromoController::class, 'getPromosFormat']);
+Route::get('/promo-types', [PromoController::class, 'getPromosTypes']);
+Route::get('/promo-formats', [PromoController::class, 'getPromosFormat']);
 
 //testsController
 Route::get('/applicant-test-surveys', [TestsController::class, 'getApplicantsTestSurveyList']);
