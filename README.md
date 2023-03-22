@@ -63,8 +63,6 @@ DB_CONNECTION, DB_HOST, DB_PORT, DB_DATABASE, DB_USERNAME, DB_PASSWORD : les inf
 
 MAIL_MAILER, MAIL_HOST, MAIL_PORT, MAIL_USERNAME, MAIL_PASSWORD, MAIL_ENCRYPTION, MAIL_FROM_ADDRESS, MAIL_FROM_NAME : les informations de connexion à votre service de messagerie
 
-REDIS_HOST, REDIS_PASSWORD, REDIS_PORT : les informations de connexion à votre serveur Redis
-
 MIX_PUSHER_APP_KEY, MIX_PUSHER_APP_CLUSTER : les informations de connexion à votre application Pusher
 
 JWT_SECRET : la clé secrète pour votre JWT
