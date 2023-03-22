@@ -79,7 +79,7 @@ php artisan key:generate
     php artisan jwt:generate
 ```
 
-# SWAGGER 
+## SWAGGER 
 
 Commande pour generer le changement pour la doc swagger
 
