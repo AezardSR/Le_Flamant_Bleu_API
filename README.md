@@ -46,7 +46,7 @@ sudo docker compose up -d
 ```
 ## le fichier .env
 
-Reprendre [.env.exemple](https://github.com/AezardSR/Le_Flamant_Bleu_API/blob/73b6f0feea8842396ed4571604e9284ae61e11d6/.env.example#L55)
+Reprendre [.env.exemple](https://github.com/AezardSR/Le_Flamant_Bleu_API/blob/dev/.env.example)
 
 ```env
 APP_NAME : le nom de votre application Laravel
