@@ -287,6 +287,12 @@ class LessonController extends Controller
         return response()->json($exercice);
     }
 
+    public function getOneExercice($id)
+    {
+        $exercice = Exercices::all($id);
+        return response()->json($exercice);
+    }
+
     public function getCategoriesList()
     {
         $categories = Categories::all();

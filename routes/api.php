@@ -100,8 +100,9 @@ Route::patch('/lessons/{id}', [LessonController::class, 'changeLesson']);
 
 //Routes pour Exercices
 Route::get('/exercices', [LessonController::class, 'getExerciceList']);
+Route::get('/exercices/{id}', [LessonController::class, 'getOneExercice']);
 Route::post('/exercices', [LessonController::class, 'addExercice']);
-Route::delete('/exercices/{id}/{name}/{content}/{id_parts}', [LessonController::class, 'deleteExercice']);
+Route::delete('/exercices/{id}', [LessonController::class, 'deleteExercice']);
 Route::patch('/exercices', [LessonController::class, 'changeExercice']);
 
 //Routes pour Catégories
