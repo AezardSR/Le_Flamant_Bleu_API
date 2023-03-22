@@ -183,13 +183,13 @@ class LessonController extends Controller
     public function changeLesson($id, Request $request) {
         $lesson = Classes::find($id);
         $lesson->name = $request->input('name');
-        $lesson->contenu = $request->input('contenu');
+        $lesson->content = $request->input('content');
+        $lesson->duration = $request->input('duration');
 
-        $lesson->parts_id = Parts::find(
-            intval(
-                $request->input('parts_id')
-            )
-        )->id;
+        if ($request->has('parts_id')) {
+            $parts_id = intval($request->input('parts_id'));
+            $lesson->parts_id = Parts::find($parts_id)->id;
+        }
 
         $lesson->save();
         return response()->json($lesson);
@@ -272,6 +272,12 @@ class LessonController extends Controller
     public function getLessonList()
     {
         $lesson = Classes::all();
+        return response()->json($lesson);
+    }
+
+    public function getOneLesson($id)
+    {
+        $lesson = Classes::find($id);
         return response()->json($lesson);
     }
 

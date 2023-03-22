@@ -76,8 +76,8 @@ class PromoController extends Controller
             'startDate' => $request->input('startDate'),
             'endDate' => $request->input('endDate'),
             'duration' => $request->input('duration'),
-            'formationsTypes_id' => $request->input('formationsTypes_id'),
-            'formationsFormats_id' => $request->input('formationsFormats_id'),
+            'formationsTypes_id' => intval($request->input('formationsTypes_id')),
+            'formationsFormats_id' => intval($request->input('formationsFormats_id'))
         ]);
     }
 //promo-studentss

@@ -13,6 +13,6 @@ class Classes extends Model
     protected $fillable = ['name', 'content', 'duration'];
 
     public function part() {
-        return $this->hasOne(Categories::class);
+        return $this->hasOne(Parts::class);
     }
 }

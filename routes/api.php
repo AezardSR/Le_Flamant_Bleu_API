@@ -93,9 +93,10 @@ Route::get('/signatures/{id_registration}', [RegistrationController::class, 'get
 Route::post('/signatures/{id_users}/{id_registrations}/{date}', [RegistrationController::class, 'addSignature']);
 //Routes pour Leçons
 Route::get('/lessons', [LessonController::class, 'getLessonList']);
+Route::get('/lessons/{id}', [LessonController::class, 'getOneLesson']);
 Route::post('/lessons', [LessonController::class, 'addLesson']);
-Route::delete('/lessons/{id}/{content}/{id_parts}', [LessonController::class, 'deleteLesson']);
-Route::patch('/lessons', [LessonController::class, 'changeLesson']);
+Route::delete('/lessons/{id}', [LessonController::class, 'deleteLesson']);
+Route::patch('/lessons/{id}', [LessonController::class, 'changeLesson']);
 
 //Routes pour Exercices
 Route::get('/exercices', [LessonController::class, 'getExerciceList']);
