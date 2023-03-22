@@ -13,6 +13,6 @@ class Exercices extends Model
     protected $fillable = ['name', 'content', 'image', 'file', 'parts_id'];
 
     public function part() {
-        return $this->hasOne(Categories::class);
+        return $this->hasOne(Parts::class);
     }
 }
