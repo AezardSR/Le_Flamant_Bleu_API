@@ -33,10 +33,6 @@ class PromoController extends Controller
 
     public function deletePromos($id) {
         $promo = Promos::find($id);
-        $promo->promo_calendar()->delete();
-        $promo->promo_student()->delete();
-        $promo->signatures()->delete(); // supprime les enregistrements liés dans la table "signatures" d'abord
-        $promo->registrations()->delete(); // supprime les enregistrements dans la table "registrations" ensuite
         $promo->delete();
     }
 

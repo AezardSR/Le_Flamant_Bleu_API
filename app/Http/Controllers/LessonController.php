@@ -259,18 +259,71 @@ class LessonController extends Controller
 
 
     //Get
+
+     /**
+     * @OA\Get(
+     *      path="/modules",
+     *      operationId="getModuleList",
+     *      tags={"Lesson"},
+
+     *      summary="Voir tous les modules",
+     *      description="Voir tous les modules",
+     *      @OA\Response(
+     *          response=200,
+     *          description="Successful operation",
+     *          @OA\MediaType(
+     *           mediaType="application/json",
+     *      )
+     *      ),
+     *  )
+     */
     public function getModuleList()
     {
         $module = Modules::all();
         return response()->json($module);
     }
 
+
+     /**
+     * @OA\Get(
+     *      path="/part",
+     *      operationId="getPartsList",
+     *      tags={"Lesson"},
+
+     *      summary="",
+     *      description="",
+     *      @OA\Response(
+     *          response=200,
+     *          description="Successful operation",
+     *          @OA\MediaType(
+     *           mediaType="application/json",
+     *      )
+     *      ),
+     *  )
+     */
     public function getPartsList()
     {
         $parts = Parts::all();
         return response()->json($parts);
     }
 
+     /**
+     * @OA\Get(
+     *      path="/leçons",
+     *      operationId="getLessonList",
+     *      tags={"Lesson"},
+
+     *      summary="",
+     *      description="",
+     *      @OA\Response(
+     *          response=200,
+     *          description="Successful operation",
+     *          @OA\MediaType(
+     *           mediaType="application/json",
+     *      )
+     *      ),
+     *  )
+     */
     public function getLessonList()
     {
         $lesson = Classes::all();
@@ -283,6 +336,23 @@ class LessonController extends Controller
         return response()->json($lesson);
     }
 
+     /**
+     * @OA\Get(
+     *      path="/exercice",
+     *      operationId="getExerciceList",
+     *      tags={"Lesson"},
+
+     *      summary="Liste des exercices",
+     *      description="Liste des exercices",
+     *      @OA\Response(
+     *          response=200,
+     *          description="Successful operation",
+     *          @OA\MediaType(
+     *           mediaType="application/json",
+     *      )
+     *      ),
+     *  )
+     */
     public function getExerciceList()
     {
         $exercice = Exercices::all();
@@ -295,18 +365,71 @@ class LessonController extends Controller
         return response()->json($exercice);
     }
 
+     /**
+     * @OA\Get(
+     *      path="/categories",
+     *      operationId="getCategoriesList",
+     *      tags={"Lesson"},
+
+     *      summary="Liste des categories",
+     *      description="Liste des categories",
+     *      @OA\Response(
+     *          response=200,
+     *          description="Successful operation",
+     *          @OA\MediaType(
+     *           mediaType="application/json",
+     *      )
+     *      ),
+     *  )
+     */   
     public function getCategoriesList()
     {
         $categories = Categories::all();
         return response()->json($categories);
     }
 
+
+     /**
+     * @OA\Get(
+     *      path="/modulescategories",
+     *      operationId="getModulesCategoriesList",
+     *      tags={"Lesson"},
+
+     *      summary="Liste des modules categories",
+     *      description="Liste des modules categories",
+     *      @OA\Response(
+     *          response=200,
+     *          description="Successful operation",
+     *          @OA\MediaType(
+     *           mediaType="application/json",
+     *      )
+     *      ),
+     *  )
+     */ 
     public function getModulesCategoriesList()
     {
         $moduleCategorie = ModulesCategories::all();
         return response()->json($moduleCategorie);
     }
 
+
+     /**
+     * @OA\Get(
+     *      path="/modulesclasses",
+     *      operationId="getModulesClassesList",
+     *      tags={"Lesson"},
+
+     *      summary="Liste des modules de classes",
+     *      description="Liste des modules de classes",
+     *      @OA\Response(
+     *          response=200,
+     *          description="Successful operation",
+     *          @OA\MediaType(
+     *           mediaType="application/json",
+     *      )
+     *      ),
+     *  )
+     */ 
     public function getModulesClassesList()
     {
         $moduleClasses = ModulesClass::all();
