@@ -1,32 +1,55 @@
 version: '2'
 
 services:
-  db:
-    image: mariadb:10.1
+  mariadb:
+    image: mariadb:latest
     environment:
-      - MYSQL_ROOT_PASSWORD=laravel
-      - MYSQL_USER=laravel
-      - MYSQL_DATABASE=laravel
-      - MYSQL_PASSWORD=laravel
-    ports:
-      - "3306:3306"
+      # ALLOW_EMPTY_PASSWORD is recommended only for development.
+      - ALLOW_EMPTY_PASSWORD=yes
+      - MARIADB_USER=laravel
+      - MARIADB_DATABASE=laravel
+      - MARIADB_ROOT_PASSWORD=laravel
+      - MARIADB_PASSWORD=laravel
+    networks:
+      - laravel
 
-  api:
-    image: docker.io/bitnami/laravel:9
-    ports:
-      - '8000:8000'
-    env_file:
-      - .env
+  laravel:
+    build:
+      context: .
+      args:
+        BUILD_ARGUMENT_ENV: dev
+      dockerfile: ./Dockerfile
     volumes:
-      - '.:/app'
+      - ./:/var/www/html:cached
     depends_on:
-      - db
-      
+      - mariadb
+    networks:
+      - laravel
+
+  nginx:
+    image: nginx:latest
+    restart: always
+    ports:
+      - "8000:80"
+    volumes:
+      - ./:/var/www/html:ro,cached
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf:ro
+    depends_on:
+      - laravel
+    networks:
+      - laravel
+
   phpmyadmin:
     image: phpmyadmin
     restart: always
     ports:
-      - "4000:80"
+      - "40001:80"
     environment:
-      - PMA_HOST=db
+      - PMA_HOST=mariadb
       - PMA_PORT=3306
+    networks:
+      - laravel
+
+networks:
+  laravel:
+    name: laravel
