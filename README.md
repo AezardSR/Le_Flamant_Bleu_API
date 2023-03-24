@@ -1,101 +1,91 @@
+# Le Flamant Bleu
+
+Projet étudiant de groupe dans le cadre du diplôme Concepteur développeur d'application, les diffétents repo sont : 
+
+[Le_Flamant_Bleu_Desktop](https://github.com/AezardSR/Le_Flamant_Bleu_Desktop)
+
+[Le_Flamant_Bleu_API](https://github.com/AezardSR/Le_Flamant_Bleu_API)
+
+[Le_Flamant_Bleu](https://github.com/AezardSR/Le_Flamant_Bleu)
+
+[Le_flamant_bleu_mobile](https://github.com/AezardSR/Le_flamant_bleu_mobile)
+
+# Le Flamant Bleu API
+## Installation en local
+Les étapes pour une installation en local, si vous avez docker à disposition, passé directement à la section suivante.
+
+```bash
+composer install 
+```
+```bash
+php artisan migrate:fresh --seed  
+```
+```bash
+php artisan jwt:generate
+```
+```bash
+php artisan key:generate 
+```
+
 ## Installation et configuration avec Docker
 
 ```bash
 ./fresh.sh
 ```
-## About Laravel
-
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
-
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
-
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
-
-## Learning Laravel
-
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
-
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
-
-## Laravel Sponsors
-
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
-
-### Premium Partners
-
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
-Footer
-© 2022 GitHub, Inc.
-Footer navigation
-Terms
-Privacy
-Security
-Status
-Docs
-Contact GitHub
-Pricing
-API
-Training
-Blog
-About
-
-## JWT token
+en cas de dysfonctionnement, réalisé les commande suivante dans l'ordre :
 
 ```bash
-    composer require tymon/jwt-auth
-```
+# Stop and delete all containers
+# FR: Arrete et supprime tous les containers
+sudo docker compose down 
 
-```php
-      // config/app.php
+# Install php dependencies
+# FR: Installer les dépendances php
+sudo docker compose run --rm api composer install 
 
-    'providers' => [
-    ….
-    'Tymon\JWTAuth\Providers\JWTAuthServiceProvider',
-    ],
-    'aliases' => [
-    ….
-    'JWTAuth' => 'Tymon\JWTAuth\Facades\JWTAuth',
-    'JWTFactory' => 'Tymon\JWTAuth\Facades\JWTFactory',
-    ],
+# Fresh migrate + seeding
+# FR: Migrer et remplir la base de données
+sudo docker compose run --rm api php artisan migrate:fresh --seed 
+
+# Generate key
+# FR: Generation de la clé
+sudo docker compose run --rm api php artisan key:generate 
+
+# Launch containers
+# FR: Lancer les containers
+sudo docker compose up -d 
+
 ```
+## le fichier .env
+
+Reprendre [.env.exemple](https://github.com/AezardSR/Le_Flamant_Bleu_API/blob/dev/.env.example)
+
+```env
+APP_NAME : le nom de votre application Laravel
+
+APP_ENV : l'environnement de votre application, peut être "local", "testing" ou "production"
+
+APP_KEY : une clé de chiffrement pour votre application, générée automatiquement lors de la création de votre application Laravel
+
+APP_DEBUG : un booléen pour activer ou désactiver le mode de débogage
+
+APP_URL : l'URL de votre application Laravel
+
+DB_CONNECTION, DB_HOST, DB_PORT, DB_DATABASE, DB_USERNAME, DB_PASSWORD : les informations de connexion à votre base de données MySQL
+
+MAIL_MAILER, MAIL_HOST, MAIL_PORT, MAIL_USERNAME, MAIL_PASSWORD, MAIL_ENCRYPTION, MAIL_FROM_ADDRESS, MAIL_FROM_NAME : les informations de connexion à votre service de messagerie
+
+JWT_SECRET : la clé secrète pour votre JWT
+
+L5_SWAGGER_CONST_HOST : l'URL de base pour l'API de votre application Laravel pour la documentation Swagger
+```
+### APP_KEY
 
 ```bash
-    php artisan vendor:publish --provider="Tymon\JWTAuth\Providers\JWTAuthServiceProvider::class"
+php artisan key:generate
 ```
+
+### JWT token
 
 ```bash
     php artisan jwt:generate
@@ -104,8 +94,8 @@ About
 ## SWAGGER 
 
 Commande pour generer le changement pour la doc swagger
+
 ```bash
     docker-compose run api php artisan l5-swagger:generate
 ```
-
 
