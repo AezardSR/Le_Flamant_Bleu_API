@@ -64,7 +64,6 @@ class AuthController extends Controller
             'firstname' => 'required|string|between:2,100',
             'mail' => 'required|string|max:100|unique:users',
             'password' => ['required','string','confirmed','min:6','regex:/^(?=.*[a-z|A-Z])(?=.*[A-Z])(?=.*\d)(?=.*(_|[^\w])).+$/'],
-            'password_confirmed' => 'same:password'
         ]);
         
         if($validator->fails()){
