@@ -43,15 +43,15 @@ class AuthController extends Controller
                 if (! $token = JWTAuth::attempt($credentials)) {
                     return response()->json([
                         'success' => false,
-                        'message' => 'Login credentials are invalid.',
+                        'message' => 'Information de connexion erronée',
                     ], 400);
                 } else {
                     return $this->respondWithToken($token);
                 }
 
             } else {
-            $response = ["message" =>'information de connexion eronné'];
-            return response()->json([$response], 422);
+            $response = ["message" =>'Information de connexion erronée'];
+            return response()->json($response, 422);
         }
     }
     
