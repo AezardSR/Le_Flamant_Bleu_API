@@ -12,7 +12,7 @@ class DocumentsController extends Controller
      * @OA\Get(
      *      path="/documents",
      *      operationId="getDocuments",
-     *      tags={"documents"},
+     *      tags={"Documents"},
 
      *      summary="Tous les documents",
      *      description="",
@@ -52,7 +52,7 @@ class DocumentsController extends Controller
      * @OA\Post(
      *      path="/documents",
      *      operationId="addDocuments",
-     *      tags={"documents"},
+     *      tags={"Documents"},
 
      *      summary="Ajouter un documents",
      *      description="Voici la fonction qui permet d'ajouter un document dans l'API.",
@@ -107,7 +107,7 @@ class DocumentsController extends Controller
      * @OA\Delete (
      *      path="/documents/{id}",
      *      operationId="deleteDocuments",
-     *      tags={"documents"},
+     *      tags={"Documents"},
      *      summary="Supprimer un Documents",
      *      description="Permets de supprimer un documents en fonction de son ID",
      *     @OA\Parameter (
@@ -153,7 +153,7 @@ class DocumentsController extends Controller
      * @OA\Patch (
      *      path="/documents/{id}",
      *      operationId="changeDocuments",
-     *      tags={"documents"},
+     *      tags={"Documents"},
      *      summary="modifier un Documents",
      *      description="Permets de modifier un documents en fonction de son ID",
      *     @OA\Parameter (

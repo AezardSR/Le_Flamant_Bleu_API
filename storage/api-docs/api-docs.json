@@ -193,10 +193,439 @@
                 }
             }
         },
+        "/login": {
+            "post": {
+                "tags": [
+                    "Authentification"
+                ],
+                "summary": "Authentification de l'utilisateur",
+                "description": "Authentification de l'utilisateur",
+                "operationId": "authUser",
+                "requestBody": {
+                    "description": "Informations d'authentification",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "mail": {
+                                        "type": "string"
+                                    },
+                                    "password": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Authentification réussie",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "access_token": {
+                                            "type": "string"
+                                        },
+                                        "token_type": {
+                                            "type": "string",
+                                            "example": "bearer"
+                                        },
+                                        "expires_in": {
+                                            "type": "integer",
+                                            "example": "3600"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Information de connexion erronée",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "type": "boolean",
+                                            "example": false
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Information de connexion erronée"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/register": {
+            "post": {
+                "tags": [
+                    "Authentification"
+                ],
+                "summary": "Register a new user",
+                "description": "Register a new user",
+                "operationId": "0903f2e0df1a8857bee538fc055417f0",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "name": {
+                                        "description": "User's name",
+                                        "type": "string",
+                                        "example": "John"
+                                    },
+                                    "firstname": {
+                                        "description": "User's firstname",
+                                        "type": "string",
+                                        "example": "Doe"
+                                    },
+                                    "mail": {
+                                        "description": "User's email address",
+                                        "type": "string",
+                                        "example": "johndoe@example.com"
+                                    },
+                                    "password": {
+                                        "description": "User's password",
+                                        "type": "string",
+                                        "example": "Password_123"
+                                    },
+                                    "password_confirmation": {
+                                        "description": "User's password confirmation",
+                                        "type": "string",
+                                        "example": "Password_123"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "User successfully registered",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "User successfully registered"
+                                        },
+                                        "user": {
+                                            "properties": {
+                                                "name": {
+                                                    "type": "string",
+                                                    "example": "John"
+                                                },
+                                                "firstname": {
+                                                    "type": "string",
+                                                    "example": "Doe"
+                                                },
+                                                "mail": {
+                                                    "type": "string",
+                                                    "example": "johnDoe@example.com"
+                                                },
+                                                "roles_id": {
+                                                    "type": "integer",
+                                                    "example": "1"
+                                                },
+                                                "types_id": {
+                                                    "type": "integer",
+                                                    "example": "1"
+                                                },
+                                                "updated_at": {
+                                                    "type": "date-time",
+                                                    "example": "2020-05-06T15:00:00.000000Z"
+                                                },
+                                                "created_at": {
+                                                    "type": "date-time",
+                                                    "example": "2020-05-06T15:00:00.000000Z"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Validation error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "The given data was invalid"
+                                        },
+                                        "errors": {
+                                            "description": "Object containing all the validation errors",
+                                            "type": "object",
+                                            "example": {
+                                                "name": [
+                                                    "The name field is required."
+                                                ],
+                                                "mail": [
+                                                    "The mail field is required.",
+                                                    "The mail field must be a valid email address.",
+                                                    "The mail has already been taken."
+                                                ],
+                                                "password": [
+                                                    "The password field is required."
+                                                ]
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/logout": {
+            "post": {
+                "tags": [
+                    "Authentification"
+                ],
+                "summary": "Déconnecte l'utilisateur actuellement authentifié",
+                "description": "Déconnecte l'utilisateur actuellement authentifié.",
+                "operationId": "68a6108af04af5e3bc1ea68a6c6f1299",
+                "responses": {
+                    "200": {
+                        "description": "Message de réussite",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Utilisateur déconnecté avec succès"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Erreur d'authentification",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "string",
+                                            "example": "Token is Invalid"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/refresh": {
+            "get": {
+                "tags": [
+                    "Authentification"
+                ],
+                "summary": "Refresh the current JWT token.",
+                "operationId": "refreshToken",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "connected"
+                                        },
+                                        "access_token": {
+                                            "type": "string"
+                                        },
+                                        "token_type": {
+                                            "type": "string"
+                                        },
+                                        "expires_in": {
+                                            "description": "Expiration time in seconds",
+                                            "type": "integer"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "error": {
+                                            "type": "string"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/user-profile": {
+            "get": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Obtenir le profil de l'utilisateur actuel.",
+                "operationId": "obtenirProfilUtilisateur",
+                "responses": {
+                    "200": {
+                        "description": "Opération réussie",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string"
+                                        },
+                                        "user": {
+                                            "description": "objet contenant les informations de l'utilisateur",
+                                            "properties": {
+                                                "id": {
+                                                    "type": "integer",
+                                                    "example": 1
+                                                },
+                                                "name": {
+                                                    "type": "string",
+                                                    "example": "Doe"
+                                                },
+                                                "firstname": {
+                                                    "type": "string",
+                                                    "example": "John"
+                                                },
+                                                "birthdate": {
+                                                    "type": "string",
+                                                    "format": "date-time",
+                                                    "example": "2020-04-06",
+                                                    "nullable": true
+                                                },
+                                                "mail": {
+                                                    "type": "string",
+                                                    "example": "jhondoe@example.com"
+                                                },
+                                                "tel": {
+                                                    "type": "string",
+                                                    "example": 606060606,
+                                                    "nullable": true
+                                                },
+                                                "address": {
+                                                    "type": "string",
+                                                    "example": "rue de la paix",
+                                                    "nullable": true
+                                                },
+                                                "city": {
+                                                    "type": "string",
+                                                    "example": "Paris",
+                                                    "nullable": true
+                                                },
+                                                "zipCode": {
+                                                    "type": "string",
+                                                    "example": 75000,
+                                                    "nullable": true
+                                                },
+                                                "roles_id": {
+                                                    "type": "integer",
+                                                    "example": 1
+                                                },
+                                                "types_id": {
+                                                    "type": "integer",
+                                                    "example": 1
+                                                },
+                                                "created_at": {
+                                                    "type": "date-time",
+                                                    "format": "date-time",
+                                                    "example": "2023-04-06T12:16:12.000000Z"
+                                                },
+                                                "updated_at": {
+                                                    "type": "date-time",
+                                                    "format": "date-time",
+                                                    "example": "2023-04-06T12:16:12.000000Z"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Non autorisé",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "error": {
+                                            "type": "string"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
         "/documents": {
             "get": {
                 "tags": [
-                    "documents"
+                    "Documents"
                 ],
                 "summary": "Tous les documents",
                 "description": "",
@@ -224,7 +653,7 @@
             },
             "post": {
                 "tags": [
-                    "documents"
+                    "Documents"
                 ],
                 "summary": "Ajouter un documents",
                 "description": "Voici la fonction qui permet d'ajouter un document dans l'API.",
@@ -268,7 +697,7 @@
         "/documents/{id}": {
             "delete": {
                 "tags": [
-                    "documents"
+                    "Documents"
                 ],
                 "summary": "Supprimer un Documents",
                 "description": "Permets de supprimer un documents en fonction de son ID",
@@ -306,7 +735,7 @@
             },
             "patch": {
                 "tags": [
-                    "documents"
+                    "Documents"
                 ],
                 "summary": "modifier un Documents",
                 "description": "Permets de modifier un documents en fonction de son ID",
@@ -1303,6 +1732,15 @@
                         }
                     }
                 }
+            }
+        }
+    },
+    "components": {
+        "securitySchemes": {
+            "bearerAuth": {
+                "type": "http",
+                "bearerFormat": "JWT",
+                "scheme": "bearer"
             }
         }
     }
