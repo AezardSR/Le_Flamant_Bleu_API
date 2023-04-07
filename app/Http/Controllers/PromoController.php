@@ -33,10 +33,6 @@ class PromoController extends Controller
 
     public function deletePromos($id) {
         $promo = Promos::find($id);
-        $promo->promo_calendar()->delete();
-        $promo->promo_student()->delete();
-        $promo->signatures()->delete(); // supprime les enregistrements liés dans la table "signatures" d'abord
-        $promo->registrations()->delete(); // supprime les enregistrements dans la table "registrations" ensuite
         $promo->delete();
     }
 
@@ -76,8 +72,8 @@ class PromoController extends Controller
             'startDate' => $request->input('startDate'),
             'endDate' => $request->input('endDate'),
             'duration' => $request->input('duration'),
-            'formationsTypes_id' => $request->input('formationsTypes_id'),
-            'formationsFormats_id' => $request->input('formationsFormats_id'),
+            'formationsTypes_id' => intval($request->input('formationsTypes_id')),
+            'formationsFormats_id' => intval($request->input('formationsFormats_id'))
         ]);
     }
 //promo-studentss

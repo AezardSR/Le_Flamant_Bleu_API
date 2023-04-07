@@ -183,13 +183,13 @@ class LessonController extends Controller
     public function changeLesson($id, Request $request) {
         $lesson = Classes::find($id);
         $lesson->name = $request->input('name');
-        $lesson->contenu = $request->input('contenu');
+        $lesson->content = $request->input('content');
+        $lesson->duration = $request->input('duration');
 
-        $lesson->parts_id = Parts::find(
-            intval(
-                $request->input('parts_id')
-            )
-        )->id;
+        if ($request->has('parts_id')) {
+            $parts_id = intval($request->input('parts_id'));
+            $lesson->parts_id = Parts::find($parts_id)->id;
+        }
 
         $lesson->save();
         return response()->json($lesson);
@@ -198,7 +198,9 @@ class LessonController extends Controller
     public function changeExercice($id, Request $request) {
         $exercice = Exercices::find($id);
         $exercice->name = $request->input('name');
-        $exercice->contenu = $request->input('contenu');
+        $exercice->content = $request->input('content');
+        $exercice->image = $request->input('image');
+        $exercice->file = $request->input('file');
 
         $exercice->parts_id = Parts::find(
             intval(
@@ -257,42 +259,177 @@ class LessonController extends Controller
 
 
     //Get
+
+     /**
+     * @OA\Get(
+     *      path="/modules",
+     *      operationId="getModuleList",
+     *      tags={"Lesson"},
+
+     *      summary="Voir tous les modules",
+     *      description="Voir tous les modules",
+     *      @OA\Response(
+     *          response=200,
+     *          description="Successful operation",
+     *          @OA\MediaType(
+     *           mediaType="application/json",
+     *      )
+     *      ),
+     *  )
+     */
     public function getModuleList()
     {
         $module = Modules::all();
         return response()->json($module);
     }
 
+
+     /**
+     * @OA\Get(
+     *      path="/part",
+     *      operationId="getPartsList",
+     *      tags={"Lesson"},
+
+     *      summary="",
+     *      description="",
+     *      @OA\Response(
+     *          response=200,
+     *          description="Successful operation",
+     *          @OA\MediaType(
+     *           mediaType="application/json",
+     *      )
+     *      ),
+     *  )
+     */
     public function getPartsList()
     {
         $parts = Parts::all();
         return response()->json($parts);
     }
 
+     /**
+     * @OA\Get(
+     *      path="/leçons",
+     *      operationId="getLessonList",
+     *      tags={"Lesson"},
+
+     *      summary="",
+     *      description="",
+     *      @OA\Response(
+     *          response=200,
+     *          description="Successful operation",
+     *          @OA\MediaType(
+     *           mediaType="application/json",
+     *      )
+     *      ),
+     *  )
+     */
     public function getLessonList()
     {
         $lesson = Classes::all();
         return response()->json($lesson);
     }
 
+    public function getOneLesson($id)
+    {
+        $lesson = Classes::find($id);
+        return response()->json($lesson);
+    }
+
+     /**
+     * @OA\Get(
+     *      path="/exercice",
+     *      operationId="getExerciceList",
+     *      tags={"Lesson"},
+
+     *      summary="Liste des exercices",
+     *      description="Liste des exercices",
+     *      @OA\Response(
+     *          response=200,
+     *          description="Successful operation",
+     *          @OA\MediaType(
+     *           mediaType="application/json",
+     *      )
+     *      ),
+     *  )
+     */
     public function getExerciceList()
     {
         $exercice = Exercices::all();
         return response()->json($exercice);
     }
 
+    public function getOneExercice($id)
+    {
+        $exercice = Exercices::find($id);
+        return response()->json($exercice);
+    }
+
+     /**
+     * @OA\Get(
+     *      path="/categories",
+     *      operationId="getCategoriesList",
+     *      tags={"Lesson"},
+
+     *      summary="Liste des categories",
+     *      description="Liste des categories",
+     *      @OA\Response(
+     *          response=200,
+     *          description="Successful operation",
+     *          @OA\MediaType(
+     *           mediaType="application/json",
+     *      )
+     *      ),
+     *  )
+     */   
     public function getCategoriesList()
     {
         $categories = Categories::all();
         return response()->json($categories);
     }
 
+
+     /**
+     * @OA\Get(
+     *      path="/modulescategories",
+     *      operationId="getModulesCategoriesList",
+     *      tags={"Lesson"},
+
+     *      summary="Liste des modules categories",
+     *      description="Liste des modules categories",
+     *      @OA\Response(
+     *          response=200,
+     *          description="Successful operation",
+     *          @OA\MediaType(
+     *           mediaType="application/json",
+     *      )
+     *      ),
+     *  )
+     */ 
     public function getModulesCategoriesList()
     {
         $moduleCategorie = ModulesCategories::all();
         return response()->json($moduleCategorie);
     }
 
+
+     /**
+     * @OA\Get(
+     *      path="/modulesclasses",
+     *      operationId="getModulesClassesList",
+     *      tags={"Lesson"},
+
+     *      summary="Liste des modules de classes",
+     *      description="Liste des modules de classes",
+     *      @OA\Response(
+     *          response=200,
+     *          description="Successful operation",
+     *          @OA\MediaType(
+     *           mediaType="application/json",
+     *      )
+     *      ),
+     *  )
+     */ 
     public function getModulesClassesList()
     {
         $moduleClasses = ModulesClass::all();
