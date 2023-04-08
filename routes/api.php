@@ -74,8 +74,8 @@ Route::patch('/modules', [LessonController::class, 'changeModule']);
 //Routes pour Parties
 Route::get('/parts', [LessonController::class, 'getPartsList']);
 Route::post('/parts', [LessonController::class, 'addParts']);
-Route::delete('/parts/{id}/{partName}', [LessonController::class, 'deleteParts']);
-Route::patch('/parts', [LessonController::class, 'changeParts']);
+Route::delete('/parts/{id}', [LessonController::class, 'deleteParts']);
+Route::patch('/parts/{id}', [LessonController::class, 'changeParts']);
 
 //RegistrationController
     //Types RegistrationController
@@ -105,6 +105,7 @@ Route::patch('/exercices', [LessonController::class, 'changeExercice']);
 
 //Routes pour Catégories
 Route::get('/categories', [LessonController::class, 'getCategoriesList']);
+Route::get('/categories/{id}', [LessonController::class, 'getOneCategories']);
 Route::post('/categories', [LessonController::class, 'addCategories']);
 Route::delete('/categories/{id}', [LessonController::class, 'deleteCategories']);
 Route::patch('/categories/{id}', [LessonController::class, 'changeCategories']);

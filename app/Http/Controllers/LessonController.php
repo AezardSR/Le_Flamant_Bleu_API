@@ -287,6 +287,12 @@ class LessonController extends Controller
         return response()->json($categories);
     }
 
+    public function getOneCategories($id)
+    {
+        $categories = Categories::find($id);
+        return response()->json($categories);
+    }
+
     public function getModulesCategoriesList()
     {
         $moduleCategorie = ModulesCategories::all();
