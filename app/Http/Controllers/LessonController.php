@@ -269,6 +269,12 @@ class LessonController extends Controller
         return response()->json($parts);
     }
 
+    public function getOneParts($id)
+    {
+        $parts = Parts::find($id);
+        return response()->json($parts);
+    }
+
     public function getLessonList()
     {
         $lesson = Classes::all();

@@ -73,6 +73,7 @@ Route::patch('/modules', [LessonController::class, 'changeModule']);
 
 //Routes pour Parties
 Route::get('/parts', [LessonController::class, 'getPartsList']);
+Route::get('/parts/{id}', [LessonController::class, 'getOneParts']);
 Route::post('/parts', [LessonController::class, 'addParts']);
 Route::delete('/parts/{id}', [LessonController::class, 'deleteParts']);
 Route::patch('/parts/{id}', [LessonController::class, 'changeParts']);
