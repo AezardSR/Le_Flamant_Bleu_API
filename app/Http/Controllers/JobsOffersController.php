@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 
 class JobsOffersController extends Controller
 {
-         /**
+    /**
      * @OA\Get(
      *      path="/jobsoffers",
      *      operationId="getJobsOffers",

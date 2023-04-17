@@ -14,7 +14,7 @@
     },
     "servers": [
         {
-            "url": "http://127.0.0.1:8000/api",
+            "url": "http://my-default-host.com",
             "description": "Demo API Server"
         }
     ],
@@ -622,6 +622,331 @@
                 ]
             }
         },
+        "/appointment-types": {
+            "get": {
+                "tags": [
+                    "Appointments Types"
+                ],
+                "summary": "Tous les types de rendez-vous",
+                "description": "",
+                "operationId": "getAppointmentsTypes",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "404": {
+                        "description": "not found"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Appointments Types"
+                ],
+                "summary": "Ajouter un type de rendez-vous",
+                "description": "Ajouter un type de rendez-vous en lui indiquant un nom, l'id s'ajoutera automatiquement",
+                "operationId": "addAppointmentsTypes",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "": {
+                                        "properties": {
+                                            "name": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                },
+                                "type": "object",
+                                "example": {
+                                    "name": "ajouter un nom au type de rendez-vous"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/appointments": {
+            "get": {
+                "tags": [
+                    "Appointments"
+                ],
+                "summary": "Tous les rendez-vous",
+                "description": "",
+                "operationId": "getAppointments",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "404": {
+                        "description": "not found"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Appointments"
+                ],
+                "summary": "Ajouter un rendez-vous",
+                "description": "Ajouter un rendez-vous",
+                "operationId": "addAppointments",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "": {
+                                        "properties": {
+                                            "titleDetails": {
+                                                "type": "string"
+                                            },
+                                            "descriptionDetails": {
+                                                "type": "string"
+                                            },
+                                            "dateDetails": {
+                                                "type": "string",
+                                                "format": "date"
+                                            },
+                                            "receiver_id": {
+                                                "type": "integer"
+                                            },
+                                            "create_id": {
+                                                "type": "integer"
+                                            },
+                                            "appointments_types_id": {
+                                                "type": "integer"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                },
+                                "type": "object",
+                                "example": {
+                                    "name": "ajouter un rendez-vous"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/appointment-types/{id}": {
+            "delete": {
+                "tags": [
+                    "Appointments Types"
+                ],
+                "summary": "Supprimer un type de rendez-vous",
+                "description": "Supprimer un type de rendez-vous avec son ID",
+                "operationId": "deleteAppointmentsTypes",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            },
+            "patch": {
+                "tags": [
+                    "Appointments Types"
+                ],
+                "summary": "modifier un type de rendez-vous",
+                "description": "Permets de modifier un type de rendez-vous",
+                "operationId": "changeAppointmentsTypes",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "": {
+                                        "properties": {
+                                            "name": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                },
+                                "type": "object",
+                                "example": {
+                                    "name": "Type de rendez-vous"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/appointments/{id}": {
+            "delete": {
+                "tags": [
+                    "Appointments"
+                ],
+                "summary": "Supprimer un rendez-vous",
+                "description": "Supprimer un rendez-vous avec son ID",
+                "operationId": "deleteAppointments",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            },
+            "patch": {
+                "tags": [
+                    "Appointments"
+                ],
+                "summary": "modifier un rendez-vous",
+                "description": "Permets de modifier un rendez-vous",
+                "operationId": "changeAppointments",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "": {
+                                        "properties": {
+                                            "titleDetails": {
+                                                "type": "string"
+                                            },
+                                            "descriptionDetails": {
+                                                "type": "string"
+                                            },
+                                            "dateDetails": {
+                                                "type": "string",
+                                                "format": "date"
+                                            },
+                                            "receiver_id": {
+                                                "type": "integer"
+                                            },
+                                            "create_id": {
+                                                "type": "integer"
+                                            },
+                                            "appointments_types_id": {
+                                                "type": "integer"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                },
+                                "type": "object",
+                                "example": {
+                                    "titleDetails": "Nom du rendez-vous",
+                                    "descriptionDetails": "Détails du rendez-vous",
+                                    "dateDetails": 1,
+                                    "receiver_id": 1,
+                                    "create_id": 2,
+                                    "appointments_types_id": 1
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
         "/documents": {
             "get": {
                 "tags": [
@@ -920,6 +1245,897 @@
                         }
                     }
                 }
+            },
+            "post": {
+                "tags": [
+                    "Lesson"
+                ],
+                "summary": "Ajouter un module",
+                "description": "Ajouter un module",
+                "operationId": "addModule",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "": {
+                                        "properties": {
+                                            "module": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                },
+                                "type": "object",
+                                "example": {
+                                    "module": "Nom de module"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/parts": {
+            "post": {
+                "tags": [
+                    "Lesson"
+                ],
+                "summary": "Ajouter une partie",
+                "description": "Ajouter une partie",
+                "operationId": "addParts",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "": {
+                                        "properties": {
+                                            "module": {
+                                                "type": "string"
+                                            },
+                                            "categories_id": {
+                                                "type": "integer"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                },
+                                "type": "object",
+                                "example": {
+                                    "name": "Nom de partie"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/lessons": {
+            "post": {
+                "tags": [
+                    "Lesson"
+                ],
+                "summary": "Ajouter une leçon",
+                "description": "Ajouter une leçon",
+                "operationId": "addLesson",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "": {
+                                        "properties": {
+                                            "name": {
+                                                "type": "string"
+                                            },
+                                            "content": {
+                                                "type": "string"
+                                            },
+                                            "duration": {
+                                                "type": "string"
+                                            },
+                                            "parts_id": {
+                                                "type": "integer"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                },
+                                "type": "object",
+                                "example": {
+                                    "name": "Nom du cours",
+                                    "content": "Contenu du cours",
+                                    "duration": "Nombre de jours",
+                                    "parts_id": "L'id de la partie liée"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/exercices": {
+            "post": {
+                "tags": [
+                    "Lesson"
+                ],
+                "summary": "Ajouter un exercice",
+                "description": "Ajouter un exercice",
+                "operationId": "addExercice",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "": {
+                                        "properties": {
+                                            "name": {
+                                                "type": "string"
+                                            },
+                                            "content": {
+                                                "type": "string"
+                                            },
+                                            "image": {
+                                                "type": "string"
+                                            },
+                                            "file": {
+                                                "type": "string"
+                                            },
+                                            "parts_id": {
+                                                "type": "integer"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                },
+                                "type": "object",
+                                "example": {
+                                    "name": "Nom de l'exercice",
+                                    "content": "Contenu de l'exercice",
+                                    "parts_id": "L'id de la partie liée"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/categories": {
+            "get": {
+                "tags": [
+                    "Lesson"
+                ],
+                "summary": "Liste des categories",
+                "description": "Liste des categories",
+                "operationId": "getCategoriesList",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Lesson"
+                ],
+                "summary": "Ajouter une categorie",
+                "description": "Ajouter une categorie",
+                "operationId": "addCategories",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "": {
+                                        "properties": {
+                                            "categorie": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                },
+                                "type": "object",
+                                "example": {
+                                    "categorie": "Nom de la categorie"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/module-categories": {
+            "post": {
+                "tags": [
+                    "Lesson"
+                ],
+                "summary": "Lié une catégorie à un module",
+                "description": "Lié une catégorie à un module",
+                "operationId": "addModulesCategories",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "": {
+                                        "properties": {
+                                            "categories_id": {
+                                                "type": "integer"
+                                            },
+                                            "modules_id": {
+                                                "type": "integer"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                },
+                                "type": "object",
+                                "example": {
+                                    "categories_id": 1,
+                                    "modules_id": 2
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/module-classes": {
+            "post": {
+                "tags": [
+                    "Lesson"
+                ],
+                "summary": "Lié une leçon à un module",
+                "description": "Lié une leçon à un module",
+                "operationId": "addModulesClass",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "": {
+                                        "properties": {
+                                            "classes_id": {
+                                                "type": "integer"
+                                            },
+                                            "modules_id": {
+                                                "type": "integer"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                },
+                                "type": "object",
+                                "example": {
+                                    "classes_id": 1,
+                                    "modules_id": 2
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/modules/{id}": {
+            "delete": {
+                "tags": [
+                    "Lesson"
+                ],
+                "summary": "Supprimer un module",
+                "description": "Supprimer un module avec son ID",
+                "operationId": "deleteModule",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            },
+            "patch": {
+                "tags": [
+                    "Lesson"
+                ],
+                "summary": "modifier un module",
+                "description": "modifier un module",
+                "operationId": "changeModule",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "": {
+                                        "properties": {
+                                            "module": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                },
+                                "type": "object",
+                                "example": {
+                                    "module": "Nouveau nom"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/parts/{id}": {
+            "delete": {
+                "tags": [
+                    "Lesson"
+                ],
+                "summary": "Supprimer une partie",
+                "description": "Supprimer une partie avec son ID",
+                "operationId": "deleteParts",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            },
+            "patch": {
+                "tags": [
+                    "Lesson"
+                ],
+                "summary": "modifier une partie",
+                "description": "modifier une partie",
+                "operationId": "changeParts",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "": {
+                                        "properties": {
+                                            "name": {
+                                                "type": "string"
+                                            },
+                                            "categories_id": {
+                                                "type": "integer"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                },
+                                "type": "object",
+                                "example": {
+                                    "name": "Nouveau nom",
+                                    "categories_id": 1
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/lessons/{id}": {
+            "delete": {
+                "tags": [
+                    "Lesson"
+                ],
+                "summary": "Supprimer une leçons",
+                "description": "Supprimer une leçons avec son ID",
+                "operationId": "deleteLesson",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            },
+            "patch": {
+                "tags": [
+                    "Lesson"
+                ],
+                "summary": "modifier une leçon",
+                "description": "modifier une leçon",
+                "operationId": "changeLesson",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "": {
+                                        "properties": {
+                                            "name": {
+                                                "type": "string"
+                                            },
+                                            "contenu": {
+                                                "type": "string"
+                                            },
+                                            "parts_id": {
+                                                "type": "integer"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                },
+                                "type": "object",
+                                "example": {
+                                    "name": "Nouveau nom",
+                                    "contenu": "Nouveau contenu",
+                                    "parts_id": 1
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/exercices/{id}": {
+            "delete": {
+                "tags": [
+                    "Lesson"
+                ],
+                "summary": "Supprimer un exercice",
+                "description": "Supprimer un exercice avec son ID",
+                "operationId": "deleteExercice",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            },
+            "patch": {
+                "tags": [
+                    "Lesson"
+                ],
+                "summary": "modifier un exercice",
+                "description": "modifier un exercice",
+                "operationId": "changeExercice",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "": {
+                                        "properties": {
+                                            "name": {
+                                                "type": "string"
+                                            },
+                                            "contenu": {
+                                                "type": "string"
+                                            },
+                                            "parts_id": {
+                                                "type": "integer"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                },
+                                "type": "object",
+                                "example": {
+                                    "name": "Nouveau nom",
+                                    "contenu": "Nouveau contenu",
+                                    "parts_id": 1
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/categories/{id}": {
+            "delete": {
+                "tags": [
+                    "Lesson"
+                ],
+                "summary": "Supprimer une catégorie",
+                "description": "Supprimer une catégorie avec son ID",
+                "operationId": "deleteCategories",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            },
+            "patch": {
+                "tags": [
+                    "Lesson"
+                ],
+                "summary": "modifier une catégorie",
+                "description": "modifier une catégorie",
+                "operationId": "changeCategories",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "": {
+                                        "properties": {
+                                            "categorie": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                },
+                                "type": "object",
+                                "example": {
+                                    "categorie": "Nouveau nom"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/module-categories/{id}": {
+            "delete": {
+                "tags": [
+                    "Lesson"
+                ],
+                "summary": "Supprimer un module de catégorie",
+                "description": "Supprimer un module de catégorie avec son ID",
+                "operationId": "deleteModulesCategories",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            },
+            "patch": {
+                "tags": [
+                    "Lesson"
+                ],
+                "summary": "modifier une liaison module - catégorie",
+                "description": "modifier une liaison module - catégorie",
+                "operationId": "changeModulesCategories",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "": {
+                                        "properties": {
+                                            "categories_id": {
+                                                "type": "integer"
+                                            },
+                                            "modules_id": {
+                                                "type": "integer"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                },
+                                "type": "object",
+                                "example": {
+                                    "categories_id": 1,
+                                    "modules_id": 2
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/module-classes/{id}": {
+            "delete": {
+                "tags": [
+                    "Lesson"
+                ],
+                "summary": "Supprimer un module de leçons",
+                "description": "Supprimer un module de leçons avec son ID",
+                "operationId": "deleteModulesClasses",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            },
+            "patch": {
+                "tags": [
+                    "Lesson"
+                ],
+                "summary": "modifier une liaison module - leçon",
+                "description": "modifier une liaison module - leçon",
+                "operationId": "changeModulesClass",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "": {
+                                        "properties": {
+                                            "classes_id": {
+                                                "type": "integer"
+                                            },
+                                            "modules_id": {
+                                                "type": "integer"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                },
+                                "type": "object",
+                                "example": {
+                                    "classes_id": 1,
+                                    "modules_id": 2
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
             }
         },
         "/part": {
@@ -966,24 +2182,6 @@
                 "summary": "Liste des exercices",
                 "description": "Liste des exercices",
                 "operationId": "getExerciceList",
-                "responses": {
-                    "200": {
-                        "description": "Successful operation",
-                        "content": {
-                            "application/json": {}
-                        }
-                    }
-                }
-            }
-        },
-        "/categories": {
-            "get": {
-                "tags": [
-                    "Lesson"
-                ],
-                "summary": "Liste des categories",
-                "description": "Liste des categories",
-                "operationId": "getCategoriesList",
                 "responses": {
                     "200": {
                         "description": "Successful operation",
@@ -1632,6 +2830,85 @@
                         }
                     }
                 }
+            },
+            "post": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Ajouter un utilisateur",
+                "description": "Ajouter un utilisateur",
+                "operationId": "addUser",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "": {
+                                        "properties": {
+                                            "name": {
+                                                "type": "string"
+                                            },
+                                            "firstname": {
+                                                "type": "string"
+                                            },
+                                            "birthdate": {
+                                                "type": "string",
+                                                "format": "date"
+                                            },
+                                            "mail": {
+                                                "type": "string"
+                                            },
+                                            "tel": {
+                                                "type": "string"
+                                            },
+                                            "password": {
+                                                "type": "string"
+                                            },
+                                            "adress": {
+                                                "type": "string"
+                                            },
+                                            "city": {
+                                                "type": "string"
+                                            },
+                                            "zipCode": {
+                                                "type": "string"
+                                            },
+                                            "id_roles": {
+                                                "type": "integer"
+                                            },
+                                            "id_types": {
+                                                "type": "integer"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                },
+                                "type": "object",
+                                "example": {
+                                    "name": "Nom de module",
+                                    "firstname": "Nom de module",
+                                    "birthdate": "Nom de module",
+                                    "mail": "Nom de module",
+                                    "tel": "Nom de module",
+                                    "password": "Nom de module",
+                                    "adress": "Nom de module",
+                                    "city": "Nom de module",
+                                    "zipCode": "Nom de module",
+                                    "id_roles": "Nom de module",
+                                    "id_types": "Nom de module"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
             }
         },
         "/user/{id}": {
@@ -1678,6 +2955,95 @@
                         }
                     }
                 ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            },
+            "patch": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "modifier un user",
+                "description": "modifier un user",
+                "operationId": "editUser",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "": {
+                                        "properties": {
+                                            "name": {
+                                                "type": "string"
+                                            },
+                                            "firstname": {
+                                                "type": "string"
+                                            },
+                                            "birthdate": {
+                                                "type": "string",
+                                                "format": "date"
+                                            },
+                                            "mail": {
+                                                "type": "string"
+                                            },
+                                            "tel": {
+                                                "type": "string"
+                                            },
+                                            "password": {
+                                                "type": "string"
+                                            },
+                                            "adress": {
+                                                "type": "string"
+                                            },
+                                            "city": {
+                                                "type": "string"
+                                            },
+                                            "zipCode": {
+                                                "type": "string"
+                                            },
+                                            "id_roles": {
+                                                "type": "integer"
+                                            },
+                                            "id_types": {
+                                                "type": "integer"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                },
+                                "type": "object",
+                                "example": {
+                                    "name": "Nom de module",
+                                    "firstname": "Nom de module",
+                                    "birthdate": "Nom de module",
+                                    "mail": "Nom de module",
+                                    "tel": "Nom de module",
+                                    "password": "Nom de module",
+                                    "adress": "Nom de module",
+                                    "city": "Nom de module",
+                                    "zipCode": "Nom de module",
+                                    "id_roles": "Nom de module",
+                                    "id_types": "Nom de module"
+                                }
+                            }
+                        }
+                    }
+                },
                 "responses": {
                     "200": {
                         "description": "Successful operation",

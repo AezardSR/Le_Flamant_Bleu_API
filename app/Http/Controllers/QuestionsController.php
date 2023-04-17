@@ -216,7 +216,7 @@ class QuestionsController extends Controller
      *      )
      *      ),
      *  )
-     */
+    */
     public function changeQuestion($id, Request $request)
     {
         $questions = Questions::find($id);

@@ -68,7 +68,7 @@ Route::post('/types', [RolesController::class, 'addTypes']);
 //Routes pour Modules
 Route::get('/modules', [LessonController::class, 'getModuleList']);
 Route::post('/modules', [LessonController::class, 'addModule']);
-Route::delete('/modules/{id}/{moduleName}', [LessonController::class, 'deleteModule']);
+Route::delete('/modules/{id}', [LessonController::class, 'deleteModule']);
 Route::patch('/modules', [LessonController::class, 'changeModule']);
 
 //Routes pour Parties
@@ -112,14 +112,14 @@ Route::patch('/categories/{id}', [LessonController::class, 'changeCategories']);
 //Routes pour Modules Catégories
 Route::get('/module-categories', [LessonController::class, 'getModulesCategoriesList']);
 Route::post('/module-categories', [LessonController::class, 'addModulesCategories']);
-Route::delete('/module-categories/{id}/{id_categories}/{id_modules}', [LessonController::class, 'deleteModulesCategories']);
+Route::delete('/module-categories/{id}', [LessonController::class, 'deleteModulesCategories']);
 Route::patch('/module-categories', [LessonController::class, 'changeModulesCategories']);
 
 //Routes pour Modules Classes
 Route::get('/module-classes', [LessonController::class, 'getModulesClassesList']);
 Route::post('/module-classes', [LessonController::class, 'addModulesClass']);
-Route::delete('/module-classes/{id}/{id_classes}/{id_modules}', [LessonController::class, 'deleteModulesClasses']);
-Route::patch('/module-classes', [LessonController::class, 'changeModulesClass']);
+Route::delete('/module-classes/{id}', [LessonController::class, 'deleteModulesClasses']);
+Route::patch('/module-classes/{id}', [LessonController::class, 'changeModulesClass']);
 
 //Routes pour Documents
 Route::get('/documents', [DocumentsController::class, 'getDocuments']);
@@ -144,7 +144,7 @@ Route::patch('/job-offers/update/{id}', [JobsOffersController::class, 'changeJob
     Route::get('/appointment-types', [CalendarController::class, 'getAppointmentsTypes']);
     Route::post('/appointment-types', [CalendarController::class, 'addAppointmentsTypes']);
     Route::delete('/appointment-types/{id}', [CalendarController::class, 'deleteAppointmentsTypes']);
-    Route::patch('/appointment-types', [CalendarController::class, 'changeAppointmentsTypes']);
+    Route::patch('/appointment-types/{id}', [CalendarController::class, 'changeAppointmentsTypes']);
 
     //RDV
     Route::get('/appointments', [CalendarController::class, 'getAppointments']);
