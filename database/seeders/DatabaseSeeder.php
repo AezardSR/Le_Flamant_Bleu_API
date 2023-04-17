@@ -52,8 +52,6 @@ class DatabaseSeeder extends Seeder
     {
         Types::factory(5)->create();
         Roles::factory(5)->create();
-<<<<<<< Updated upstream
-=======
 
         $admin = new User();
         $admin->name = "AdminName";
@@ -64,7 +62,6 @@ class DatabaseSeeder extends Seeder
         $admin->types_id = "1";
         $admin->save();
 
->>>>>>> Stashed changes
         User::factory(5)->create();
         Surveys::factory(5)->create();
         SurveyAnswers::factory(5)->create();

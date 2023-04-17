@@ -38,7 +38,7 @@ Route::group(['middleware' => ['jwt.log']], function($router) {
     Route::post('/logout', [AuthController::class, 'logout']);
     Route::get('/refresh', [AuthController::class,'refresh']);  
     Route::get('/user-profile', [AuthController::class,'userProfile']);  
-});
+
 //route pour user
 //sert à afficher la liste des utilisateur
 Route::get('/user', [UserController::class, 'getuserList']);
@@ -220,3 +220,4 @@ Route::get('/answers', [AnswersController::class, 'viewListAnswer']);
 Route::post('/answers',[AnswersController::class, 'addAnswer']);
 Route::delete('/answers/{id}',[AnswersController::class, 'deleteAnswer']);
 Route::patch('/answers/{id}',[AnswersController::class, 'changeAnswer']);
+});
