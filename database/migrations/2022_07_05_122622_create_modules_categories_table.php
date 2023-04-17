@@ -24,7 +24,8 @@ class CreateModulesCategoriesTable extends Migration
             $table
             ->foreign('categories_id')
             ->references('id')
-            ->on('categories');
+            ->on('categories')
+            ->onDelete('cascade');
 
             $table
             ->foreign('modules_id')
