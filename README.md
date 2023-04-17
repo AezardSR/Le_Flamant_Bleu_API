@@ -102,4 +102,8 @@ Commande pour generer le changement pour la doc swagger
 ```bash
     docker-compose run api php artisan l5-swagger:generate
 ```
-
+### Compte ADMIN par défaut :
+```bash
+admin@test.fr
+FlamantBleu00!
+```
