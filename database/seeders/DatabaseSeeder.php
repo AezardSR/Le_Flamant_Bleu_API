@@ -52,6 +52,16 @@ class DatabaseSeeder extends Seeder
     {
         Types::factory(5)->create();
         Roles::factory(5)->create();
+
+        $admin = new User();
+        $admin->name = "AdminName";
+        $admin->firstname = "AdminFirtName";
+        $admin->mail = "admin@test.fr";
+        $admin->password = bcrypt("FlamantBleu00!");
+        $admin->roles_id = "1";
+        $admin->types_id = "1";
+        $admin->save();
+
         User::factory(5)->create();
         Surveys::factory(5)->create();
         SurveyAnswers::factory(5)->create();
