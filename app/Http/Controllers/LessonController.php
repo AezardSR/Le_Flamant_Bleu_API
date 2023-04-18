@@ -1082,6 +1082,12 @@ class LessonController extends Controller
         return response()->json($parts);
     }
 
+    public function getOneParts($id)
+    {
+        $parts = Parts::find($id);
+        return response()->json($parts);
+    }
+
      /**
      * @OA\Get(
      *      path="/leçons",
@@ -1148,6 +1154,12 @@ class LessonController extends Controller
     public function getCategoriesList()
     {
         $categories = Categories::all();
+        return response()->json($categories);
+    }
+
+    public function getOneCategories($id)
+    {
+        $categories = Categories::find($id);
         return response()->json($categories);
     }
 

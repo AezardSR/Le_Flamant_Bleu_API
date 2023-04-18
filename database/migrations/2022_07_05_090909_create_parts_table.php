@@ -20,7 +20,7 @@ class CreatePartsTable extends Migration
             $table->timestamps();
         });
         Schema::table('parts',function ($table){
-            $table->foreign('categories_id')->references('id')->on('categories');
+            $table->foreign('categories_id')->references('id')->on('categories')->onDelete('cascade');
         });
     }
 

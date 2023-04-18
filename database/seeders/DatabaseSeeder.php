@@ -55,7 +55,7 @@ class DatabaseSeeder extends Seeder
 
         $admin = new User();
         $admin->name = "AdminName";
-        $admin->firstname = "Admin";
+        $admin->firstname = "AdminFirtName";
         $admin->mail = "admin@test.fr";
         $admin->password = bcrypt("FlamantBleu00!");
         $admin->roles_id = "1";
