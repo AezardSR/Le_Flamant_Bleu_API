@@ -33,7 +33,8 @@ class CreateQuestionsTable extends Migration
             $table
             ->foreign('classes_id')
             ->references('id')
-            ->on('classes');
+            ->on('classes')
+            ->onDelete('cascade');
         });
 
         Schema::table('questions', function ($table) {

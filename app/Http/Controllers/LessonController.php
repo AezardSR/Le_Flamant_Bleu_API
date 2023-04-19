@@ -183,8 +183,8 @@ class LessonController extends Controller
     public function changeLesson($id, Request $request) {
         $lesson = Classes::find($id);
         $lesson->name = $request->input('name');
-        $lesson->contenu = $request->input('contenu');
-
+        $lesson->content = $request->input('content');
+        $lesson->duration = $request->input('duration');
         $lesson->parts_id = Parts::find(
             intval(
                 $request->input('parts_id')
@@ -198,7 +198,9 @@ class LessonController extends Controller
     public function changeExercice($id, Request $request) {
         $exercice = Exercices::find($id);
         $exercice->name = $request->input('name');
-        $exercice->contenu = $request->input('contenu');
+        $exercice->content = $request->input('content');
+        $exercice->image = $request->input('image');
+        $exercice->file = $request->input('file');
 
         $exercice->parts_id = Parts::find(
             intval(
@@ -281,9 +283,21 @@ class LessonController extends Controller
         return response()->json($lesson);
     }
 
+    public function getOneLesson($id)
+    {
+        $lesson = Classes::find($id);
+        return response()->json($lesson);
+    }
+
     public function getExerciceList()
     {
         $exercice = Exercices::all();
+        return response()->json($exercice);
+    }
+
+    public function getOneExercice($id)
+    {
+        $exercice = Exercices::find($id);
         return response()->json($exercice);
     }
 
