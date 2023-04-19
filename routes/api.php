@@ -16,6 +16,7 @@ use App\Http\Controllers\TestsController;
 use App\Http\Controllers\QuestionsController;
 use App\Http\Controllers\AnswersController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ActualitesController;
 
 
 
@@ -224,3 +225,10 @@ Route::get('/answers', [AnswersController::class, 'viewListAnswer']);
 Route::post('/answers',[AnswersController::class, 'addAnswer']);
 Route::delete('/answers/{id}',[AnswersController::class, 'deleteAnswer']);
 Route::patch('/answers/{id}',[AnswersController::class, 'changeAnswer']);
+
+// routes pour les actualités
+Route::get('/actualites', [ActualitesController::class, 'getActualites']);
+Route::get('/actualites/{id}', [ActualitesController::class, 'getOneActualites']);
+Route::post('/actualites',[ActualitesController::class, 'addActualites']);
+Route::delete('/actualites/{id}',[ActualitesController::class, 'deleteActualites']);
+Route::patch('/actualites/{id}',[ActualitesController::class, 'changeActualites']);
