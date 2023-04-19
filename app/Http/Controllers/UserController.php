@@ -19,7 +19,7 @@ class UserController extends Controller
      *      path="/user",
      *      operationId="addUser",
      *      tags={"User"},
-
+     *      security={{"bearerAuth":{}}},
      *      summary="Ajouter un utilisateur",
      *      description="Ajouter un utilisateur",
      *      @OA\RequestBody(
@@ -134,7 +134,7 @@ class UserController extends Controller
      *      path="/user",
      *      operationId="getuserList",
      *      tags={"User"},
-
+     *      security={{"bearerAuth":{}}},
      *      summary="Voir tous les users",
      *      description="Voir tous les users",
      *      @OA\Response(
@@ -157,6 +157,7 @@ class UserController extends Controller
      *      path="/user/{id}",
      *      operationId="getOneUser",
      *      tags={"User"},
+     *      security={{"bearerAuth":{}}},
      *      summary="Voir un user fonction de son ID",
      *      description="Voir un user en fonction de son ID",
      *     @OA\Parameter (
@@ -186,6 +187,7 @@ class UserController extends Controller
      *      path="/user/{id}",
      *      operationId="editUser",
      *      tags={"User"},
+     *      security={{"bearerAuth":{}}},
      *      summary="modifier un user",
      *      description="modifier un user",
      *     @OA\Parameter (
@@ -281,6 +283,7 @@ class UserController extends Controller
      *      path="/user/{id}",
      *      operationId="deleteUser",
      *      tags={"User"},
+     *      security={{"bearerAuth":{}}},
      *      summary="Supprimer une reponse",
      *      description="Supprimer une reponse avec son ID",
      *     @OA\Parameter (
@@ -329,7 +332,7 @@ public function addEmergencyContacts(Request $request){
      *      path="/EmergencyContact",
      *      operationId="getEmergencyContactsList",
      *      tags={"User"},
-
+     *      security={{"bearerAuth":{}}},
      *      summary="Voir les contacts d'urgences",
      *      description="Voir les contacts d'urgences",
      *      @OA\Response(
@@ -351,6 +354,7 @@ public function getEmergencyContactsList(){
      *      path="/EmergencyContact/{id}",
      *      operationId="getOneEmergencyContact",
      *      tags={"User"},
+     *      security={{"bearerAuth":{}}},
      *      summary="Voir les contacts d'urgences en fonction de son ID",
      *      description="Voir les contacts d'urgences en fonction de son ID",
      *     @OA\Parameter (

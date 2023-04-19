@@ -38,6 +38,7 @@ Route::group(['middleware' => ['jwt.log']], function($router) {
     Route::get('/refresh', [AuthController::class,'refresh']);  
     Route::post('/register', [AuthController::class, 'register']);
     Route::get('/user-profile', [AuthController::class,'userProfile']);  
+    Route::get('/check-token', [AuthController::class,'checkUserToken']);
 
 //route pour user
 //sert à afficher la liste des utilisateur

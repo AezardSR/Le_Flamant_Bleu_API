@@ -134,6 +134,7 @@ class AuthController extends Controller
  * @OA\Post(
  *     path="/register",
  *     tags={"Authentification"},
+ *     security={{"bearerAuth":{}}},
  *     summary="Register a new user",
  *     @OA\RequestBody(
  *         required=true,
@@ -327,6 +328,52 @@ class AuthController extends Controller
             'message' => 'success',
             'user' => $user
         ]);
+    }
+
+/**
+ * @OA\Get(
+ *     path="/check-token",
+ *     tags={"Authentification"},
+ *     summary="Refresh the current JWT token.",
+ *     operationId="checkUserToken",
+ *     security={{"bearerAuth":{}}},
+ *     @OA\Response(response=200, description="Successful operation",
+ *         @OA\JsonContent(
+ *             @OA\Property(property="message", type="string", example="connected"),
+ *         )
+ *     ),
+ *     @OA\Response(response=400,description="disconnected",
+ *         @OA\JsonContent(
+ *             @OA\Property(property="error", type="string"),
+ *             @OA\Property(property="message", type="string")
+ *         )
+ *     )
+ * )
+ */
+
+    public function checkUserToken() {
+        try {
+            // Récupérer le token de l'utilisateur connecté
+            $token = JWTAuth::parseToken();
+            
+            // Vérifier si le token est valide et récupérer l'utilisateur associé
+            $user = $token->authenticate();
+            
+            if ($user) {
+                // Utilisateur connecté avec un token valide
+                return response()->json([
+                    'status' => 'connected',
+                ]);
+            } else {
+                // Token invalide ou utilisateur non connecté
+                return response()->json([
+                    'status' => 'disconnected',
+                ]);
+            }
+        } catch (JWTException $e) {
+            // Erreur lors de la récupération ou de la vérification du token
+            return false;
+        }
     }
 }
 
