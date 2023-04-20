@@ -16,6 +16,7 @@ use App\Http\Controllers\TestsController;
 use App\Http\Controllers\QuestionsController;
 use App\Http\Controllers\AnswersController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ActualitesController;
 
 
 
@@ -95,12 +96,14 @@ Route::get('/signatures/{id_registration}', [RegistrationController::class, 'get
 Route::post('/signatures/{id_users}/{id_registrations}/{date}', [RegistrationController::class, 'addSignature']);
 //Routes pour Leçons
 Route::get('/lessons', [LessonController::class, 'getLessonList']);
+Route::get('/lessons/{id}', [LessonController::class, 'getOneLesson']);
 Route::post('/lessons', [LessonController::class, 'addLesson']);
 Route::delete('/lessons/{id}', [LessonController::class, 'deleteLesson']);
 Route::patch('/lessons/{id}', [LessonController::class, 'changeLesson']);
 
 //Routes pour Exercices
 Route::get('/exercices', [LessonController::class, 'getExerciceList']);
+Route::get('/exercices/{id}', [LessonController::class, 'getOneExercice']);
 Route::post('/exercices', [LessonController::class, 'addExercice']);
 Route::delete('/exercices/{id}', [LessonController::class, 'deleteExercice']);
 Route::patch('/exercices/{id}', [LessonController::class, 'changeExercice']);
@@ -138,9 +141,10 @@ Route::patch('/partner-contacts/update/{id}', [PartnerContactController::class, 
 
 //Routes pour JobsOffers
 Route::get('/job-offers', [JobsOffersController::class, 'getJobsOffers']);
-Route::post('/job-offers/add', [JobsOffersController::class, 'addJobsOffers']);
-Route::delete('/job-offers/delete/{id}', [JobsOffersController::class, 'deleteJobsOffers']);
-Route::patch('/job-offers/update/{id}', [JobsOffersController::class, 'changeJobsOffers']);
+Route::get('/job-offers/{id}', [JobsOffersController::class, 'getOneJobsOffers']);
+Route::post('/job-offers', [JobsOffersController::class, 'addJobsOffers']);
+Route::delete('/job-offers/{id}', [JobsOffersController::class, 'deleteJobsOffers']);
+Route::patch('/job-offers/{id}', [JobsOffersController::class, 'changeJobsOffers']);
 
 //Routes pour rendez-vous
     //Type de rdv
@@ -223,4 +227,11 @@ Route::get('/answers', [AnswersController::class, 'viewListAnswer']);
 Route::post('/answers',[AnswersController::class, 'addAnswer']);
 Route::delete('/answers/{id}',[AnswersController::class, 'deleteAnswer']);
 Route::patch('/answers/{id}',[AnswersController::class, 'changeAnswer']);
+
+// routes pour les actualités
+Route::get('/actualites', [ActualitesController::class, 'getActualites']);
+Route::get('/actualites/{id}', [ActualitesController::class, 'getOneActualites']);
+Route::post('/actualites',[ActualitesController::class, 'addActualites']);
+Route::delete('/actualites/{id}',[ActualitesController::class, 'deleteActualites']);
+Route::patch('/actualites/{id}',[ActualitesController::class, 'changeActualites']);
 });

@@ -1172,6 +1172,15 @@ class LessonController extends Controller
         return response()->json($lesson);
     }
 
+    public function getOneLesson($id)
+    {
+        $lesson = Classes::find($id);
+        return response()->json($lesson);
+    }
+
+    public function getOneLesson($id)
+
+
      /**
      * @OA\Get(
      *      path="/exercices",
@@ -1179,7 +1188,7 @@ class LessonController extends Controller
      *      tags={"Lesson"},
      *      security={{"bearerAuth":{}}},
      *      summary="Liste des exercices",
-     *      description="Liste des exercices",
+     *      description="Liste des exercices",});
      *      @OA\Response(
      *          response=200,
      *          description="Successful operation",
@@ -1189,11 +1198,19 @@ class LessonController extends Controller
      *      ),
      *  )
      */
+
     public function getExerciceList()
     {
         $exercice = Exercices::all();
         return response()->json($exercice);
     }
+
+    public function getOneExercice($id)
+    {
+        $exercice = Exercices::find($id);
+        return response()->json($exercice);
+    }
+
 
      /**
      * @OA\Get(
@@ -1212,6 +1229,7 @@ class LessonController extends Controller
      *      ),
      *  )
      */   
+
     public function getCategoriesList()
     {
         $categories = Categories::all();

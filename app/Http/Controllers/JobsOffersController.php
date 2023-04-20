@@ -31,6 +31,12 @@ class JobsOffersController extends Controller
         return response()->json($jobsOffers);
     }
 
+    public function getOneJobsOffers($id) {
+        $jobsOffers = JobsOffers::find($id);
+        return response()->json($jobsOffers);
+    }
+
+
     /**
      * @OA\Post(
      *      path="/job-offers/add",
