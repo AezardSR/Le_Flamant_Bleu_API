@@ -1178,8 +1178,6 @@ class LessonController extends Controller
         return response()->json($lesson);
     }
 
-    public function getOneLesson($id)
-
 
      /**
      * @OA\Get(
