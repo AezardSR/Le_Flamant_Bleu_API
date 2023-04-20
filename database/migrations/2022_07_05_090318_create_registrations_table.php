@@ -22,8 +22,8 @@ class CreateRegistrationsTable extends Migration
             $table->timestamps();
         });
         Schema::table('registrations',function ($table){
-            $table->foreign('promos_id')->references('id')->on('promos');
-            $table->foreign('registrationTypes_id')->references('id')->on('registration_types');
+            $table->foreign('promos_id')->references('id')->on('promos')->onDelete('cascade');
+            $table->foreign('registrationTypes_id')->references('id')->on('registration_types')->onDelete('cascade');
         });
     }
 

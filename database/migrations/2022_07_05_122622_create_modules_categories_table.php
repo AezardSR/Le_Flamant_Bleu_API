@@ -30,7 +30,8 @@ class CreateModulesCategoriesTable extends Migration
             $table
             ->foreign('modules_id')
             ->references('id')
-            ->on('modules');
+            ->on('modules')
+            ->onDelete('cascade');
         });
     }
 

@@ -96,14 +96,14 @@ Route::post('/signatures/{id_users}/{id_registrations}/{date}', [RegistrationCon
 //Routes pour Leçons
 Route::get('/lessons', [LessonController::class, 'getLessonList']);
 Route::post('/lessons', [LessonController::class, 'addLesson']);
-Route::delete('/lessons/{id}/{content}/{id_parts}', [LessonController::class, 'deleteLesson']);
-Route::patch('/lessons', [LessonController::class, 'changeLesson']);
+Route::delete('/lessons/{id}', [LessonController::class, 'deleteLesson']);
+Route::patch('/lessons/{id}', [LessonController::class, 'changeLesson']);
 
 //Routes pour Exercices
 Route::get('/exercices', [LessonController::class, 'getExerciceList']);
 Route::post('/exercices', [LessonController::class, 'addExercice']);
-Route::delete('/exercices/{id}/{name}/{content}/{id_parts}', [LessonController::class, 'deleteExercice']);
-Route::patch('/exercices', [LessonController::class, 'changeExercice']);
+Route::delete('/exercices/{id}', [LessonController::class, 'deleteExercice']);
+Route::patch('/exercices/{id}', [LessonController::class, 'changeExercice']);
 
 //Routes pour Catégories
 Route::get('/categories', [LessonController::class, 'getCategoriesList']);
@@ -116,7 +116,7 @@ Route::patch('/categories/{id}', [LessonController::class, 'changeCategories']);
 Route::get('/module-categories', [LessonController::class, 'getModulesCategoriesList']);
 Route::post('/module-categories', [LessonController::class, 'addModulesCategories']);
 Route::delete('/module-categories/{id}', [LessonController::class, 'deleteModulesCategories']);
-Route::patch('/module-categories', [LessonController::class, 'changeModulesCategories']);
+Route::patch('/module-categories/{id}', [LessonController::class, 'changeModulesCategories']);
 
 //Routes pour Modules Classes
 Route::get('/module-classes', [LessonController::class, 'getModulesClassesList']);

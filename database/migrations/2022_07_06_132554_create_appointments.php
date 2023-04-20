@@ -28,17 +28,20 @@ class CreateAppointments extends Migration
             $table
                 ->foreign('receiver_id')
                 ->references('id')
-                ->on('users');
+                ->on('users')
+                ->onDelete('cascade');
             
             $table
                 ->foreign('create_id')
                 ->references('id')
-                ->on('users');
+                ->on('users')
+                ->onDelete('cascade');
 
             $table
                 ->foreign('appointments_types_id')
                 ->references('id')
-                ->on('appointments_types');
+                ->on('appointments_types')
+                ->onDelete('cascade');
         });
     }
 

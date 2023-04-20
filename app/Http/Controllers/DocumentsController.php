@@ -13,7 +13,7 @@ class DocumentsController extends Controller
      *      path="/documents",
      *      operationId="getDocuments",
      *      tags={"Documents"},
-
+     *      security={{"bearerAuth":{}}},
      *      summary="Tous les documents",
      *      description="",
      *      @OA\Response(
@@ -53,7 +53,7 @@ class DocumentsController extends Controller
      *      path="/documents",
      *      operationId="addDocuments",
      *      tags={"Documents"},
-
+     *      security={{"bearerAuth":{}}},
      *      summary="Ajouter un documents",
      *      description="Voici la fonction qui permet d'ajouter un document dans l'API.",
      *      @OA\RequestBody(
@@ -108,6 +108,7 @@ class DocumentsController extends Controller
      *      path="/documents/{id}",
      *      operationId="deleteDocuments",
      *      tags={"Documents"},
+     *      security={{"bearerAuth":{}}},
      *      summary="Supprimer un Documents",
      *      description="Permets de supprimer un documents en fonction de son ID",
      *     @OA\Parameter (
@@ -154,6 +155,7 @@ class DocumentsController extends Controller
      *      path="/documents/{id}",
      *      operationId="changeDocuments",
      *      tags={"Documents"},
+     *      security={{"bearerAuth":{}}},
      *      summary="modifier un Documents",
      *      description="Permets de modifier un documents en fonction de son ID",
      *     @OA\Parameter (

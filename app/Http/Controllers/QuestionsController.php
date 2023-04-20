@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Categories;
 use App\Models\User;
 use App\Models\Classes;
 use App\Models\Questions;
@@ -16,7 +17,7 @@ class QuestionsController extends Controller
      *      path="/questions",
      *      operationId="addQuestion",
      *      tags={"Questions"},
-
+     *      security={{"bearerAuth":{}}},
      *      summary="Ajouter une question",
      *      description="Ajouter une question",
      *      @OA\RequestBody(
@@ -65,17 +66,23 @@ class QuestionsController extends Controller
         $questions = new Questions();
         $questions->question = $request->input('question');
 
-        // $questions->classes_id = Classes::find(
-        //     intval(
-        //         $request->input('classes_id')
-        //     )
-        // )->id;
+        $questions->classes_id = Classes::find(
+            intval(
+                $request->input('classes_id')
+            )
+        )->id;
 
         $questions->user_id = User::find(
             intval(
                 $request->input('user_id')
             )
         )->id;
+        $questions->categories_id = Categories::find(
+            intval(
+                $request->input('categories_id')
+            )
+        )->id;
+        
         $questions->save();
         return response()->json($questions);
     }
@@ -84,6 +91,7 @@ class QuestionsController extends Controller
      *      path="/questions/{id}",
      *      operationId="viewQuestion",
      *      tags={"Questions"},
+     *      security={{"bearerAuth":{}}},
      *      summary="Voir une question en fonction de son ID",
      *      description="Voir une question en fonction de son ID",
      *     @OA\Parameter (
@@ -114,7 +122,7 @@ class QuestionsController extends Controller
      *      path="/questions",
      *      operationId="viewListQuestion",
      *      tags={"Questions"},
-
+     *      security={{"bearerAuth":{}}},
      *      summary="Voir toutes les questions",
      *      description="Voir toutes les questions",
      *      @OA\Response(
@@ -136,6 +144,7 @@ class QuestionsController extends Controller
      * @OA\Delete (
      *      path="/questions/{id}",
      *      operationId="deleteQuestion",
+     *      security={{"bearerAuth":{}}},
      *      tags={"Questions"},
      *      summary="Supprimer une question",
      *      description="Supprimer une question avec son ID",
@@ -166,6 +175,7 @@ class QuestionsController extends Controller
      *      path="/questions/{id}",
      *      operationId="changeQuestion",
      *      tags={"Questions"},
+     *      security={{"bearerAuth":{}}},
      *      summary="modifier une question",
      *      description="Permets de modifier une question",
      *     @OA\Parameter (

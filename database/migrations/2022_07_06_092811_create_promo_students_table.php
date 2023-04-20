@@ -20,8 +20,8 @@ class CreatePromoStudentsTable extends Migration
             $table->timestamps();
         });        
         Schema::table('promo_students',function ($table){
-            $table->foreign('students_id')->references('id')->on('users');
-            $table->foreign('promos_id')->references('id')->on('promos');
+            $table->foreign('students_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('promos_id')->references('id')->on('promos')->onDelete('cascade');
         });
     }
 

@@ -13,8 +13,8 @@ class CalendarController extends Controller
      * @OA\Get(
      *      path="/appointment-types",
      *      operationId="getAppointmentsTypes",
-     *      tags={"Appointments Types"},
-
+     *      tags={"Calendar"},
+     *      security={{"bearerAuth":{}}},
      *      summary="Tous les types de rendez-vous",
      *      description="",
      *      @OA\Response(
@@ -51,8 +51,8 @@ class CalendarController extends Controller
      * @OA\Get(
      *      path="/appointments",
      *      operationId="getAppointments",
-     *      tags={"Appointments"},
-
+     *      tags={"Calendar"},
+     *      security={{"bearerAuth":{}}},
      *      summary="Tous les rendez-vous",
      *      description="",
      *      @OA\Response(
@@ -91,7 +91,8 @@ class CalendarController extends Controller
      * @OA\Post(
      *      path="/appointment-types",
      *      operationId="addAppointmentsTypes",
-     *      tags={"Appointments Types"},
+     *      tags={"Calendar"},
+     *      security={{"bearerAuth":{}}},
      *      summary="Ajouter un type de rendez-vous",
      *      description="Ajouter un type de rendez-vous en lui indiquant un nom, l'id s'ajoutera automatiquement",
      *      @OA\RequestBody(
@@ -131,8 +132,9 @@ class CalendarController extends Controller
      * @OA\Post(
      *      path="/appointments",
      *      operationId="addAppointments",
-     *      tags={"Appointments"},
+     *      tags={"Calendar"},
      *      summary="Ajouter un rendez-vous",
+     *      security={{"bearerAuth":{}}},
      *      description="Ajouter un rendez-vous",
      *      @OA\RequestBody(
      *         @OA\MediaType(
@@ -166,7 +168,12 @@ class CalendarController extends Controller
      *                      ),
      *                 ),
      *                 example={
-     *                     "name":"ajouter un rendez-vous"
+     *                     "titleDetails":"ajouter un rendez-vous",
+     *                     "descriptionDetails":"ajout description",
+     *                      "dateDetails":"2012-09-04",
+     *                      "receiver_id":1,
+     *                      "create_id":2,
+     *                      "appointments_types_id":1
      *                }
      *             )
      *         )
@@ -214,7 +221,8 @@ class CalendarController extends Controller
      * @OA\Delete (
      *      path="/appointment-types/{id}",
      *      operationId="deleteAppointmentsTypes",
-     *      tags={"Appointments Types"},
+     *      tags={"Calendar"},
+     *      security={{"bearerAuth":{}}},
      *      summary="Supprimer un type de rendez-vous",
      *      description="Supprimer un type de rendez-vous avec son ID",
      *     @OA\Parameter (
@@ -243,7 +251,8 @@ class CalendarController extends Controller
      * @OA\Delete (
      *      path="/appointments/{id}",
      *      operationId="deleteAppointments",
-     *      tags={"Appointments"},
+     *      tags={"Calendar"},
+     *      security={{"bearerAuth":{}}},
      *      summary="Supprimer un rendez-vous",
      *      description="Supprimer un rendez-vous avec son ID",
      *     @OA\Parameter (
@@ -273,7 +282,8 @@ class CalendarController extends Controller
      * @OA\Patch (
      *      path="/appointment-types/{id}",
      *      operationId="changeAppointmentsTypes",
-     *      tags={"Appointments Types"},
+     *      tags={"Calendar"},
+     *      security={{"bearerAuth":{}}},
      *      summary="modifier un type de rendez-vous",
      *      description="Permets de modifier un type de rendez-vous",
      *     @OA\Parameter (
@@ -321,7 +331,8 @@ class CalendarController extends Controller
      * @OA\Patch (
      *      path="/appointments/{id}",
      *      operationId="changeAppointments",
-     *      tags={"Appointments"},
+     *      tags={"Calendar"},
+     *      security={{"bearerAuth":{}}},
      *      summary="modifier un rendez-vous",
      *      description="Permets de modifier un rendez-vous",
      *     @OA\Parameter (
@@ -366,7 +377,7 @@ class CalendarController extends Controller
      *                 example={
      *                     "titleDetails":"Nom du rendez-vous",
      *                     "descriptionDetails": "Détails du rendez-vous",
-     *                     "dateDetails":1,
+     *                     "dateDetails": "2012-09-04",
      *                     "receiver_id":1,
      *                     "create_id":2,
      *                     "appointments_types_id":1,

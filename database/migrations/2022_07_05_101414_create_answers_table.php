@@ -25,12 +25,14 @@ class CreateAnswersTable extends Migration
             $table
             ->foreign('user_id')
             ->references('id')
-            ->on('users');
+            ->on('users')
+            ->onDelete('cascade');
 
             $table
             ->foreign('questions_id')
             ->references('id')
-            ->on('questions');
+            ->on('questions')
+            ->onDelete('cascade');
         });
     }
 

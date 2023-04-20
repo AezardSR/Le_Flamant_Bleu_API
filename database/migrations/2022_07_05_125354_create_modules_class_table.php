@@ -24,12 +24,14 @@ class CreateModulesClassTable extends Migration
             $table
             ->foreign('classes_id')
             ->references('id')
-            ->on('classes');
+            ->on('classes')
+            ->onDelete('cascade');
 
             $table
             ->foreign('modules_id')
             ->references('id')
-            ->on('modules');
+            ->on('modules')
+            ->onDelete('cascade');
         });
     }
 

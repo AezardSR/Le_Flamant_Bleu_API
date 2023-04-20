@@ -28,12 +28,16 @@ class CreateJobsOffers extends Migration
             $table
                 ->foreign('user_id')
                 ->references('id')
-                ->on('users');
+                ->on('users')
+                ->onDelete('cascade');
+
 
             $table
                 ->foreign('partnerContacts_id')
                 ->references('id')
-                ->on('partner_contacts');
+                ->on('partner_contacts')
+                ->onDelete('cascade');
+
         });
     }
 

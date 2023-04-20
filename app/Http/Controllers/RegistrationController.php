@@ -15,10 +15,10 @@ class RegistrationController extends Controller
 {
          /**
      * @OA\Get(
-     *      path="/registrationTypes",
+     *      path="/registration-types",
      *      operationId="getRegistrationTypeList",
      *      tags={"Registration"},
-
+     *      security={{"bearerAuth":{}}},
      *      summary="",
      *      description="",
      *      @OA\Response(
@@ -64,7 +64,7 @@ class RegistrationController extends Controller
      *      path="/registrations",
      *      operationId="getRegistrationsList",
      *      tags={"Registration"},
-
+     *      security={{"bearerAuth":{}}},
      *      summary="",
      *      description="",
      *      @OA\Response(
@@ -84,9 +84,10 @@ class RegistrationController extends Controller
 
   /**
      * @OA\Get (
-     *      path="/registration/{id}",
+     *      path="/registrations/{id}",
      *      operationId="getOneRegistration",
      *      tags={"Registration"},
+     *      security={{"bearerAuth":{}}},
      *      summary="",
      *      description="",
      *     @OA\Parameter (
@@ -121,6 +122,7 @@ class RegistrationController extends Controller
      *      path="/signatures/{id_registration}",
      *      operationId="getSignatureList",
      *      tags={"Registration"},
+     *      security={{"bearerAuth":{}}},
      *      summary="",
      *      description="",
      *     @OA\Parameter (

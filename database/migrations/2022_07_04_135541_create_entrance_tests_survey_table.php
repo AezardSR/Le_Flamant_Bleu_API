@@ -20,8 +20,8 @@ class CreateEntranceTestsSurveyTable extends Migration
             $table->timestamps();
         });
         Schema::table('entrance_tests_survey',function ($table){
-            $table->foreign('entranceTests_id')->references('id')->on('entrance_tests');
-            $table->foreign('surveys_id')->references('id')->on('surveys');
+            $table->foreign('entranceTests_id')->references('id')->on('entrance_tests')->onDelete('cascade');
+            $table->foreign('surveys_id')->references('id')->on('surveys')->onDelete('cascade');
         });
     }
 

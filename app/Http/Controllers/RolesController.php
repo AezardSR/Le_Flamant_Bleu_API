@@ -13,7 +13,7 @@ class RolesController extends Controller
      *      path="/roles",
      *      operationId="getRolesList",
      *      tags={"Roles"},
-
+     *      security={{"bearerAuth":{}}},
      *      summary="Tous les roles",
      *      description="",
      *      @OA\Response(
@@ -51,6 +51,7 @@ class RolesController extends Controller
      *      path="/roles",
      *      operationId="addRole",
      *      tags={"Roles"},
+     *      security={{"bearerAuth":{}}},
      *      summary="Ajouter un role",
      *      description="Ajouter un role en lui indiquant un nom, l'id s'ajoutera automatiquement",
      *      @OA\RequestBody(
@@ -92,7 +93,7 @@ class RolesController extends Controller
      *      path="/types",
      *      operationId="getTypesList",
      *      tags={"Roles"},
-
+     *      security={{"bearerAuth":{}}},
      *      summary="Tous les types de roles",
      *      description="Liste de tous les types de roles",
      *      @OA\Response(
@@ -130,6 +131,7 @@ class RolesController extends Controller
      *      path="/types",
      *      operationId="addTypes",
      *      tags={"Roles"},
+     *     security={{"bearerAuth":{}}},
      *      summary="Ajouter un type de role",
      *      description="Ajouter un type de role en lui indiquant un nom, l'id s'ajoutera automatiquement",
      *      @OA\RequestBody(

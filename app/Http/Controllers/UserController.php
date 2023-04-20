@@ -53,7 +53,7 @@ class UserController extends Controller
      *                          type="string"
      *                      ),
      *                      @OA\Property(
-     *                          property="adress",
+     *                          property="address",
      *                          type="string"
      *                      ),
      *                      @OA\Property(
@@ -65,26 +65,26 @@ class UserController extends Controller
      *                          type="string"
      *                      ),
      *                      @OA\Property(
-     *                          property="id_roles",
+     *                          property="roles_id",
      *                          type="integer"
      *                      ),
      *                      @OA\Property(
-     *                          property="id_types",
+     *                          property="types_id",
      *                          type="integer"
      *                      )
      *                 ),
      *                 example={
-     *                     "name":"Nom de module",
-     *                     "firstname":"Nom de module",
-     *                     "birthdate":"Nom de module",
-     *                     "mail":"Nom de module",
-     *                     "tel":"Nom de module",
-     *                     "password":"Nom de module",
-     *                     "adress":"Nom de module",
-     *                     "city":"Nom de module",
-     *                     "zipCode":"Nom de module",
-     *                     "id_roles":"Nom de module",
-     *                     "id_types":"Nom de module"
+     *                     "name":"Ricard",
+     *                     "firstname":"Sylvain",
+     *                     "birthdate":"2012-09-04",
+     *                     "mail":"mail@mail.fr",
+     *                     "tel":"0102030405",
+     *                     "password":"password",
+     *                     "address":"28 rue des golds",
+     *                     "city":"Thourotte",
+     *                     "zipCode":"60150",
+     *                     "roles_id":1,
+     *                     "types_id":1
      *                }
      *             )
      *         )
@@ -108,19 +108,19 @@ class UserController extends Controller
         $user->mail = $request->input('mail');
         $user->tel = $request->input('tel');
         $user->password = $request->input('password'); //To do => Chiffrer le mdp avec bcrypt
-        $user->adress = $request->input('adress');
+        $user->address = $request->input('address');
         $user->city = $request->input('city');
         $user->zipCode = $request->input('zipCode');
 
-        $user->id_roles = Roles::find(
+        $user->roles_id = Roles::find(
             intval(
-                $request->input('id_roles')
+                $request->input('roles_id')
             )
         )->id;
 
-        $user->id_types = Types::find(
+        $user->types_id = Types::find(
             intval(
-                $request->input('id_types')
+                $request->input('types_id')
             )
         )->id;
   
@@ -133,6 +133,7 @@ class UserController extends Controller
      * @OA\Get(
      *      path="/user",
      *      operationId="getuserList",
+     *      security={{"bearerAuth":{}}},
      *      tags={"User"},
      *      security={{"bearerAuth":{}}},
      *      summary="Voir tous les users",
@@ -186,6 +187,7 @@ class UserController extends Controller
      * @OA\Patch (
      *      path="/user/{id}",
      *      operationId="editUser",
+     *      security={{"bearerAuth":{}}},
      *      tags={"User"},
      *      security={{"bearerAuth":{}}},
      *      summary="modifier un user",
@@ -229,7 +231,7 @@ class UserController extends Controller
      *                          type="string"
      *                      ),
      *                      @OA\Property(
-     *                          property="adress",
+     *                          property="address",
      *                          type="string"
      *                      ),
      *                      @OA\Property(
@@ -241,26 +243,26 @@ class UserController extends Controller
      *                          type="string"
      *                      ),
      *                      @OA\Property(
-     *                          property="id_roles",
+     *                          property="roles_id",
      *                          type="integer"
      *                      ),
      *                      @OA\Property(
-     *                          property="id_types",
+     *                          property="types_id",
      *                          type="integer"
      *                      )
      *                 ),
      *                 example={
-     *                     "name":"Nom de module",
-     *                     "firstname":"Nom de module",
-     *                     "birthdate":"Nom de module",
-     *                     "mail":"Nom de module",
-     *                     "tel":"Nom de module",
-     *                     "password":"Nom de module",
-     *                     "adress":"Nom de module",
+     *                     "name":"Pioul",
+     *                     "firstname":"Benjamin",
+     *                     "birthdate":"2012-09-04",
+     *                     "mail":"adresse@mail.fr",
+     *                     "tel":"0102030405",
+     *                     "password":"password",
+     *                     "address":"19 rue des silvers",
      *                     "city":"Nom de module",
-     *                     "zipCode":"Nom de module",
-     *                     "id_roles":"Nom de module",
-     *                     "id_types":"Nom de module"
+     *                     "zipCode":"60150",
+     *                     "roles_id":1,
+     *                     "types_id":1
      *                }
      *             )
      *         )
@@ -275,7 +277,31 @@ class UserController extends Controller
      *  )
     */
     public function editUser($id, Request $request){
-        $user = DB::table('user')->where('id','=',$id)->update([$request->input('column') => $request->input('newValue')]);
+        $user = User::find($id);
+        $user->name = $request->input('name');
+        $user->firstname = $request->input('firstname');
+        $user->birthdate = $request->input('birthdate');
+        $user->mail = $request->input('mail');
+        $user->tel = $request->input('tel');
+        $user->password = $request->input('password'); //To do => Chiffrer le mdp avec bcrypt
+        $user->address = $request->input('address');
+        $user->city = $request->input('city');
+        $user->zipCode = $request->input('zipCode');
+
+        $user->roles_id = Roles::find(
+            intval(
+                $request->input('roles_id')
+            )
+        )->id;
+
+        $user->types_id = Types::find(
+            intval(
+                $request->input('types_id')
+            )
+        )->id;
+
+        $user->save();
+        return response()->json($user);
     }
 
     /**
@@ -327,53 +353,11 @@ public function addEmergencyContacts(Request $request){
     return response()->json($EmergencyContacts);
 }
 
-     /**
-     * @OA\Get(
-     *      path="/EmergencyContact",
-     *      operationId="getEmergencyContactsList",
-     *      tags={"User"},
-     *      security={{"bearerAuth":{}}},
-     *      summary="Voir les contacts d'urgences",
-     *      description="Voir les contacts d'urgences",
-     *      @OA\Response(
-     *          response=200,
-     *          description="Successful operation",
-     *          @OA\MediaType(
-     *           mediaType="application/json",
-     *      )
-     *      ),
-     *  )
-     */
 public function getEmergencyContactsList(){
     $EmergencyContacts = EmergencyContacts::all();
     return response()->json($EmergencyContacts);
 }
 
-  /**
-     * @OA\Get (
-     *      path="/EmergencyContact/{id}",
-     *      operationId="getOneEmergencyContact",
-     *      tags={"User"},
-     *      security={{"bearerAuth":{}}},
-     *      summary="Voir les contacts d'urgences en fonction de son ID",
-     *      description="Voir les contacts d'urgences en fonction de son ID",
-     *     @OA\Parameter (
-     *      name="id",
-     *      in="path",
-     *      required=true,
-     *      @OA\Schema (
-     *           type="integer"
-     *      )
-     *   ),
-     *      @OA\Response (
-     *          response=200,
-     *          description="Successful operation",
-     *          @OA\MediaType(
-     *           mediaType="application/json",
-     *      )
-     *      ),
-     *  )
-     */
 public function getOneEmergencyContact($id){
     $EmergencyContacts = DB::table('emergency_contacts')->select('name','firstname','tel')->where('id','=', $id)->get();
     return response()->json($EmergencyContacts);

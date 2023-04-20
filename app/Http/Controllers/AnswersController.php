@@ -14,7 +14,7 @@ class AnswersController extends Controller
      *      path="/answers",
      *      operationId="addAnswer",
      *      tags={"Answers"},
-
+     *      security={{"bearerAuth":{}}},
      *      summary="Ajouter une reponse",
      *      description="Ajouter une reponse",
      *      @OA\RequestBody(
@@ -50,7 +50,7 @@ class AnswersController extends Controller
      *          @OA\MediaType(
      *           mediaType="application/json",
      *      )
-     *      ),
+     *     ),
      *  )
      */
     public function addAnswer(Request $request)
@@ -78,6 +78,8 @@ class AnswersController extends Controller
      *      path="/answers/{id}",
      *      operationId="viewAnswer",
      *      tags={"Answers"},
+ *     security={{"bearerAuth":{}}},
+     * 
      *      summary="Voir une reponse en fonction de son ID",
      *      description="Voir une reponse en fonction de son ID",
      *     @OA\Parameter (
@@ -108,7 +110,7 @@ class AnswersController extends Controller
      *      path="/answers",
      *      operationId="viewListAnswer",
      *      tags={"Answers"},
-
+     *      security={{"bearerAuth":{}}},
      *      summary="Voir toutes les reponses",
      *      description="Voir toutes les reponses",
      *      @OA\Response(
@@ -130,6 +132,7 @@ class AnswersController extends Controller
      *      path="/answers/{id}",
      *      operationId="deleteAnswer",
      *      tags={"Answers"},
+     *      security={{"bearerAuth":{}}},
      *      summary="Supprimer une reponse",
      *      description="Supprimer une reponse avec son ID",
      *     @OA\Parameter (
@@ -160,6 +163,7 @@ class AnswersController extends Controller
      *      path="/answers/{id}",
      *      operationId="changeAnswer",
      *      tags={"Answers"},
+     *      security={{"bearerAuth":{}}},
      *      summary="modifier une reponse",
      *      description="Permets de modifier une reponse",
      *     @OA\Parameter (

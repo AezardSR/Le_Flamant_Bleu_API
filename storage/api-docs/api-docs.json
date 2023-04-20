@@ -34,7 +34,12 @@
                             "application/json": {}
                         }
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
             },
             "post": {
                 "tags": [
@@ -80,7 +85,12 @@
                             "application/json": {}
                         }
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
             }
         },
         "/answers/{id}": {
@@ -108,7 +118,12 @@
                             "application/json": {}
                         }
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
             },
             "delete": {
                 "tags": [
@@ -134,7 +149,12 @@
                             "application/json": {}
                         }
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
             },
             "patch": {
                 "tags": [
@@ -190,7 +210,12 @@
                             "application/json": {}
                         }
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
             }
         },
         "/login": {
@@ -680,7 +705,7 @@
         "/appointment-types": {
             "get": {
                 "tags": [
-                    "Appointments Types"
+                    "Calendar"
                 ],
                 "summary": "Tous les types de rendez-vous",
                 "description": "",
@@ -704,11 +729,16 @@
                     "404": {
                         "description": "not found"
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
             },
             "post": {
                 "tags": [
-                    "Appointments Types"
+                    "Calendar"
                 ],
                 "summary": "Ajouter un type de rendez-vous",
                 "description": "Ajouter un type de rendez-vous en lui indiquant un nom, l'id s'ajoutera automatiquement",
@@ -742,13 +772,18 @@
                             "application/json": {}
                         }
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
             }
         },
         "/appointments": {
             "get": {
                 "tags": [
-                    "Appointments"
+                    "Calendar"
                 ],
                 "summary": "Tous les rendez-vous",
                 "description": "",
@@ -772,11 +807,16 @@
                     "404": {
                         "description": "not found"
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
             },
             "post": {
                 "tags": [
-                    "Appointments"
+                    "Calendar"
                 ],
                 "summary": "Ajouter un rendez-vous",
                 "description": "Ajouter un rendez-vous",
@@ -813,7 +853,12 @@
                                 },
                                 "type": "object",
                                 "example": {
-                                    "name": "ajouter un rendez-vous"
+                                    "titleDetails": "ajouter un rendez-vous",
+                                    "descriptionDetails": "ajout description",
+                                    "dateDetails": "2012-09-04",
+                                    "receiver_id": 1,
+                                    "create_id": 2,
+                                    "appointments_types_id": 1
                                 }
                             }
                         }
@@ -826,13 +871,18 @@
                             "application/json": {}
                         }
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
             }
         },
         "/appointment-types/{id}": {
             "delete": {
                 "tags": [
-                    "Appointments Types"
+                    "Calendar"
                 ],
                 "summary": "Supprimer un type de rendez-vous",
                 "description": "Supprimer un type de rendez-vous avec son ID",
@@ -854,11 +904,16 @@
                             "application/json": {}
                         }
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
             },
             "patch": {
                 "tags": [
-                    "Appointments Types"
+                    "Calendar"
                 ],
                 "summary": "modifier un type de rendez-vous",
                 "description": "Permets de modifier un type de rendez-vous",
@@ -902,13 +957,18 @@
                             "application/json": {}
                         }
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
             }
         },
         "/appointments/{id}": {
             "delete": {
                 "tags": [
-                    "Appointments"
+                    "Calendar"
                 ],
                 "summary": "Supprimer un rendez-vous",
                 "description": "Supprimer un rendez-vous avec son ID",
@@ -930,11 +990,16 @@
                             "application/json": {}
                         }
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
             },
             "patch": {
                 "tags": [
-                    "Appointments"
+                    "Calendar"
                 ],
                 "summary": "modifier un rendez-vous",
                 "description": "Permets de modifier un rendez-vous",
@@ -983,7 +1048,7 @@
                                 "example": {
                                     "titleDetails": "Nom du rendez-vous",
                                     "descriptionDetails": "Détails du rendez-vous",
-                                    "dateDetails": 1,
+                                    "dateDetails": "2012-09-04",
                                     "receiver_id": 1,
                                     "create_id": 2,
                                     "appointments_types_id": 1
@@ -999,7 +1064,12 @@
                             "application/json": {}
                         }
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
             }
         },
         "/documents": {
@@ -1029,7 +1099,12 @@
                     "404": {
                         "description": "not found"
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
             },
             "post": {
                 "tags": [
@@ -1071,7 +1146,12 @@
                             "application/json": {}
                         }
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
             }
         },
         "/documents/{id}": {
@@ -1111,7 +1191,12 @@
                     "404": {
                         "description": "not found"
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
             },
             "patch": {
                 "tags": [
@@ -1163,10 +1248,15 @@
                             "application/json": {}
                         }
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
             }
         },
-        "/jobsoffers": {
+        "/job-offers": {
             "get": {
                 "tags": [
                     "Job Offer"
@@ -1181,10 +1271,82 @@
                             "application/json": {}
                         }
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
             }
         },
-        "/jobsoffers/delete/{id}": {
+        "/job-offers/add": {
+            "post": {
+                "tags": [
+                    "Job Offer"
+                ],
+                "summary": "Ajouter une offre d'emploi",
+                "description": "Ajouter une offre d'emploi",
+                "operationId": "addJobsOffers",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "": {
+                                        "properties": {
+                                            "name": {
+                                                "type": "string"
+                                            },
+                                            "dateOffers": {
+                                                "type": "string",
+                                                "format": "date",
+                                                "pattern": "/([0-9]{4})-(?:[0-9]{2})-([0-9]{2})/"
+                                            },
+                                            "description": {
+                                                "type": "string"
+                                            },
+                                            "link": {
+                                                "type": "string"
+                                            },
+                                            "user_id": {
+                                                "type": "integer"
+                                            },
+                                            "partnerContacts_id": {
+                                                "type": "integer"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                },
+                                "type": "object",
+                                "example": {
+                                    "name": "Ricard",
+                                    "dateOffers": "2012-09-04",
+                                    "description": "mettre une description",
+                                    "link": "chemin",
+                                    "user_id": 1,
+                                    "partnerContacts_id": 1
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/job-offers/delete/{id}": {
             "delete": {
                 "tags": [
                     "Job Offer"
@@ -1209,10 +1371,15 @@
                             "application/json": {}
                         }
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
             }
         },
-        "/jobsoffers/update/{id}": {
+        "/job-offers/update/{id}": {
             "patch": {
                 "tags": [
                     "Job Offer"
@@ -1268,7 +1435,7 @@
                                     "description": "mettre du texte",
                                     "link": "mettre du texte",
                                     "user_id": 1,
-                                    "partnerContacs_id": 2
+                                    "partnerContacts_id": 2
                                 }
                             }
                         }
@@ -1281,7 +1448,12 @@
                             "application/json": {}
                         }
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
             }
         },
         "/modules": {
@@ -1299,7 +1471,12 @@
                             "application/json": {}
                         }
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
             },
             "post": {
                 "tags": [
@@ -1315,7 +1492,7 @@
                                 "properties": {
                                     "": {
                                         "properties": {
-                                            "module": {
+                                            "name": {
                                                 "type": "string"
                                             }
                                         },
@@ -1324,7 +1501,7 @@
                                 },
                                 "type": "object",
                                 "example": {
-                                    "module": "Nom de module"
+                                    "name": "Nom de module"
                                 }
                             }
                         }
@@ -1337,10 +1514,36 @@
                             "application/json": {}
                         }
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
             }
         },
         "/parts": {
+            "get": {
+                "tags": [
+                    "Lesson"
+                ],
+                "summary": "",
+                "description": "",
+                "operationId": "getPartsList",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            },
             "post": {
                 "tags": [
                     "Lesson"
@@ -1355,7 +1558,7 @@
                                 "properties": {
                                     "": {
                                         "properties": {
-                                            "module": {
+                                            "name": {
                                                 "type": "string"
                                             },
                                             "categories_id": {
@@ -1367,7 +1570,8 @@
                                 },
                                 "type": "object",
                                 "example": {
-                                    "name": "Nom de partie"
+                                    "name": "Nom de partie",
+                                    "categories_id": 2
                                 }
                             }
                         }
@@ -1380,10 +1584,36 @@
                             "application/json": {}
                         }
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
             }
         },
         "/lessons": {
+            "get": {
+                "tags": [
+                    "Lesson"
+                ],
+                "summary": "",
+                "description": "",
+                "operationId": "getLessonList",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            },
             "post": {
                 "tags": [
                     "Lesson"
@@ -1405,7 +1635,7 @@
                                                 "type": "string"
                                             },
                                             "duration": {
-                                                "type": "string"
+                                                "type": "integer"
                                             },
                                             "parts_id": {
                                                 "type": "integer"
@@ -1418,8 +1648,8 @@
                                 "example": {
                                     "name": "Nom du cours",
                                     "content": "Contenu du cours",
-                                    "duration": "Nombre de jours",
-                                    "parts_id": "L'id de la partie liée"
+                                    "duration": 1,
+                                    "parts_id": 1
                                 }
                             }
                         }
@@ -1432,10 +1662,36 @@
                             "application/json": {}
                         }
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
             }
         },
         "/exercices": {
+            "get": {
+                "tags": [
+                    "Lesson"
+                ],
+                "summary": "Liste des exercices",
+                "description": "Liste des exercices",
+                "operationId": "getExerciceList",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            },
             "post": {
                 "tags": [
                     "Lesson"
@@ -1472,8 +1728,10 @@
                                 "type": "object",
                                 "example": {
                                     "name": "Nom de l'exercice",
+                                    "image": "chemin image",
                                     "content": "Contenu de l'exercice",
-                                    "parts_id": "L'id de la partie liée"
+                                    "file": "nom fichier",
+                                    "parts_id": 1
                                 }
                             }
                         }
@@ -1486,7 +1744,12 @@
                             "application/json": {}
                         }
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
             }
         },
         "/categories": {
@@ -1504,7 +1767,12 @@
                             "application/json": {}
                         }
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
             },
             "post": {
                 "tags": [
@@ -1542,10 +1810,36 @@
                             "application/json": {}
                         }
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
             }
         },
         "/module-categories": {
+            "get": {
+                "tags": [
+                    "Lesson"
+                ],
+                "summary": "Liste des modules categories",
+                "description": "Liste des modules categories",
+                "operationId": "getModulesCategoriesList",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            },
             "post": {
                 "tags": [
                     "Lesson"
@@ -1586,10 +1880,36 @@
                             "application/json": {}
                         }
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
             }
         },
         "/module-classes": {
+            "get": {
+                "tags": [
+                    "Lesson"
+                ],
+                "summary": "Liste des modules de classes",
+                "description": "Liste des modules de classes",
+                "operationId": "getModulesClassesList",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            },
             "post": {
                 "tags": [
                     "Lesson"
@@ -1630,7 +1950,12 @@
                             "application/json": {}
                         }
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
             }
         },
         "/modules/{id}": {
@@ -1658,7 +1983,12 @@
                             "application/json": {}
                         }
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
             },
             "patch": {
                 "tags": [
@@ -1684,7 +2014,7 @@
                                 "properties": {
                                     "": {
                                         "properties": {
-                                            "module": {
+                                            "name": {
                                                 "type": "string"
                                             }
                                         },
@@ -1693,7 +2023,7 @@
                                 },
                                 "type": "object",
                                 "example": {
-                                    "module": "Nouveau nom"
+                                    "name": "Nouveau nom"
                                 }
                             }
                         }
@@ -1706,10 +2036,46 @@
                             "application/json": {}
                         }
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
             }
         },
         "/parts/{id}": {
+            "get": {
+                "tags": [
+                    "Lesson"
+                ],
+                "summary": "Voir une parts en fonction de son ID",
+                "description": "Voir une parts en fonction de son ID",
+                "operationId": "getOneParts",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            },
             "delete": {
                 "tags": [
                     "Lesson"
@@ -1734,7 +2100,12 @@
                             "application/json": {}
                         }
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
             },
             "patch": {
                 "tags": [
@@ -1786,7 +2157,12 @@
                             "application/json": {}
                         }
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
             }
         },
         "/lessons/{id}": {
@@ -1814,7 +2190,12 @@
                             "application/json": {}
                         }
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
             },
             "patch": {
                 "tags": [
@@ -1843,8 +2224,11 @@
                                             "name": {
                                                 "type": "string"
                                             },
-                                            "contenu": {
+                                            "content": {
                                                 "type": "string"
+                                            },
+                                            "duration": {
+                                                "type": "integer"
                                             },
                                             "parts_id": {
                                                 "type": "integer"
@@ -1856,7 +2240,8 @@
                                 "type": "object",
                                 "example": {
                                     "name": "Nouveau nom",
-                                    "contenu": "Nouveau contenu",
+                                    "content": "Nouveau contenu",
+                                    "duration": 1,
                                     "parts_id": 1
                                 }
                             }
@@ -1870,7 +2255,12 @@
                             "application/json": {}
                         }
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
             }
         },
         "/exercices/{id}": {
@@ -1898,7 +2288,12 @@
                             "application/json": {}
                         }
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
             },
             "patch": {
                 "tags": [
@@ -1927,7 +2322,13 @@
                                             "name": {
                                                 "type": "string"
                                             },
-                                            "contenu": {
+                                            "content": {
+                                                "type": "string"
+                                            },
+                                            "file": {
+                                                "type": "string"
+                                            },
+                                            "image": {
                                                 "type": "string"
                                             },
                                             "parts_id": {
@@ -1940,7 +2341,9 @@
                                 "type": "object",
                                 "example": {
                                     "name": "Nouveau nom",
-                                    "contenu": "Nouveau contenu",
+                                    "content": "Nouveau contenu",
+                                    "image": "lien image",
+                                    "file": "nom du fichier",
                                     "parts_id": 1
                                 }
                             }
@@ -1954,10 +2357,46 @@
                             "application/json": {}
                         }
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
             }
         },
         "/categories/{id}": {
+            "get": {
+                "tags": [
+                    "Lesson"
+                ],
+                "summary": "Voir une categorie en fonction de son ID",
+                "description": "Voir une categorie en fonction de son ID",
+                "operationId": "getOneCategories",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            },
             "delete": {
                 "tags": [
                     "Lesson"
@@ -1982,7 +2421,12 @@
                             "application/json": {}
                         }
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
             },
             "patch": {
                 "tags": [
@@ -2030,7 +2474,12 @@
                             "application/json": {}
                         }
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
             }
         },
         "/module-categories/{id}": {
@@ -2058,7 +2507,12 @@
                             "application/json": {}
                         }
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
             },
             "patch": {
                 "tags": [
@@ -2110,7 +2564,12 @@
                             "application/json": {}
                         }
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
             }
         },
         "/module-classes/{id}": {
@@ -2138,7 +2597,12 @@
                             "application/json": {}
                         }
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
             },
             "patch": {
                 "tags": [
@@ -2190,97 +2654,12 @@
                             "application/json": {}
                         }
                     }
-                }
-            }
-        },
-        "/part": {
-            "get": {
-                "tags": [
-                    "Lesson"
-                ],
-                "summary": "",
-                "description": "",
-                "operationId": "getPartsList",
-                "responses": {
-                    "200": {
-                        "description": "Successful operation",
-                        "content": {
-                            "application/json": {}
-                        }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
                     }
-                }
-            }
-        },
-        "/leçons": {
-            "get": {
-                "tags": [
-                    "Lesson"
-                ],
-                "summary": "",
-                "description": "",
-                "operationId": "getLessonList",
-                "responses": {
-                    "200": {
-                        "description": "Successful operation",
-                        "content": {
-                            "application/json": {}
-                        }
-                    }
-                }
-            }
-        },
-        "/exercice": {
-            "get": {
-                "tags": [
-                    "Lesson"
-                ],
-                "summary": "Liste des exercices",
-                "description": "Liste des exercices",
-                "operationId": "getExerciceList",
-                "responses": {
-                    "200": {
-                        "description": "Successful operation",
-                        "content": {
-                            "application/json": {}
-                        }
-                    }
-                }
-            }
-        },
-        "/modulescategories": {
-            "get": {
-                "tags": [
-                    "Lesson"
-                ],
-                "summary": "Liste des modules categories",
-                "description": "Liste des modules categories",
-                "operationId": "getModulesCategoriesList",
-                "responses": {
-                    "200": {
-                        "description": "Successful operation",
-                        "content": {
-                            "application/json": {}
-                        }
-                    }
-                }
-            }
-        },
-        "/modulesclasses": {
-            "get": {
-                "tags": [
-                    "Lesson"
-                ],
-                "summary": "Liste des modules de classes",
-                "description": "Liste des modules de classes",
-                "operationId": "getModulesClassesList",
-                "responses": {
-                    "200": {
-                        "description": "Successful operation",
-                        "content": {
-                            "application/json": {}
-                        }
-                    }
-                }
+                ]
             }
         },
         "/partnercontacts": {
@@ -2474,7 +2853,12 @@
                             "application/json": {}
                         }
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
             },
             "post": {
                 "tags": [
@@ -2524,7 +2908,12 @@
                             "application/json": {}
                         }
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
             }
         },
         "/questions/{id}": {
@@ -2552,7 +2941,12 @@
                             "application/json": {}
                         }
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
             },
             "delete": {
                 "tags": [
@@ -2578,7 +2972,12 @@
                             "application/json": {}
                         }
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
             },
             "patch": {
                 "tags": [
@@ -2638,10 +3037,15 @@
                             "application/json": {}
                         }
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
             }
         },
-        "/registrationTypes": {
+        "/registration-types": {
             "get": {
                 "tags": [
                     "Registration"
@@ -2656,7 +3060,12 @@
                             "application/json": {}
                         }
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
             }
         },
         "/registrations": {
@@ -2674,10 +3083,15 @@
                             "application/json": {}
                         }
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
             }
         },
-        "/registration/{id}": {
+        "/registrations/{id}": {
             "get": {
                 "tags": [
                     "Registration"
@@ -2702,7 +3116,12 @@
                             "application/json": {}
                         }
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
             }
         },
         "/signatures/{id_registration}": {
@@ -2730,7 +3149,12 @@
                             "application/json": {}
                         }
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
             }
         },
         "/roles": {
@@ -2760,7 +3184,12 @@
                     "404": {
                         "description": "not found"
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
             },
             "post": {
                 "tags": [
@@ -2798,7 +3227,12 @@
                             "application/json": {}
                         }
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
             }
         },
         "/types": {
@@ -2828,7 +3262,12 @@
                     "404": {
                         "description": "not found"
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
             },
             "post": {
                 "tags": [
@@ -2866,7 +3305,12 @@
                             "application/json": {}
                         }
                     }
-                }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
             }
         },
         "/user": {
@@ -2924,7 +3368,7 @@
                                             "password": {
                                                 "type": "string"
                                             },
-                                            "adress": {
+                                            "address": {
                                                 "type": "string"
                                             },
                                             "city": {
@@ -2933,10 +3377,10 @@
                                             "zipCode": {
                                                 "type": "string"
                                             },
-                                            "id_roles": {
+                                            "roles_id": {
                                                 "type": "integer"
                                             },
-                                            "id_types": {
+                                            "types_id": {
                                                 "type": "integer"
                                             }
                                         },
@@ -2945,17 +3389,17 @@
                                 },
                                 "type": "object",
                                 "example": {
-                                    "name": "Nom de module",
-                                    "firstname": "Nom de module",
-                                    "birthdate": "Nom de module",
-                                    "mail": "Nom de module",
-                                    "tel": "Nom de module",
-                                    "password": "Nom de module",
-                                    "adress": "Nom de module",
-                                    "city": "Nom de module",
-                                    "zipCode": "Nom de module",
-                                    "id_roles": "Nom de module",
-                                    "id_types": "Nom de module"
+                                    "name": "Ricard",
+                                    "firstname": "Sylvain",
+                                    "birthdate": "2012-09-04",
+                                    "mail": "mail@mail.fr",
+                                    "tel": "0102030405",
+                                    "password": "password",
+                                    "address": "28 rue des golds",
+                                    "city": "Thourotte",
+                                    "zipCode": "60150",
+                                    "roles_id": 1,
+                                    "types_id": 1
                                 }
                             }
                         }
@@ -3082,7 +3526,7 @@
                                             "password": {
                                                 "type": "string"
                                             },
-                                            "adress": {
+                                            "address": {
                                                 "type": "string"
                                             },
                                             "city": {
@@ -3091,10 +3535,10 @@
                                             "zipCode": {
                                                 "type": "string"
                                             },
-                                            "id_roles": {
+                                            "roles_id": {
                                                 "type": "integer"
                                             },
-                                            "id_types": {
+                                            "types_id": {
                                                 "type": "integer"
                                             }
                                         },
@@ -3103,78 +3547,22 @@
                                 },
                                 "type": "object",
                                 "example": {
-                                    "name": "Nom de module",
-                                    "firstname": "Nom de module",
-                                    "birthdate": "Nom de module",
-                                    "mail": "Nom de module",
-                                    "tel": "Nom de module",
-                                    "password": "Nom de module",
-                                    "adress": "Nom de module",
+                                    "name": "Pioul",
+                                    "firstname": "Benjamin",
+                                    "birthdate": "2012-09-04",
+                                    "mail": "adresse@mail.fr",
+                                    "tel": "0102030405",
+                                    "password": "password",
+                                    "address": "19 rue des silvers",
                                     "city": "Nom de module",
-                                    "zipCode": "Nom de module",
-                                    "id_roles": "Nom de module",
-                                    "id_types": "Nom de module"
+                                    "zipCode": "60150",
+                                    "roles_id": 1,
+                                    "types_id": 1
                                 }
                             }
                         }
                     }
                 },
-                "responses": {
-                    "200": {
-                        "description": "Successful operation",
-                        "content": {
-                            "application/json": {}
-                        }
-                    }
-                },
-                "security": [
-                    {
-                        "bearerAuth": []
-                    }
-                ]
-            }
-        },
-        "/EmergencyContact": {
-            "get": {
-                "tags": [
-                    "User"
-                ],
-                "summary": "Voir les contacts d'urgences",
-                "description": "Voir les contacts d'urgences",
-                "operationId": "getEmergencyContactsList",
-                "responses": {
-                    "200": {
-                        "description": "Successful operation",
-                        "content": {
-                            "application/json": {}
-                        }
-                    }
-                },
-                "security": [
-                    {
-                        "bearerAuth": []
-                    }
-                ]
-            }
-        },
-        "/EmergencyContact/{id}": {
-            "get": {
-                "tags": [
-                    "User"
-                ],
-                "summary": "Voir les contacts d'urgences en fonction de son ID",
-                "description": "Voir les contacts d'urgences en fonction de son ID",
-                "operationId": "getOneEmergencyContact",
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "required": true,
-                        "schema": {
-                            "type": "integer"
-                        }
-                    }
-                ],
                 "responses": {
                     "200": {
                         "description": "Successful operation",
