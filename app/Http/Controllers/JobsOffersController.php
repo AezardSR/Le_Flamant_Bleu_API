@@ -14,6 +14,11 @@ class JobsOffersController extends Controller
         return response()->json($jobsOffers);
     }
 
+    public function getOneJobsOffers($id) {
+        $jobsOffers = JobsOffers::find($id);
+        return response()->json($jobsOffers);
+    }
+
     public function addJobsOffers(Request $request) {
         $jobsOffers = new JobsOffers();
         $jobsOffers->name = $request->input('name');

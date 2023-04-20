@@ -140,9 +140,10 @@ Route::patch('/partner-contacts/update/{id}', [PartnerContactController::class, 
 
 //Routes pour JobsOffers
 Route::get('/job-offers', [JobsOffersController::class, 'getJobsOffers']);
-Route::post('/job-offers/add', [JobsOffersController::class, 'addJobsOffers']);
-Route::delete('/job-offers/delete/{id}', [JobsOffersController::class, 'deleteJobsOffers']);
-Route::patch('/job-offers/update/{id}', [JobsOffersController::class, 'changeJobsOffers']);
+Route::get('/job-offers/{id}', [JobsOffersController::class, 'getOneJobsOffers']);
+Route::post('/job-offers', [JobsOffersController::class, 'addJobsOffers']);
+Route::delete('/job-offers/{id}', [JobsOffersController::class, 'deleteJobsOffers']);
+Route::patch('/job-offers/{id}', [JobsOffersController::class, 'changeJobsOffers']);
 
 //Routes pour rendez-vous
     //Type de rdv
