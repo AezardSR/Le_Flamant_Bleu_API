@@ -1186,7 +1186,7 @@ class LessonController extends Controller
      *      tags={"Lesson"},
      *      security={{"bearerAuth":{}}},
      *      summary="Liste des exercices",
-     *      description="Liste des exercices",});
+     *      description="Liste des exercices",
      *      @OA\Response(
      *          response=200,
      *          description="Successful operation",
