@@ -39,7 +39,7 @@ class JobsOffersController extends Controller
 
     /**
      * @OA\Post(
-     *      path="/job-offers/add",
+     *      path="/job-offers",
      *      operationId="addJobsOffers",
      *      tags={"Job Offer"},
      *      security={{"bearerAuth":{}}},
@@ -122,7 +122,7 @@ class JobsOffersController extends Controller
     }
   /**
      * @OA\Delete (
-     *      path="/job-offers/delete/{id}",
+     *      path="/job-offers/{id}",
      *      operationId="deleteJobsOffers",
      *      tags={"Job Offer"},
      *      security={{"bearerAuth":{}}},
@@ -152,7 +152,7 @@ class JobsOffersController extends Controller
 
     /**
      * @OA\Patch (
-     *      path="/job-offers/update/{id}",
+     *      path="/job-offers/{id}",
      *      operationId="changeJobsOffers",
      *      tags={"Job Offer"},
      *      security={{"bearerAuth":{}}},

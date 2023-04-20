@@ -14,11 +14,256 @@
     },
     "servers": [
         {
-            "url": "http://127.0.0.1:8000/api",
+            "url": "http://exemple.fr:8000/api",
             "description": "Demo API Server"
         }
     ],
     "paths": {
+        "/actualites": {
+            "get": {
+                "tags": [
+                    "Actualites"
+                ],
+                "summary": "Toutes les actualités",
+                "description": "",
+                "operationId": "getActualites",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "404": {
+                        "description": "not found"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            },
+            "post": {
+                "tags": [
+                    "Actualites"
+                ],
+                "summary": "Ajouter une actualité",
+                "description": "Permet l'ajout d'une actualité",
+                "operationId": "addActualites",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "": {
+                                        "properties": {
+                                            "title": {
+                                                "type": "string"
+                                            },
+                                            "content": {
+                                                "type": "longText"
+                                            },
+                                            "publication_date": {
+                                                "type": "string",
+                                                "format": "date"
+                                            },
+                                            "author": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                },
+                                "type": "object",
+                                "example": {
+                                    "title": "New actu",
+                                    "content": "Bienvenu dans cette nouvelle actualité",
+                                    "publication_date": "2023-04-04",
+                                    "author": "John Joh"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/actualites/{id}": {
+            "get": {
+                "tags": [
+                    "Actualites"
+                ],
+                "summary": "Une actualité",
+                "description": "",
+                "operationId": "getOneActualites",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "404": {
+                        "description": "not found"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            },
+            "delete": {
+                "tags": [
+                    "Actualites"
+                ],
+                "summary": "Supprimer une actualité",
+                "description": "Permets de supprimer une actualité en fonction de son ID",
+                "operationId": "deleteActualites",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "404": {
+                        "description": "not found"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            },
+            "patch": {
+                "tags": [
+                    "Actualites"
+                ],
+                "summary": "modifier une actualité",
+                "description": "Permets de modifier une actualité en fonction de son ID",
+                "operationId": "changeActualites",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "": {
+                                        "properties": {
+                                            "title": {
+                                                "type": "string"
+                                            },
+                                            "content": {
+                                                "type": "longText"
+                                            },
+                                            "publication_date": {
+                                                "type": "string",
+                                                "format": "date"
+                                            },
+                                            "author": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                },
+                                "type": "object",
+                                "example": {
+                                    "title": "Update actu",
+                                    "content": "Bienvenu dans cette nouvelle actualité à modifier",
+                                    "publication_date": "2023-04-04",
+                                    "author": "John Joh"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
         "/answers": {
             "get": {
                 "tags": [
@@ -1277,9 +1522,7 @@
                         "bearerAuth": []
                     }
                 ]
-            }
-        },
-        "/job-offers/add": {
+            },
             "post": {
                 "tags": [
                     "Job Offer"
@@ -1346,7 +1589,7 @@
                 ]
             }
         },
-        "/job-offers/delete/{id}": {
+        "/job-offers/{id}": {
             "delete": {
                 "tags": [
                     "Job Offer"
@@ -1377,9 +1620,7 @@
                         "bearerAuth": []
                     }
                 ]
-            }
-        },
-        "/job-offers/update/{id}": {
+            },
             "patch": {
                 "tags": [
                     "Job Offer"
