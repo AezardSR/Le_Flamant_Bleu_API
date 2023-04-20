@@ -40,6 +40,7 @@ use App\Models\Classes;
 use App\Models\Categories;
 use App\Models\FormationsFormats;
 use App\Models\FormationsByTypes;
+use App\Models\Actualites;
 
 class DatabaseSeeder extends Seeder
 {
@@ -95,6 +96,7 @@ class DatabaseSeeder extends Seeder
         ApplicantsTestSurvey::factory(5)->create();
         ApplicantsAnswers::factory(5)->create();
         Answers::factory(5)->create();
+        Actualites::factory(5)->create();
 
     }
 }
