@@ -24,7 +24,7 @@ class ActualitesFactory extends Factory
     {
         return [
             'title' => $this->faker->word(),
-            'content'=> $this->faker->text(50),
+            'content'=> $this->faker->text(),
             'publication_date' => $this->faker->date(),
             'author' => $this->faker->name(),
         ];
