@@ -21,7 +21,7 @@ class CreateSurveyanswersTable extends Migration
             $table->timestamps();
         });
         Schema::table('survey_answers',function ($table){
-            $table->foreign('surveys_id')->references('id')->on('surveys');
+            $table->foreign('surveys_id')->references('id')->on('surveys')->onDelete('cascade');
         });
     }
 

@@ -21,8 +21,8 @@ class CreateApplicantsanswersTable extends Migration
             $table->timestamps();
         });
         Schema::table('applicants_answers',function ($table){
-            $table->foreign('surveyAnswers_id')->references('id')->on('survey_answers');
-            $table->foreign('applicantsTestSurvey_id')->references('id')->on('applicants_test_survey');
+            $table->foreign('surveyAnswers_id')->references('id')->on('survey_answers')->onDelete('cascade');
+            $table->foreign('applicantsTestSurvey_id')->references('id')->on('applicants_test_survey')->onDelete('cascade');
         });
     }
 

@@ -24,12 +24,14 @@ class CreateFormationsByTypesTable extends Migration
             $table
             ->foreign('formationsTypes_id')
             ->references('id')
-            ->on('formations_types');
+            ->on('formations_types')
+            ->onDelete('cascade');
 
             $table
             ->foreign('formationsFormats_id')
             ->references('id')
-            ->on('formations_formats');
+            ->on('formations_formats')
+            ->onDelete('cascade');
         });
     }
 

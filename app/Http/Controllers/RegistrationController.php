@@ -13,6 +13,23 @@ use Illuminate\Support\Facades\DB;
 
 class RegistrationController extends Controller
 {
+         /**
+     * @OA\Get(
+     *      path="/registration-types",
+     *      operationId="getRegistrationTypeList",
+     *      tags={"Registration"},
+     *      security={{"bearerAuth":{}}},
+     *      summary="",
+     *      description="",
+     *      @OA\Response(
+     *          response=200,
+     *          description="Successful operation",
+     *          @OA\MediaType(
+     *           mediaType="application/json",
+     *      )
+     *      ),
+     *  )
+     */
     public function getRegistrationTypeList(){
         $registationTypes = RegistrationTypes::all();
         return response()->json($registationTypes);
@@ -42,11 +59,54 @@ class RegistrationController extends Controller
         return response()->json($registration);
     }
 
+    /**
+     * @OA\Get(
+     *      path="/registrations",
+     *      operationId="getRegistrationsList",
+     *      tags={"Registration"},
+     *      security={{"bearerAuth":{}}},
+     *      summary="",
+     *      description="",
+     *      @OA\Response(
+     *          response=200,
+     *          description="Successful operation",
+     *          @OA\MediaType(
+     *           mediaType="application/json",
+     *      )
+     *      ),
+     *  )
+     */
     public function getRegistrationsList(){
         $registration = Registrations::all();
         return response()->json($registration);
     }
 
+
+  /**
+     * @OA\Get (
+     *      path="/registrations/{id}",
+     *      operationId="getOneRegistration",
+     *      tags={"Registration"},
+     *      security={{"bearerAuth":{}}},
+     *      summary="",
+     *      description="",
+     *     @OA\Parameter (
+     *      name="id",
+     *      in="path",
+     *      required=true,
+     *      @OA\Schema (
+     *           type="integer"
+     *      )
+     *   ),
+     *      @OA\Response (
+     *          response=200,
+     *          description="Successful operation",
+     *          @OA\MediaType(
+     *           mediaType="application/json",
+     *      )
+     *      ),
+     *  )
+     */
     public function getOneRegistration($id){
         $registration = DB::table('registrations')->select('dateRegistration','detailRegistration','promos_id','registrationTypes_id')->where('id','=', $id)->get();
         return response()->json($registration);
@@ -56,6 +116,32 @@ class RegistrationController extends Controller
         $registration = DB::table('registrations')->where('id','=',$id)->update([$request->input('column') => $request->input('newValue')]);
     }
 
+
+  /**
+     * @OA\Get (
+     *      path="/signatures/{id_registration}",
+     *      operationId="getSignatureList",
+     *      tags={"Registration"},
+     *      security={{"bearerAuth":{}}},
+     *      summary="",
+     *      description="",
+     *     @OA\Parameter (
+     *      name="id",
+     *      in="path",
+     *      required=true,
+     *      @OA\Schema (
+     *           type="integer"
+     *      )
+     *   ),
+     *      @OA\Response (
+     *          response=200,
+     *          description="Successful operation",
+     *          @OA\MediaType(
+     *           mediaType="application/json",
+     *      )
+     *      ),
+     *  )
+     */
     public function getSignatureList($registrations_id){
         $signature = DB::table('signatures')->select('user_id','registrations_id','date')->where('registrations_id','=',$registrations_id)->get();
         return response()->json($signature);

@@ -25,12 +25,16 @@ class CreateMessages extends Migration
             $table
                 ->foreign('receiver_id')
                 ->references('id')
-                ->on('users');
+                ->on('users')
+                ->onDelete('cascade');
+
 
             $table
                 ->foreign('sender_id')
                 ->references('id')
-                ->on('users');
+                ->on('users')
+                ->onDelete('cascade');
+
         });
     }
 

@@ -27,7 +27,8 @@ class CreateExercicesTable extends Migration
             $table
                 ->foreign('parts_id')
                 ->references('id')
-                ->on('parts');
+                ->on('parts')
+                ->onDelete('cascade');
         });
     }
 

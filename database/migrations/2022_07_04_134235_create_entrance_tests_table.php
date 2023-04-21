@@ -20,7 +20,7 @@ class CreateEntranceTestsTable extends Migration
             $table->timestamps();
         });
         Schema::table('entrance_tests',function ($table){
-            $table->foreign('user_id')->references('id')->on('users');
+                $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

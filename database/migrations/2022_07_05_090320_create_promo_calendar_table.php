@@ -21,7 +21,7 @@ class CreatePromoCalendarTable extends Migration
             $table->timestamps();
         });
         Schema::table('promo_calendar',function ($table){
-            $table->foreign('promos_id')->references('id')->on('promos');
+            $table->foreign('promos_id')->references('id')->on('promos')->onDelete('cascade');
         });
     }
 

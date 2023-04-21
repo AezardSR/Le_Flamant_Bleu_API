@@ -45,15 +45,19 @@ sudo docker compose down
 
 # Install php dependencies
 # FR: Installer les dépendances php
-sudo docker compose run --rm api composer install 
+sudo docker compose run --rm laravel composer install 
+
+# Launch containers
+# FR: Lancer les containers
+sudo docker compose up -d 
 
 # Fresh migrate + seeding
 # FR: Migrer et remplir la base de données
-sudo docker compose run --rm api php artisan migrate:fresh --seed 
+sudo docker compose run --rm laravel php artisan migrate:fresh --seed 
 
 # Generate key
 # FR: Generation de la clé
-sudo docker compose run --rm api php artisan key:generate 
+sudo docker compose run --rm laravel php artisan key:generate 
 
 # Launch containers
 # FR: Lancer les containers
@@ -86,13 +90,13 @@ L5_SWAGGER_CONST_HOST : l'URL de base pour l'API de votre application Laravel po
 ### APP_KEY
 
 ```bash
-php artisan key:generate
+docker composer run laravel php artisan key:generate
 ```
 
 ### JWT token
 
 ```bash
-    php artisan jwt:generate
+    docker compose run laravel php artisan jwt:generate
 ```
 
 ## SWAGGER 
@@ -100,7 +104,7 @@ php artisan key:generate
 Commande pour generer le changement pour la doc swagger
 
 ```bash
-    docker-compose run api php artisan l5-swagger:generate
+    docker compose run laravel php artisan l5-swagger:generate
 ```
 ### Compte ADMIN par défaut :
 ```bash

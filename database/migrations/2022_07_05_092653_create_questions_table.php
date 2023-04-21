@@ -26,7 +26,8 @@ class CreateQuestionsTable extends Migration
             $table
             ->foreign('user_id')
             ->references('id')
-            ->on('users');
+            ->on('users')
+            ->onDelete('cascade');
         });
 
         Schema::table('questions', function ($table) {
@@ -41,7 +42,8 @@ class CreateQuestionsTable extends Migration
             $table
             ->foreign('categories_id')
             ->references('id')
-            ->on('categories');
+            ->on('categories')
+            ->onDelete('cascade');
         });
     }
 

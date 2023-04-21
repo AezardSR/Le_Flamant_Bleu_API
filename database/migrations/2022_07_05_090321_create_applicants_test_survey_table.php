@@ -25,9 +25,9 @@ class CreateApplicantsTestSurveyTable extends Migration
             $table->timestamps();
         });
         Schema::table('applicants_test_survey',function ($table){
-            $table->foreign('entranceTests_id')->references('id')->on('entrance_tests');
-            $table->foreign('user_id')->references('id')->on('users');
-            $table->foreign('promos_id')->references('id')->on('promos');
+            $table->foreign('entranceTests_id')->references('id')->on('entrance_tests')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('promos_id')->references('id')->on('promos')->onDelete('cascade');
         });
     }
 

@@ -23,12 +23,12 @@ class User extends Authenticatable implements JWTSubject
     protected $table = 'users';
     protected $fillable = ['name','firstname','birthdate','mail','tel','password','adress','city','zipCode','roles_id', 'types_id'];
 
-    public function roleUser(){
-        return $this->hasOne(Roles::class);
-    }    
-    public function typeUser(){
-        return $this->hasOne(Types::class);
-    }
+    public function role(){
+        return $this->belongsTo(Roles::class, 'roles_id');
+    }   
+    public function type(){
+        return $this->belongsTo(Types::class, 'types_id');
+    } 
 
     protected $hidden = [
         'password', 'remember_token',
