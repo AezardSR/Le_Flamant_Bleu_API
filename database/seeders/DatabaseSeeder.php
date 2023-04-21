@@ -51,8 +51,53 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        Types::factory(5)->create();
-        Roles::factory(5)->create();
+        $admin_types = new Types();
+        $admin_types->name = "Administrateur";
+        $admin_types->save();
+
+        $manager_types = new Types();
+        $manager_types->name = "Manager";
+        $manager_types->save();
+
+        $responsable_types = new Types();
+        $responsable_types->name = "Responsable";
+        $responsable_types->save();
+
+        $enseignant_types = new Types();
+        $enseignant_types->name = "Enseignant";
+        $enseignant_types->save();
+
+        $intervenant_types = new Types();
+        $intervenant_types->name = "Intervenant";
+        $intervenant_types->save();
+
+        $eleve_types = new Types();
+        $eleve_types->name = "Elève";
+        $eleve_types->save();
+
+        $candidat_types = new Types();
+        $candidat_types->name = "Candidat";
+        $candidat_types->save();
+
+        $admin_roles = new Roles();
+        $admin_roles->name = "Admin";
+        $admin_roles->save();
+
+        $directeur_roles = new Roles();
+        $directeur_roles->name = "Directeur";
+        $directeur_roles->save();
+
+        $chargee_affaire_roles = new Roles();
+        $chargee_affaire_roles->name = "Chargé d'affaire";
+        $chargee_affaire_roles->save();
+
+        $formateur_roles = new Roles();
+        $formateur_roles->name = "Formateur";
+        $formateur_roles->save();
+
+        $apprenant_roles = new Roles();
+        $apprenant_roles->name = "Apprenant";
+        $apprenant_roles->save();
 
         $admin = new User();
         $admin->name = "AdminName";
@@ -71,6 +116,25 @@ class DatabaseSeeder extends Seeder
         Parts::factory(20)->create();
         PartnerContacts::factory(5)->create();
         Messages::factory(5)->create();
+
+        $job = new JobsOffers();
+        $job->name = "Développeur Web Full-Stack";
+        $job->dateOffers = "2023-04-21";
+        $job->description = "Nous recherchons un développeur Web Full-Stack talentueux et passionné pour rejoindre notre équipe dynamique de développement. Le candidat retenu sera responsable de la conception, du développement et de la maintenance de nos sites Web et applications.
+
+        Responsabilités principales :
+        
+        Conception et développement de sites Web et d'applications
+        Développement de fonctionnalités côté serveur et côté client
+        Maintenance et amélioration des fonctionnalités existantes
+        Analyse et résolution de problèmes de performances et de sécurité
+        Collaboration avec les membres de l'équipe pour l'élaboration de solutions innovantes et créatives";
+
+        $job->link = "https://lamanu.fr/";
+        $job->user_id = "3";
+        $job->partnerContacts_id = "1";
+        $job->save();
+
         JobsOffers::factory(5)->create();
         FormationsFormats::factory(5)->create();
         FormationsTypes::factory(5)->create();
@@ -96,6 +160,15 @@ class DatabaseSeeder extends Seeder
         ApplicantsTestSurvey::factory(5)->create();
         ApplicantsAnswers::factory(5)->create();
         Answers::factory(5)->create();
+
+        $actus = new Actualites();
+        $actus->title = "La MANU - Nouvelle formation";
+        $actus->content = "La MANU est fière d'annoncer le lancement d'un nouveau programme de formation en intelligence artificielle, qui sera offert dès la prochaine rentrée universitaire. Ce programme vise à répondre à la demande croissante de professionnels qualifiés dans le domaine de l'IA, un secteur en constante évolution.
+        Les étudiants inscrits au programme auront l'opportunité de suivre des cours sur des sujets tels que l'apprentissage automatique, la vision par ordinateur, le traitement du langage naturel et les réseaux de neurones. Ils auront également accès à des ateliers pratiques et à des projets en équipe, afin de mettre en pratique leurs compétences.";
+        $actus->publication_date = "2023-04-21";
+        $actus->author = "Jane Doe, journaliste de La Gazette de La MANU";
+        $actus->save();
+
         Actualites::factory(5)->create();
 
     }

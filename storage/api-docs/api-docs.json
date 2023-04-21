@@ -1590,6 +1590,37 @@
             }
         },
         "/job-offers/{id}": {
+            "get": {
+                "tags": [
+                    "Job Offer"
+                ],
+                "summary": "Voir une offre d'emplois",
+                "description": "Voir une offre d'emplois",
+                "operationId": "getOneJobsOffers",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            },
             "delete": {
                 "tags": [
                     "Job Offer"
