@@ -31,6 +31,31 @@ class JobsOffersController extends Controller
         return response()->json($jobsOffers);
     }
 
+    /**
+     * @OA\Get(
+     *      path="/job-offers/{id}",
+     *      operationId="getOneJobsOffers",
+     *      tags={"Job Offer"},
+     *      security={{"bearerAuth":{}}},
+     *      summary="Voir une offre d'emplois",
+     *      description="Voir une offre d'emplois",
+     *      @OA\Parameter (
+     *      name="id",
+     *      in="path",
+     *      required=true,
+     *      @OA\Schema (
+     *           type="integer"
+     *      )
+     *   ),
+     *      @OA\Response(
+     *          response=200,
+     *          description="Successful operation",
+     *          @OA\MediaType(
+     *           mediaType="application/json",
+     *      )
+     *      ),
+     *  )
+     */
     public function getOneJobsOffers($id) {
         $jobsOffers = JobsOffers::find($id);
         return response()->json($jobsOffers);
