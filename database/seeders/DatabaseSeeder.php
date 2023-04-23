@@ -139,7 +139,23 @@ class DatabaseSeeder extends Seeder
         FormationsFormats::factory(5)->create();
         FormationsTypes::factory(5)->create();
         FormationsByTypes::factory(5)->create();
-        Modules::factory(2)->create();
+
+        $back = new Modules();
+        $back->name = "Back-end";
+        $back->save();
+
+        $front = new Modules();
+        $front->name = "Front-end";
+        $front->save();
+
+        $github = new Modules();
+        $github->name = "Github";
+        $github->save();
+
+        $wordpress = new Modules();
+        $wordpress->name = "Wordpress";
+        $wordpress->save();
+
         Promos::factory(5)->create();
         PromoTeachers::factory(5)->create();
         PromoStudents::factory(5)->create();
