@@ -16,7 +16,7 @@ Projet étudiant de groupe dans le cadre du diplôme Concepteur développeur d'a
 
 # Le Flamant Bleu API
 ## Installation en local
-Les étapes pour une installation en local, si vous avez docker à disposition, passé directement à la section suivante.
+Les étapes pour une installation en local.Si vous disposez de Docker, vous pouvez passer directement à la section suivante 
 
 ```bash
 composer install 
