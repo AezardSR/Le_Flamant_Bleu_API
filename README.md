@@ -96,7 +96,7 @@ docker composer run laravel php artisan key:generate
 ### JWT token
 
 ```bash
-    docker compose run laravel php artisan jwt:generate
+docker compose run laravel php artisan jwt:generate
 ```
 
 ## SWAGGER 
@@ -104,7 +104,7 @@ docker composer run laravel php artisan key:generate
 Commande pour generer le changement pour la doc swagger
 
 ```bash
-    docker compose run laravel php artisan l5-swagger:generate
+docker compose run laravel php artisan l5-swagger:generate
 ```
 ### Compte ADMIN par défaut :
 ```bash
