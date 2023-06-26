@@ -90,7 +90,7 @@ L5_SWAGGER_CONST_HOST : l'URL de base pour l'API de votre application Laravel po
 ### APP_KEY
 
 ```bash
-docker composer run laravel php artisan key:generate
+docker compose run laravel php artisan key:generate
 ```
 
 ### JWT token
